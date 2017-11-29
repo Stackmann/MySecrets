@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2as-TU-6hI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Pwd List View Controller-->
+        <scene sceneID="SF9-fZ-WJz">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController id="2as-TU-6hI" customClass="PwdListViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="62u-9v-NgE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="PI7-Xl-PRy"/>
+                    </view>
+                    <connections>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="iNG-2h-KJT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="67L-2k-VeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1052" y="32"/>
+        </scene>
+        <!--Enter Pwd View Controller-->
+        <scene sceneID="ikg-f5-Ljh">
+            <objects>
+                <viewController id="5Uf-56-o49" customClass="EnterPwdViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lxq-Fj-SVc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OjY-0Y-Peg">
+                                <rect key="frame" x="126" y="150" width="123" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fqr-Ye-weE">
+                                <rect key="frame" x="126" y="205" width="123" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcC-0c-eVr">
+                                <rect key="frame" x="257" y="205" width="30" height="30"/>
+                                <state key="normal" title="✅"/>
+                                <connections>
+                                    <action selector="PwdOk:" destination="5Uf-56-o49" eventType="touchUpInside" id="iLq-39-Qpw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="DcC-0c-eVr" firstAttribute="leading" secondItem="Fqr-Ye-weE" secondAttribute="trailing" constant="8" id="4Nq-MM-xtU"/>
+                            <constraint firstItem="Fqr-Ye-weE" firstAttribute="top" secondItem="OjY-0Y-Peg" secondAttribute="bottom" constant="34" id="GEf-H7-249"/>
+                            <constraint firstItem="DcC-0c-eVr" firstAttribute="top" secondItem="Fqr-Ye-weE" secondAttribute="top" id="O69-MN-01t"/>
+                            <constraint firstItem="Fqr-Ye-weE" firstAttribute="leading" secondItem="OjY-0Y-Peg" secondAttribute="leading" id="gXb-kB-gxP"/>
+                            <constraint firstItem="Fqr-Ye-weE" firstAttribute="width" secondItem="OjY-0Y-Peg" secondAttribute="width" id="ql0-8g-km2"/>
+                            <constraint firstItem="OjY-0Y-Peg" firstAttribute="centerX" secondItem="gWU-lA-QWw" secondAttribute="centerX" id="r3v-nj-mW0"/>
+                            <constraint firstItem="OjY-0Y-Peg" firstAttribute="top" secondItem="gWU-lA-QWw" secondAttribute="top" constant="130" id="y9z-En-O4p"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gWU-lA-QWw"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qz4-PU-Md9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2084" y="31.934032983508249"/>
         </scene>
     </scenes>
 </document>
