@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2as-TU-6hI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aNb-8V-gLd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +21,10 @@
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="PI7-Xl-PRy"/>
                     </view>
-                    <connections>
-                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="iNG-2h-KJT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="67L-2k-VeD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052" y="32"/>
+            <point key="canvasLocation" x="526" y="45"/>
         </scene>
         <!--Enter Pwd View Controller-->
         <scene sceneID="ikg-f5-Ljh">
@@ -72,6 +70,69 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz4-PU-Md9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2084" y="31.934032983508249"/>
+        </scene>
+        <!--Pwd Collection View Controller-->
+        <scene sceneID="p3h-6L-VOl">
+            <objects>
+                <collectionViewController id="aNb-8V-gLd" customClass="PwdCollectionViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ArL-kv-UbA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r7f-ur-pqj">
+                            <size key="itemSize" width="88" height="103"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="secretCell" id="c27-Wx-bIp" customClass="SecretCell" customModule="MySecrets" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="88" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="88" height="103"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xU5-Zn-HZR">
+                                            <rect key="frame" x="20" y="10" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="48" id="iAm-hk-f6f"/>
+                                                <constraint firstAttribute="width" constant="48" id="rQh-9g-OgQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzq-fZ-32h">
+                                            <rect key="frame" x="0.0" y="70" width="88" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Tzq-fZ-32h" firstAttribute="leading" secondItem="c27-Wx-bIp" secondAttribute="leading" id="5j8-0N-iYl"/>
+                                    <constraint firstItem="xU5-Zn-HZR" firstAttribute="centerX" secondItem="c27-Wx-bIp" secondAttribute="centerX" id="Wc4-3G-dfr"/>
+                                    <constraint firstItem="Tzq-fZ-32h" firstAttribute="top" secondItem="xU5-Zn-HZR" secondAttribute="bottom" constant="12" id="gd7-PQ-YgA"/>
+                                    <constraint firstItem="xU5-Zn-HZR" firstAttribute="top" secondItem="c27-Wx-bIp" secondAttribute="topMargin" constant="2" id="j0e-RI-zg9"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="secretDescription" destination="Tzq-fZ-32h" id="RGL-rC-ChZ"/>
+                                    <outlet property="secretIcon" destination="xU5-Zn-HZR" id="v6k-ze-vCv"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="aNb-8V-gLd" id="rwv-BM-ROp"/>
+                            <outlet property="delegate" destination="aNb-8V-gLd" id="bEQ-ES-ibi"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="AJm-wg-bYF"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-1D-ejB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1052" y="-655.32233883058473"/>
         </scene>
     </scenes>
 </document>
