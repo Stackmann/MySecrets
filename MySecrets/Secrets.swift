@@ -46,8 +46,7 @@ class Secrets {
         let secondPass = RecordPass(describe: "MyCard2", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatar2)
         let thirdPass = RecordPass(describe: "MyCard3", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatar3)
         
-        //list = [firstPass, secondPass, thirdPass]
-        list = [firstPass, secondPass]
+        list = [firstPass, secondPass, thirdPass]
     }
     
 }

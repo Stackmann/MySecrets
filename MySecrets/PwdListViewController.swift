@@ -27,6 +27,8 @@ class PwdListViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        var previousView = view!
+        var leftAnchor : NSLayoutXAxisAnchor
         if Secrets.share.list == nil {
             performSegue(withIdentifier: "enterPwd", sender: nil)
         } else {
@@ -35,6 +37,26 @@ class PwdListViewController: UIViewController {
                     let secretNibView = nibsArray[0] as? secretView {
                     secretNibView.configure(image: secret.avatar, descr: secret.describe)
                     view.addSubview(secretNibView)
+                    secretNibView.translatesAutoresizingMaskIntoConstraints = false
+                    
+//                    let horizontalConstraint = NSLayoutConstraint(item: secretNibView, attribute: NSLayoutAttribute.left, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+//                    let verticalConstraint = NSLayoutConstraint(item: secretNibView, attribute: NSLayoutAttribute.centerY, relatedBy: NSLayoutRelation.equal, toItem: view, attribute: NSLayoutAttribute.centerY, multiplier: 1, constant: 0)
+//                    let widthConstraint = NSLayoutConstraint(item: secretNibView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 100)
+//                    let heightConstraint = NSLayoutConstraint(item: secretNibView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 100)
+//                    NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+                    if previousView == view! {
+                        leftAnchor = previousView.leftAnchor
+                    } else {
+                        leftAnchor = previousView.rightAnchor
+                    }
+                    NSLayoutConstraint.activate([
+                        secretNibView.topAnchor.constraint(equalTo: previousView.topAnchor),
+                        secretNibView.leftAnchor.constraint(equalTo: leftAnchor),
+                        secretNibView.widthAnchor.constraint(equalToConstant: 88),
+                        secretNibView.heightAnchor.constraint(equalToConstant: 103)
+                        ])
+                    previousView = secretNibView
+
                 }
 
             }
