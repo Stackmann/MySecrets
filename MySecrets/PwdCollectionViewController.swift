@@ -34,6 +34,10 @@ class PwdCollectionViewController: UICollectionViewController {
 
     }
 
+    
+    @IBAction func openSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "openSettings", sender: nil)
+    }
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
