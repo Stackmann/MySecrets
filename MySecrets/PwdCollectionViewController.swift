@@ -52,7 +52,9 @@ class PwdCollectionViewController: UICollectionViewController {
         if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(indexPath.row){
             // Configure the cell
             let secret = arraySecrets[indexPath.row]
-           cell.configure(image: secret.avatar, descr: secret.describe)
+            if let image = UIImage(data: secret.avatar) {
+                cell.configure(image: image, descr: secret.describe)
+            }
         }
 
         return cell
