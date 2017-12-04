@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */; };
 		071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */; };
 		071E1D301FBF7D6F00310F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D2E1FBF7D6F00310F44 /* Main.storyboard */; };
 		071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D311FBF7D6F00310F44 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPass.swift; sourceTree = "<group>"; };
 		071E1D271FBF7D6F00310F44 /* MySecrets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySecrets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		071E1D2F1FBF7D6F00310F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */,
 				0777FDEA1FCED68200C7EFD9 /* Secrets.swift */,
+				071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */,
 				071E1D2E1FBF7D6F00310F44 /* Main.storyboard */,
 				07D4E6391FD1AB6400AFC74F /* OptionsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
@@ -150,6 +153,7 @@
 			files = (
 				07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */,
 				07F9F4EC1FD0A66B004B9A25 /* PwdCollectionViewController.swift in Sources */,
+				071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */,
 				07D4E63A1FD1AB6400AFC74F /* OptionsTableViewController.swift in Sources */,
 				0777FDEB1FCED68200C7EFD9 /* Secrets.swift in Sources */,
 				072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */,

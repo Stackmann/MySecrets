@@ -10,15 +10,6 @@ import Foundation
 import UIKit
 
 
-struct RecordPass: Codable {
-    var describe : String
-    var field1 : String
-    var field2 : String
-    var exp : Date
-    var pass : String
-    var avatar : Data
-}
-
 class Secrets {
     static let share = Secrets()
     
