@@ -12,7 +12,7 @@ class OptionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.tableFooterView = UIView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -20,14 +20,6 @@ class OptionsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    @IBAction func optionCancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
@@ -41,16 +33,29 @@ class OptionsTableViewController: UITableViewController {
         return 2
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            var indexPath2 = indexPath
+            for row in 0...1 {
+                indexPath2.row = row
+                if let cell = tableView.cellForRow(at: indexPath2) {
+                    cell.accessoryType = .none
+                }
+            }
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .checkmark
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
     }
-    */
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as UITableViewCell
+//        cell.textLabel?.text = "Pushed"
+//        return cell
+//        return UITableViewCell()
 
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -95,5 +100,11 @@ class OptionsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // MARK: - Table view actions
+    
+    @IBAction func cancelSetting(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
