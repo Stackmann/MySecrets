@@ -3,7 +3,7 @@
 //  MySecrets
 //
 //  Created by Eric on 11/17/17.
-//  Copyright © 2017 Piligrim. All rights reserved.
+//  Copyright © 2017 EricsApp. All rights reserved.
 //
 
 import UIKit
