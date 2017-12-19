@@ -31,11 +31,16 @@ class Secrets {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         guard let date1 = formatter.date(from: "2017/11/16 14:53") else { return }
-        let firstPass = RecordPass(describe: "MyCard1", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatarData1)
-        let secondPass = RecordPass(describe: "MyCard2", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatarData2)
-        let thirdPass = RecordPass(describe: "MyCard3", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatarData3)
-        let fourPass = RecordPass(describe: "Ключ от хаты", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatarData4)
-        let fivePass = RecordPass(describe: "Удостоверение", field1: "2222 3333 4444 5555", field2: "Eric", exp: date1, pass: "qwerty", avatar: avatarData5)
+        
+        let firstPass = RecordPass(describe: "My password", stringFields: ["Login":"Eric", "Password":"qwerty", "URL":"", "Notes":""], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData1, idPattern: "websait")
+        
+        let secondPass = RecordPass(describe: "MyCard2", stringFields: ["Bank":"Privat", "Holder":"Eric Johns", "Notes":""], decimalFields: ["Number": 1111222233334444], dateFields: ["Expired": date1], avatar: avatarData2, idPattern: "creditcard")
+        
+        let thirdPass = RecordPass(describe: "MyCard3", stringFields: ["Bank":"USB", "Holder":"Eric Johns", "Notes":""], decimalFields: ["Number": 2222111133334444], dateFields: ["Expired": date1], avatar: avatarData3, idPattern: "creditcard")
+        
+        let fourPass = RecordPass(describe: "Шифр сейфа", stringFields: ["Password":"qwerty", "Notes":"Input with pause"], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData4, idPattern: "password")
+        
+        let fivePass = RecordPass(describe: "Удостоверение", stringFields: ["FirstName":"Eric", "LastName":"Johns", "MiddleName":"Sasha", "SN":"MB"], decimalFields: ["Number": 102030], dateFields: ["RecieveData": date1], avatar: avatarData5, idPattern: "id")
 
         list = [firstPass, secondPass, thirdPass, fourPass, fivePass]
         

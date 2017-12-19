@@ -12,11 +12,11 @@ struct RecordPass: Codable {
     var describe : String
     var stringFields: Dictionary<String, String>
     var decimalFields: Dictionary<String, Int>
-    var dataFields: Dictionary<String, Data>
-    var field1 : String
-    var field2 : String
-    var exp : Date
-    var pass : String
+    var dateFields: Dictionary<String, Date>
+//    var field1 : String
+//    var field2 : String
+//    var exp : Date
+//    var pass : String
     var avatar : Data
     var idPattern: String
 }
