@@ -13,10 +13,11 @@
 		071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D311FBF7D6F00310F44 /* Assets.xcassets */; };
 		071E1D351FBF7D6F00310F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */; };
 		072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */; };
+		073CBFF21FEAC1A500EBDFBF /* SecretEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CBFF11FEAC1A500EBDFBF /* SecretEditTableViewController.swift */; };
 		075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075DBB3F1FE64789009676B3 /* PatternRecord.swift */; };
 		075DBB421FE64C1E009676B3 /* Patterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075DBB411FE64C1E009676B3 /* Patterns.swift */; };
 		0777FDEB1FCED68200C7EFD9 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0777FDEA1FCED68200C7EFD9 /* Secrets.swift */; };
-		07D4E63A1FD1AB6400AFC74F /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4E6391FD1AB6400AFC74F /* OptionsTableViewController.swift */; };
+		07D4E63A1FD1AB6400AFC74F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */; };
 		07F9F4EC1FD0A66B004B9A25 /* PwdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */; };
 		07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */; };
 		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
@@ -31,10 +32,11 @@
 		071E1D341FBF7D6F00310F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071E1D361FBF7D6F00310F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPwdViewController.swift; sourceTree = "<group>"; };
+		073CBFF11FEAC1A500EBDFBF /* SecretEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretEditTableViewController.swift; sourceTree = "<group>"; };
 		075DBB3F1FE64789009676B3 /* PatternRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternRecord.swift; sourceTree = "<group>"; };
 		075DBB411FE64C1E009676B3 /* Patterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patterns.swift; sourceTree = "<group>"; };
 		0777FDEA1FCED68200C7EFD9 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		07D4E6391FD1AB6400AFC74F /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
+		07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwdCollectionViewController.swift; sourceTree = "<group>"; };
 		07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretCell.swift; sourceTree = "<group>"; };
 		15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySecrets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,10 +83,11 @@
 				075DBB3F1FE64789009676B3 /* PatternRecord.swift */,
 				075DBB411FE64C1E009676B3 /* Patterns.swift */,
 				071E1D2E1FBF7D6F00310F44 /* Main.storyboard */,
-				07D4E6391FD1AB6400AFC74F /* OptionsTableViewController.swift */,
+				07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
 				07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */,
 				072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */,
+				073CBFF11FEAC1A500EBDFBF /* SecretEditTableViewController.swift */,
 				071E1D311FBF7D6F00310F44 /* Assets.xcassets */,
 				071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */,
 				071E1D361FBF7D6F00310F44 /* Info.plist */,
@@ -241,9 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */,
+				073CBFF21FEAC1A500EBDFBF /* SecretEditTableViewController.swift in Sources */,
 				07F9F4EC1FD0A66B004B9A25 /* PwdCollectionViewController.swift in Sources */,
 				071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */,
-				07D4E63A1FD1AB6400AFC74F /* OptionsTableViewController.swift in Sources */,
+				07D4E63A1FD1AB6400AFC74F /* SettingsTableViewController.swift in Sources */,
 				0777FDEB1FCED68200C7EFD9 /* Secrets.swift in Sources */,
 				075DBB421FE64C1E009676B3 /* Patterns.swift in Sources */,
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,

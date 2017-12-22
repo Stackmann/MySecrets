@@ -63,6 +63,7 @@ class Patterns {
                          "NumberCard": "Int",
                          "Expired": "Data",
                          "CVV": "Int",
+                         "PIN": "Int",
                          "Holder": "String",
                          "Notes": "String"]
         newPattern = PatternRecord(id: "creditcard", fields: patternFields)
