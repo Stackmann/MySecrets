@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071B51881FED90EE00EEE18E /* SecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071B51871FED90EE00EEE18E /* SecretViewController.swift */; };
 		071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */; };
 		071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */; };
 		071E1D301FBF7D6F00310F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D2E1FBF7D6F00310F44 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		071B51871FED90EE00EEE18E /* SecretViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretViewController.swift; sourceTree = "<group>"; };
 		071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPass.swift; sourceTree = "<group>"; };
 		071E1D271FBF7D6F00310F44 /* MySecrets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySecrets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				075DBB3F1FE64789009676B3 /* PatternRecord.swift */,
 				075DBB411FE64C1E009676B3 /* Patterns.swift */,
 				071E1D2E1FBF7D6F00310F44 /* Main.storyboard */,
+				071B51871FED90EE00EEE18E /* SecretViewController.swift */,
 				07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
 				07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */,
@@ -249,6 +252,7 @@
 				071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */,
 				07D4E63A1FD1AB6400AFC74F /* SettingsTableViewController.swift in Sources */,
 				0777FDEB1FCED68200C7EFD9 /* Secrets.swift in Sources */,
+				071B51881FED90EE00EEE18E /* SecretViewController.swift in Sources */,
 				075DBB421FE64C1E009676B3 /* Patterns.swift in Sources */,
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,
 				072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */,

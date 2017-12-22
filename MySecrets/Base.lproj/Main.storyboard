@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -184,24 +185,33 @@
         <!--view-->
         <scene sceneID="dfl-9s-86x">
             <objects>
-                <viewController id="oWi-8O-N9f" sceneMemberID="viewController">
+                <viewController id="oWi-8O-N9f" customClass="SecretViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IyX-DN-zx6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold-credit-card-backgr" translatesAutoresizingMaskIntoConstraints="NO" id="xw3-RZ-4cl">
-                                <rect key="frame" x="20" y="149" width="335" height="466"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="gold-credit-card-backgr" translatesAutoresizingMaskIntoConstraints="NO" id="xw3-RZ-4cl">
+                                <rect key="frame" x="20" y="108" width="335" height="466"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xw3-RZ-4cl" secondAttribute="height" multiplier="335:466" id="SGC-Cn-uBa"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="leading" secondItem="Y06-ij-aZW" secondAttribute="leading" constant="20" id="O05-ID-05w"/>
-                            <constraint firstItem="Y06-ij-aZW" firstAttribute="trailing" secondItem="xw3-RZ-4cl" secondAttribute="trailing" constant="20" id="TaV-z7-WLF"/>
-                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="top" secondItem="Y06-ij-aZW" secondAttribute="top" constant="85" id="eWd-dI-Tcu"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="width" secondItem="IyX-DN-zx6" secondAttribute="width" priority="750" id="7gD-Om-ZoF"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="height" secondItem="IyX-DN-zx6" secondAttribute="height" priority="750" id="Gqz-jZ-rZd"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="centerY" secondItem="Y06-ij-aZW" secondAttribute="centerY" id="XCM-AU-el1"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="width" relation="lessThanOrEqual" secondItem="IyX-DN-zx6" secondAttribute="width" id="aE7-w3-qaB"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="height" relation="lessThanOrEqual" secondItem="IyX-DN-zx6" secondAttribute="height" id="n5N-Wr-5WG"/>
+                            <constraint firstItem="xw3-RZ-4cl" firstAttribute="centerX" secondItem="Y06-ij-aZW" secondAttribute="centerX" id="oeI-qf-NKO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Y06-ij-aZW"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="view" id="Mox-ym-TQW"/>
+                    <connections>
+                        <outlet property="recordImageView" destination="xw3-RZ-4cl" id="2ii-uK-L2v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-Tj-3af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
