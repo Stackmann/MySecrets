@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071B51881FED90EE00EEE18E /* SecretViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071B51871FED90EE00EEE18E /* SecretViewController.swift */; };
+		071CE19D1FF4B279004BA08D /* Card Number font.otf in Resources */ = {isa = PBXBuildFile; fileRef = 071CE19C1FF4B211004BA08D /* Card Number font.otf */; };
 		071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */; };
 		071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */; };
 		071E1D301FBF7D6F00310F44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D2E1FBF7D6F00310F44 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		071B51871FED90EE00EEE18E /* SecretViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretViewController.swift; sourceTree = "<group>"; };
+		071CE19C1FF4B211004BA08D /* Card Number font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Card Number font.otf"; sourceTree = "<group>"; };
 		071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPass.swift; sourceTree = "<group>"; };
 		071E1D271FBF7D6F00310F44 /* MySecrets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySecrets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		071CE19B1FF4B1FA004BA08D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				071CE19C1FF4B211004BA08D /* Card Number font.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		071E1D1E1FBF7D6F00310F44 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +89,7 @@
 		071E1D291FBF7D6F00310F44 /* MySecrets */ = {
 			isa = PBXGroup;
 			children = (
+				071CE19B1FF4B1FA004BA08D /* Resources */,
 				071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */,
 				0777FDEA1FCED68200C7EFD9 /* Secrets.swift */,
 				071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */,
@@ -177,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071CE19D1FF4B279004BA08D /* Card Number font.otf in Resources */,
 				071E1D351FBF7D6F00310F44 /* LaunchScreen.storyboard in Resources */,
 				071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */,
 				071E1D301FBF7D6F00310F44 /* Main.storyboard in Resources */,
