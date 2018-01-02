@@ -25,7 +25,7 @@ class SecretViewController: UIViewController {
         validDate.textColor = UIColor.white
 
         cardHolder.textAlignment = NSTextAlignment.left
-        cardHolder.text = "OLEH YAROSHENKO"
+        cardHolder.text = "ОЛЕГ ЯРОШЕНКО"
         cardHolder.font = UIFont(name: "OCRAStd", size: 20)
         cardHolder.textColor = UIColor.white
 

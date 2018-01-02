@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OptionsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +102,6 @@ class OptionsTableViewController: UITableViewController {
     */
     
     // MARK: - Table view actions
-    
     @IBAction func cancelSetting(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }

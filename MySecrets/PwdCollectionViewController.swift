@@ -21,14 +21,16 @@ class PwdCollectionViewController: UICollectionViewController {
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
-        for family: String in UIFont.familyNames
-        {
-            print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-            {
-                print("== \(names)")
-            }
-        }    }
+//        for family: String in UIFont.familyNames
+//        {
+//            print("\(family)")
+//            for names: String in UIFont.fontNames(forFamilyName: family)
+//            {
+//                print("== \(names)")
+//            }
+//        }
+        
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -72,8 +74,16 @@ class PwdCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showRecord", sender: nil)
-    }
+        if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(indexPath.row){
+            // Configure the cell
+            let secret = arraySecrets[indexPath.row]
+            switch secret.idPattern {
+            case "id" : performSegue(withIdentifier: "showIdRecord", sender: nil)
+            case "creditcard" : performSegue(withIdentifier: "showCardRecord", sender: nil)
+            default : performSegue(withIdentifier: "showCommonRecord", sender: nil)
+            }
+        }
+   }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
