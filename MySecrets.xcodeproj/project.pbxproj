@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		071B51881FED90EE00EEE18E /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071B51871FED90EE00EEE18E /* CreditCardViewController.swift */; };
+		071C5BE52003AF9D00A05BD2 /* IdCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071C5BE42003AF9C00A05BD2 /* IdCardViewController.swift */; };
 		071CE19D1FF4B279004BA08D /* Card Number font.otf in Resources */ = {isa = PBXBuildFile; fileRef = 071CE19C1FF4B211004BA08D /* Card Number font.otf */; };
 		071D5AC61FD5EDAF00DF9D6A /* RecordPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */; };
 		071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		071B51871FED90EE00EEE18E /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
+		071C5BE42003AF9C00A05BD2 /* IdCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdCardViewController.swift; sourceTree = "<group>"; };
 		071CE19C1FF4B211004BA08D /* Card Number font.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Card Number font.otf"; sourceTree = "<group>"; };
 		071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPass.swift; sourceTree = "<group>"; };
 		071E1D271FBF7D6F00310F44 /* MySecrets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySecrets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,7 @@
 				075DBB3F1FE64789009676B3 /* PatternRecord.swift */,
 				075DBB411FE64C1E009676B3 /* Patterns.swift */,
 				071E1D2E1FBF7D6F00310F44 /* Main.storyboard */,
+				071C5BE42003AF9C00A05BD2 /* IdCardViewController.swift */,
 				071B51871FED90EE00EEE18E /* CreditCardViewController.swift */,
 				07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
@@ -269,6 +272,7 @@
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,
 				072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */,
 				071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */,
+				071C5BE52003AF9D00A05BD2 /* IdCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

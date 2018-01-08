@@ -12,6 +12,8 @@ private let reuseIdentifier = "Cell"
 
 class PwdCollectionViewController: UICollectionViewController {
 
+    var chosenRecordIndex = -1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -77,13 +79,24 @@ class PwdCollectionViewController: UICollectionViewController {
         if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(indexPath.row){
             // Configure the cell
             let secret = arraySecrets[indexPath.row]
+            chosenRecordIndex = indexPath.row
             switch secret.idPattern {
             case "id" : performSegue(withIdentifier: "showIdRecord", sender: nil)
             case "creditcard" : performSegue(withIdentifier: "showCardRecord", sender: nil)
             default : performSegue(withIdentifier: "showCommonRecord", sender: nil)
             }
         }
-   }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenTB = segue.destination as? UITabBarController, let listTBControllers = chosenTB.viewControllers {
+            if let chosenVC = listTBControllers[0] as? CreditCardViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            } else if let chosenVC = listTBControllers[0] as? IdCardViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            }
+        }
+    }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

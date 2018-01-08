@@ -433,7 +433,7 @@
         <!--View-->
         <scene sceneID="6X5-ZM-IJM">
             <objects>
-                <viewController id="eqw-AP-JRV" sceneMemberID="viewController">
+                <viewController id="eqw-AP-JRV" customClass="IdCardViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g7N-pt-FLT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

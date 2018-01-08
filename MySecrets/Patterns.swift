@@ -10,45 +10,45 @@ import Foundation
 
 class Patterns {
     static let share = Patterns()
-    let list: [PatternRecord]
+    let list: [String: PatternRecord]
     
     init() {
-        var listOfPatterns = [PatternRecord]()
+        var listOfPatterns = [String: PatternRecord]()
         
         var patternFields = ["Login": "String",
                              "Password": "String",
                              "URL": "String",
                              "Notes": "String"]
-        var newPattern = PatternRecord(id: "websait", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        var newPattern = PatternRecord(describe: "Websait", fields: patternFields)
+        listOfPatterns["websait"] = newPattern
 
         patternFields = ["Adress": "String",
                          "Login": "String",
                          "Password": "String"]
-        newPattern = PatternRecord(id: "rdp", fields: patternFields)
-        listOfPatterns.append(newPattern)
-        
+        newPattern = PatternRecord(describe: "RDP Connection", fields: patternFields)
+        listOfPatterns["rdp"] = newPattern
+
         patternFields = ["Login": "String",
                          "Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "account", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Account", fields: patternFields)
+        listOfPatterns["account"] = newPattern
 
         patternFields = ["Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "password", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Password", fields: patternFields)
+        listOfPatterns["password"] = newPattern
 
         patternFields = ["Number": "Int",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "bonuscard", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Bonus card", fields: patternFields)
+        listOfPatterns["bonuscard"] = newPattern
 
         patternFields = ["SSID": "String",
                          "Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "wifi", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "WiFi", fields: patternFields)
+        listOfPatterns["wifi"] = newPattern
 
         patternFields = ["Login": "String",
                          "Password": "String",
@@ -56,25 +56,25 @@ class Patterns {
                          "IMAP": "String",
                          "SMTP": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "email", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Email", fields: patternFields)
+        listOfPatterns["email"] = newPattern
 
         patternFields = ["Bank": "String",
-                         "NumberCard": "Int",
+                         "NumberCard": "String",
                          "Expired": "Data",
                          "CVV": "Int",
                          "PIN": "Int",
                          "Holder": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "creditcard", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Credit Card", fields: patternFields)
+        listOfPatterns["creditcard"] = newPattern
 
         patternFields = ["Bank": "String",
                          "BankMFO": "Int",
                          "Account": "Int",
                          "Notes": "String"]
-        newPattern = PatternRecord(id: "bankaccount", fields: patternFields)
-        listOfPatterns.append(newPattern)
+        newPattern = PatternRecord(describe: "Bank account", fields: patternFields)
+        listOfPatterns["bankaccount"] = newPattern
 
         patternFields = ["FirstName": "String",
                          "LastName": "String",
@@ -82,9 +82,9 @@ class Patterns {
                          "RecieveData": "Data",
                          "SN": "String",
                          "Number": "Int"]
-        newPattern = PatternRecord(id: "id", fields: patternFields)
-        listOfPatterns.append(newPattern)
-        
+        newPattern = PatternRecord(describe: "Id Card", fields: patternFields)
+        listOfPatterns["id"] = newPattern
+
         list = listOfPatterns
     }
 }

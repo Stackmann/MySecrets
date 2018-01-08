@@ -9,6 +9,6 @@
 import Foundation
 
 struct PatternRecord {
-    let id: String
+    let describe: String
     let fields: Dictionary<String, String>
 }

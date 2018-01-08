@@ -19,4 +19,5 @@ struct RecordPass: Codable {
 //    var pass : String
     var avatar : Data
     var idPattern: String
+    var num: Int
 }
