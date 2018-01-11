@@ -70,6 +70,13 @@ class CreditCardViewController: UIViewController {
                 cardHolder.font = UIFont(name: "OCRAStd", size: 20)
                 cardHolder.textColor = UIColor.white
             }
+
+            if let bank = chosenRecord.stringFields["Bank"] {
+                bankName.textAlignment = NSTextAlignment.left
+                bankName.text = bank
+                bankName.font = UIFont(name: "OCRAStd", size: 20)
+                bankName.textColor = UIColor.white
+            }
         }
     }
     
@@ -77,5 +84,6 @@ class CreditCardViewController: UIViewController {
     @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var validDate: UILabel!
     @IBOutlet weak var cardHolder: UILabel!
+    @IBOutlet weak var bankName: UILabel!
     
 }

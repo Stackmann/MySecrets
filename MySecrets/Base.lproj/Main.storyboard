@@ -193,7 +193,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gold-credit-card-backgr" translatesAutoresizingMaskIntoConstraints="NO" id="xw3-RZ-4cl">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit-card-empty-backgr" translatesAutoresizingMaskIntoConstraints="NO" id="xw3-RZ-4cl">
                                 <rect key="frame" x="0.0" y="147.33333333333331" width="375" height="522.66666666666674"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xw3-RZ-4cl" secondAttribute="height" multiplier="335:466" id="SGC-Cn-uBa"/>
@@ -234,21 +234,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-Tb-foY">
+                                <rect key="frame" x="233.66666666666663" y="315.66666666666669" width="48" height="26.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="A9t-Fv-Vhz" firstAttribute="width" secondItem="xw3-RZ-4cl" secondAttribute="width" multiplier="0.8" id="7ZN-b6-XVE"/>
                             <constraint firstItem="xw3-RZ-4cl" firstAttribute="width" secondItem="IyX-DN-zx6" secondAttribute="width" id="7gD-Om-ZoF"/>
+                            <constraint firstItem="dO4-Tb-foY" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="-100" id="Bzh-uW-kCo"/>
                             <constraint firstItem="3HL-bb-y36" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="100" id="Gjv-nH-6dE"/>
                             <constraint firstItem="hj4-2V-FTb" firstAttribute="centerX" secondItem="xw3-RZ-4cl" secondAttribute="centerX" id="MH1-K9-4nY"/>
                             <constraint firstItem="xw3-RZ-4cl" firstAttribute="centerY" secondItem="Y06-ij-aZW" secondAttribute="centerY" id="XCM-AU-el1"/>
                             <constraint firstItem="A9t-Fv-Vhz" firstAttribute="centerX" secondItem="xw3-RZ-4cl" secondAttribute="centerX" id="akn-aD-raO"/>
                             <constraint firstItem="3HL-bb-y36" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="80" id="e8o-7o-Boj"/>
-                            <constraint firstItem="hj4-2V-FTb" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="64" id="fbY-8d-ItJ"/>
+                            <constraint firstItem="hj4-2V-FTb" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="72" id="fbY-8d-ItJ"/>
                             <constraint firstItem="A9t-Fv-Vhz" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="20" id="foD-wK-CZg"/>
                             <constraint firstItem="hj4-2V-FTb" firstAttribute="width" secondItem="xw3-RZ-4cl" secondAttribute="width" multiplier="0.15" id="kPu-Yk-rC5"/>
                             <constraint firstItem="xw3-RZ-4cl" firstAttribute="height" secondItem="Y06-ij-aZW" secondAttribute="height" multiplier="2.2" id="mf4-RW-HcX"/>
+                            <constraint firstItem="dO4-Tb-foY" firstAttribute="centerX" secondItem="xw3-RZ-4cl" secondAttribute="centerX" constant="70" id="nDy-vN-qZl"/>
                             <constraint firstItem="xw3-RZ-4cl" firstAttribute="centerX" secondItem="Y06-ij-aZW" secondAttribute="centerX" id="oeI-qf-NKO"/>
+                            <constraint firstItem="dO4-Tb-foY" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="-80" id="r2e-me-gVo"/>
                             <constraint firstItem="hj4-2V-FTb" firstAttribute="centerY" secondItem="xw3-RZ-4cl" secondAttribute="centerY" constant="53" id="s3P-Tp-Gjp"/>
                             <constraint firstItem="3HL-bb-y36" firstAttribute="width" secondItem="xw3-RZ-4cl" secondAttribute="width" multiplier="0.4" id="vNB-nU-lU7"/>
                             <constraint firstItem="xw3-RZ-4cl" firstAttribute="height" secondItem="IyX-DN-zx6" secondAttribute="height" multiplier="0.9" id="vrE-0r-8Of"/>
@@ -260,6 +269,8 @@
                                 <exclude reference="7gD-Om-ZoF"/>
                                 <exclude reference="mf4-RW-HcX"/>
                                 <exclude reference="vrE-0r-8Of"/>
+                                <exclude reference="Bzh-uW-kCo"/>
+                                <exclude reference="r2e-me-gVo"/>
                                 <exclude reference="fbY-8d-ItJ"/>
                                 <exclude reference="s3P-Tp-Gjp"/>
                                 <exclude reference="Gjv-nH-6dE"/>
@@ -269,6 +280,7 @@
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="mf4-RW-HcX"/>
+                                <include reference="Bzh-uW-kCo"/>
                                 <include reference="fbY-8d-ItJ"/>
                                 <include reference="Gjv-nH-6dE"/>
                             </mask>
@@ -281,6 +293,7 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="7gD-Om-ZoF"/>
+                                <include reference="r2e-me-gVo"/>
                                 <include reference="s3P-Tp-Gjp"/>
                                 <include reference="e8o-7o-Boj"/>
                             </mask>
@@ -288,6 +301,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="View" id="Mox-ym-TQW"/>
                     <connections>
+                        <outlet property="bankName" destination="dO4-Tb-foY" id="ACY-sC-u4T"/>
                         <outlet property="cardHolder" destination="3HL-bb-y36" id="o49-Eh-Beu"/>
                         <outlet property="cardNumber" destination="A9t-Fv-Vhz" id="Vxd-3n-CfH"/>
                         <outlet property="recordImageView" destination="xw3-RZ-4cl" id="2ii-uK-L2v"/>
@@ -296,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-Tj-3af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2997.5999999999999" y="-2013.6431784107947"/>
+            <point key="canvasLocation" x="2997.5999999999999" y="-2014.2857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xAI-OM-rji">
@@ -523,7 +537,20 @@
                     <view key="view" contentMode="scaleToFill" id="HNL-aL-dpA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-template" translatesAutoresizingMaskIntoConstraints="NO" id="OPy-gz-XDV">
+                                <rect key="frame" x="-0.66666666666665719" y="258.33333333333337" width="375.33333333333326" height="300.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OPy-gz-XDV" secondAttribute="height" multiplier="426:341" id="i4a-eC-DQd"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OPy-gz-XDV" firstAttribute="width" secondItem="HNL-aL-dpA" secondAttribute="width" id="2Yn-uR-YN8"/>
+                            <constraint firstItem="OPy-gz-XDV" firstAttribute="centerY" secondItem="UZk-XG-mWV" secondAttribute="centerY" id="FPf-Ui-Pel"/>
+                            <constraint firstItem="OPy-gz-XDV" firstAttribute="centerX" secondItem="UZk-XG-mWV" secondAttribute="centerX" id="cNL-Ga-faD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UZk-XG-mWV"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="View" id="fnH-RA-Z3J"/>
@@ -611,7 +638,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gold-credit-card-backgr" width="666" height="466"/>
+        <image name="common-template" width="426" height="341"/>
+        <image name="credit-card-empty-backgr" width="1666" height="1166"/>
         <image name="id-card-template" width="426" height="341"/>
     </resources>
 </document>

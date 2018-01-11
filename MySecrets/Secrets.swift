@@ -35,9 +35,9 @@ class Secrets {
         
         let firstPass = RecordPass(describe: "My password", stringFields: ["Login":"Eric", "Password":"qwerty", "URL":"", "Notes":""], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData1, idPattern: "websait", num: 1)
         
-        let secondPass = RecordPass(describe: "MyCard2", stringFields: ["Bank":"Privat", "Holder":"Eric Johns", "NumberCard":"1111222233334444", "Notes":""], decimalFields: ["CVV": 114, "PIN": 1122], dateFields: ["Expired": date1], avatar: avatarData2, idPattern: "creditcard", num: 2)
+        let secondPass = RecordPass(describe: "MyCard2", stringFields: ["Bank":"Privat", "Holder":"Евгений Чесов", "NumberCard":"1111222233334444", "Notes":""], decimalFields: ["CVV": 114, "PIN": 1122], dateFields: ["Expired": date1], avatar: avatarData2, idPattern: "creditcard", num: 2)
         
-        let thirdPass = RecordPass(describe: "MyCard3", stringFields: ["Bank":"USB", "Holder":"Eric Johns", "NumberCard":"2222111133334444", "Notes":""], decimalFields: ["CVV": 444, "PIN": 2200], dateFields: ["Expired": date1], avatar: avatarData3, idPattern: "creditcard", num: 3)
+        let thirdPass = RecordPass(describe: "MyCard3", stringFields: ["Bank":"Русский Стандарт", "Holder":"Eric Johns", "NumberCard":"2222111133334444", "Notes":""], decimalFields: ["CVV": 444, "PIN": 2200], dateFields: ["Expired": date1], avatar: avatarData3, idPattern: "creditcard", num: 3)
         
         let fourPass = RecordPass(describe: "Шифр сейфа", stringFields: ["Password":"qwerty", "Notes":"Input with pause"], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData4, idPattern: "password", num: 4)
         
