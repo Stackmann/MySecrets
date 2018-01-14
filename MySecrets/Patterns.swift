@@ -79,7 +79,8 @@ class Patterns {
         patternFields = ["FirstName": "String",
                          "LastName": "String",
                          "MiddleName": "String",
-                         "RecieveData": "Data",
+                         "BirthdayDate": "Data",
+                         "ReceivedDate": "Data",
                          "SN": "String",
                          "Number": "Int"]
         newPattern = PatternRecord(describe: "Id Card", fields: patternFields)
