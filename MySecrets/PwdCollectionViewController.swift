@@ -89,13 +89,18 @@ class PwdCollectionViewController: UICollectionViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let chosenTB = segue.destination as? UITabBarController, let listTBControllers = chosenTB.viewControllers {
-            if let chosenVC = listTBControllers[0] as? CreditCardViewController {
-                chosenVC.chosenRecordIndex = chosenRecordIndex
-            } else if let chosenVC = listTBControllers[0] as? IdCardViewController {
-                chosenVC.chosenRecordIndex = chosenRecordIndex
-            }
+        if let chosenVC = segue.destination as? CreditCardViewController {
+            chosenVC.chosenRecordIndex = chosenRecordIndex
+        } else if let chosenVC = segue.destination as? IdCardViewController {
+            chosenVC.chosenRecordIndex = chosenRecordIndex
         }
+//        if let chosenTB = segue.destination as? UITabBarController, let listTBControllers = chosenTB.viewControllers {
+//            if let chosenVC = listTBControllers[0] as? CreditCardViewController {
+//                chosenVC.chosenRecordIndex = chosenRecordIndex
+//            } else if let chosenVC = listTBControllers[0] as? IdCardViewController {
+//                chosenVC.chosenRecordIndex = chosenRecordIndex
+//            }
+//        }
     }
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking

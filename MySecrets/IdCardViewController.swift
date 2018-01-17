@@ -25,6 +25,7 @@ class IdCardViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureController()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,38 +37,63 @@ class IdCardViewController: UIViewController {
         if chosenRecordIndex >= 0, let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(chosenRecordIndex)  {
             let chosenRecord = arraySecrets[chosenRecordIndex]
             
-            if let cardNumberStr = chosenRecord.stringFields["NumberCard"] {
-                let cardNumberFormatStr = getFormatedCardNumber(with: cardNumberStr)
-                cardNumber.textAlignment = NSTextAlignment.left
-                cardNumber.text = cardNumberFormatStr
-                cardNumber.font = UIFont(name: "OCRAStd", size: 35)
-                cardNumber.textColor = UIColor.white
+            if let firstNameStr = chosenRecord.stringFields["FirstName"] {
+                firstNameValue.textAlignment = NSTextAlignment.left
+                firstNameValue.text = firstNameStr
+                //firstNameValue = UIFont(name: "OCRAStd", size: 35)
+                firstNameValue.textColor = UIColor.yellow
             }
-            
-            if let cardExpired = chosenRecord.dateFields["Expired"] {
+            if let lastNameStr = chosenRecord.stringFields["LastName"] {
+                lastNameValue.textAlignment = NSTextAlignment.left
+                lastNameValue.text = lastNameStr
+                //lastNameValue = UIFont(name: "OCRAStd", size: 35)
+                lastNameValue.textColor = UIColor.yellow
+            }
+            if let middleNameStr = chosenRecord.stringFields["MiddleName"] {
+                middleNameValue.textAlignment = NSTextAlignment.left
+                middleNameValue.text = middleNameStr
+                //middleNameValue = UIFont(name: "OCRAStd", size: 35)
+                middleNameValue.textColor = UIColor.yellow
+            }
+
+            if let BirthdayDateStr = chosenRecord.dateFields["BirthdayDate"] {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/yy"
-                validDate.textAlignment = NSTextAlignment.left
-                validDate.text = formatter.string(from: cardExpired)
-                validDate.font = UIFont(name: "OCRAStd", size: 20)
-                validDate.textColor = UIColor.white
+                formatter.dateFormat = "dd/MM/yyyy"
+                birthdayValue.textAlignment = NSTextAlignment.left
+                birthdayValue.text = formatter.string(from: BirthdayDateStr)
+                //birthdayValue.font = UIFont(name: "OCRAStd", size: 20)
+                birthdayValue.textColor = UIColor.yellow
+            }
+
+            if let ReceivedDateStr = chosenRecord.dateFields["ReceivedDate"] {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd/MM/yyyy"
+                receivedDateValue.textAlignment = NSTextAlignment.left
+                receivedDateValue.text = formatter.string(from: ReceivedDateStr)
+                //receivedDateValue = UIFont(name: "OCRAStd", size: 20)
+                receivedDateValue.textColor = UIColor.yellow
+            }
+
+            if let snStr = chosenRecord.stringFields["SN"] {
+                snValue.textAlignment = NSTextAlignment.left
+                snValue.text = snStr
+                //snValue.font = UIFont(name: "OCRAStd", size: 20)
+                snValue.textColor = UIColor.yellow
             }
             
-            if let holder = chosenRecord.stringFields["Holder"] {
-                cardHolder.textAlignment = NSTextAlignment.left
-                cardHolder.text = holder
-                cardHolder.font = UIFont(name: "OCRAStd", size: 20)
-                cardHolder.textColor = UIColor.white
-            }
-            
-            if let bank = chosenRecord.stringFields["Bank"] {
-                bankName.textAlignment = NSTextAlignment.left
-                bankName.text = bank
-                bankName.font = UIFont(name: "OCRAStd", size: 20)
-                bankName.textColor = UIColor.white
+            if let numberStr = chosenRecord.decimalFields["Number"] {
+                numberValue.textAlignment = NSTextAlignment.left
+                numberValue.text = "\(numberStr)"
+                //numberValue.font = UIFont(name: "OCRAStd", size: 20)
+                numberValue.textColor = UIColor.yellow
             }
         }
     }
+    
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showEditController", sender: nil)
+    }
+    
 
     /*
     // MARK: - Navigation
