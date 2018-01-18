@@ -46,7 +46,7 @@ class PwdCollectionViewController: UICollectionViewController {
 
     
     @IBAction func openSettings(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "openSettings", sender: nil)
+        performSegue(withIdentifier: "showSettings", sender: nil)
     }
     // MARK: UICollectionViewDataSource
 

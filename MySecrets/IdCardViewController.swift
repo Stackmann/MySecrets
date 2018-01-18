@@ -91,7 +91,7 @@ class IdCardViewController: UIViewController {
     }
     
     @IBAction func editAction(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "showEditController", sender: nil)
+        performSegue(withIdentifier: "showIdEditController", sender: nil)
     }
     
 

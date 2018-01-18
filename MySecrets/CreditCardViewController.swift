@@ -80,6 +80,10 @@ class CreditCardViewController: UIViewController {
         }
     }
     
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showCreditCardEditController", sender: nil)
+    }
+    
     @IBOutlet weak var recordImageView: UIImageView!
     @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var validDate: UILabel!

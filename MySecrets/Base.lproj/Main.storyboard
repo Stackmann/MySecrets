@@ -346,7 +346,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dEA-Rv-Zqd">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KGj-1j-wnX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KGj-1j-wnX">
+                            <connections>
+                                <action selector="cancelAction:" destination="Qlj-Pa-9Is" id="EUt-C4-8pW"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="0H4-IT-Oum"/>
                     </navigationItem>
                 </tableViewController>
@@ -421,10 +425,10 @@
                     </navigationItem>
                     <connections>
                         <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="AJm-wg-bYF"/>
-                        <segue destination="vIN-xA-5xp" kind="presentation" identifier="openSettings" id="Wjg-cY-hiL"/>
                         <segue destination="YW2-I3-tkz" kind="show" identifier="showCommonRecord" id="PBA-2f-4Z4"/>
                         <segue destination="eqw-AP-JRV" kind="show" identifier="showIdRecord" id="1Y7-UH-WW5"/>
                         <segue destination="oWi-8O-N9f" kind="show" identifier="showCardRecord" id="NRj-Bg-Wtr"/>
+                        <segue destination="pSc-oZ-opj" kind="presentation" identifier="showSettings" id="igT-Nf-v1y"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-1D-ejB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -546,13 +550,20 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="View" id="Mox-ym-TQW"/>
+                    <navigationItem key="navigationItem" id="EUa-Kq-gpg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="GSS-2K-9Vk">
+                            <connections>
+                                <action selector="editAction:" destination="oWi-8O-N9f" id="fUB-Xq-q9i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bankName" destination="dO4-Tb-foY" id="ACY-sC-u4T"/>
                         <outlet property="cardHolder" destination="3HL-bb-y36" id="o49-Eh-Beu"/>
                         <outlet property="cardNumber" destination="A9t-Fv-Vhz" id="Vxd-3n-CfH"/>
                         <outlet property="recordImageView" destination="xw3-RZ-4cl" id="2ii-uK-L2v"/>
                         <outlet property="validDate" destination="hj4-2V-FTb" id="Eol-VB-vTZ"/>
-                        <segue destination="PEL-Rh-TUO" kind="presentation" id="sRE-Wh-5vg"/>
+                        <segue destination="PEL-Rh-TUO" kind="presentation" identifier="showCreditCardEditController" id="sRE-Wh-5vg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-Tj-3af" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,9 +573,9 @@
         <!--Settings-->
         <scene sceneID="vFJ-OE-YJv">
             <objects>
-                <tableViewController id="Tfz-UG-UNA" customClass="SettingsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Tfz-UG-UNA" customClass="SettingsTableViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e6A-u6-5Kj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -645,17 +656,19 @@
                             <outlet property="delegate" destination="Tfz-UG-UNA" id="3GE-nA-80t"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="juB-zL-0C0">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xYR-bh-p9d">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Settings" id="0e8-jh-QWj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ayV-KS-Erf">
                             <connections>
-                                <action selector="cancelSetting:" destination="Tfz-UG-UNA" id="cJ6-G6-MGc"/>
+                                <action selector="cancelSetting:" destination="Tfz-UG-UNA" id="gpf-0m-7me"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiF-zz-36a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="1015"/>
+            <point key="canvasLocation" x="1428" y="1026"/>
         </scene>
         <!--Id Card View Controller-->
         <scene sceneID="6X5-ZM-IJM">
@@ -880,12 +893,12 @@
                         <outlet property="numberValue" destination="Yp4-P2-84L" id="w5B-7p-Rce"/>
                         <outlet property="receivedDateValue" destination="FEV-6C-Owa" id="wKl-cK-aq6"/>
                         <outlet property="snValue" destination="Xul-Yx-eeX" id="gqf-8Z-u1z"/>
-                        <segue destination="Yki-Z0-Xdt" kind="presentation" identifier="showEditController" id="jpP-zI-ed0"/>
+                        <segue destination="Yki-Z0-Xdt" kind="presentation" identifier="showIdEditController" id="jpP-zI-ed0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyc-cm-DOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2378" y="276"/>
+            <point key="canvasLocation" x="2719.1999999999998" y="275.61576354679806"/>
         </scene>
         <!--Id Card Edit Table View Controller-->
         <scene sceneID="Hi5-mA-Kxh">
@@ -984,7 +997,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8H-VT-JbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3868" y="276"/>
+            <point key="canvasLocation" x="4210.3999999999996" y="275.61576354679806"/>
         </scene>
         <!--Edit-->
         <scene sceneID="KY9-s1-c0h">
@@ -1000,7 +1013,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VA4-1n-6fv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4669.6000000000004" y="-178.07881773399015"/>
+            <point key="canvasLocation" x="5012" y="-178.07881773399015"/>
         </scene>
         <!--View-->
         <scene sceneID="MKp-ld-nWM">
@@ -1072,25 +1085,6 @@
             <point key="canvasLocation" x="582" y="-655"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="vpE-rp-TIB">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vIN-xA-5xp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="Gax-8R-3pl">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Tfz-UG-UNA" kind="relationship" relationship="rootViewController" id="dVQ-oA-e5P"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Aw-PO-uNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1390" y="277"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="3x7-Vo-fkW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yki-Z0-Xdt" sceneMemberID="viewController">
@@ -1106,7 +1100,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPd-dn-8af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3137.5999999999999" y="275.61576354679806"/>
+            <point key="canvasLocation" x="3479.1999999999998" y="275.61576354679806"/>
         </scene>
         <!--Edit-->
         <scene sceneID="jZg-Sn-fqb">
@@ -1126,6 +1120,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOX-QH-olv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2887" y="-1335"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pfp-bp-R0A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pSc-oZ-opj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DMW-Qg-CgQ">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tfz-UG-UNA" kind="relationship" relationship="rootViewController" id="OQi-1f-DI9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Ir-Kh-1VV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428.8" y="275.61576354679806"/>
         </scene>
     </scenes>
     <resources>
