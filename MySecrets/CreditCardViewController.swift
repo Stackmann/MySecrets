@@ -84,6 +84,14 @@ class CreditCardViewController: UIViewController {
         performSegue(withIdentifier: "showCreditCardEditController", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenNC = segue.destination as? UINavigationController {
+            if let chosenVC = chosenNC.topViewController as? CreditCardEditTableViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            }
+        }
+    }
+    
     @IBOutlet weak var recordImageView: UIImageView!
     @IBOutlet weak var cardNumber: UILabel!
     @IBOutlet weak var validDate: UILabel!
