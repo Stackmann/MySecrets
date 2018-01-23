@@ -33,7 +33,7 @@ class Secrets {
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
         guard let date1 = formatter.date(from: "2017/11/16 14:53") else { return }
         
-        let firstPass = RecordPass(describe: "My password", stringFields: ["Login":"Eric", "Password":"qwerty", "URL":"", "Notes":""], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData1, idPattern: "websait", num: 1)
+        let firstPass = RecordPass(describe: "My password", stringFields: ["Login":"Eric", "Password":"qwerty", "URL":"", "Notes":""], decimalFields: [String: Int](),  dateFields: [String: Date](), avatar: avatarData1, idPattern: "websait", num: 1)
         
         let secondPass = RecordPass(describe: "MyCard2", stringFields: ["Bank":"Privat", "Holder":"Евгений Чесов", "NumberCard":"1111222233334444", "Notes":""], decimalFields: ["CVV": 114, "PIN": 1122], dateFields: ["Expired": date1], avatar: avatarData2, idPattern: "creditcard", num: 2)
         

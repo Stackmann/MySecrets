@@ -21,8 +21,13 @@ class CreditCardEditTableViewController: UITableViewController {
     @IBOutlet weak var notesField: UITextField!
 
     var chosenRecordIndex: Int!
-    private let datePicker = UIDatePicker()
-
+    var chosenExpiredDate: Date?
+//    private let datePicker = UIDatePicker()
+    private let expiryDatePicker = MonthYearPickerView()
+//    expiryDatePicker.onDateSelected = { (month: Int, year: Int) in
+//    let string = String(format: "%02d/%d", month, year)
+//    NSLog(string) // should show something like 05/2015
+//    }
     // MARK: lifecycle metods
     
     override func viewDidLoad() {
@@ -118,8 +123,8 @@ class CreditCardEditTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         cardNumberField.keyboardType = .decimalPad
-        datePicker.datePickerMode = .date
-        expiredField.inputView = datePicker
+        //datePicker.datePickerMode = .date
+        expiredField.inputView = expiryDatePicker // datePicker
         expiredField.inputAccessoryView = returnToolBar()
         cvvField.keyboardType = .decimalPad
         pinField.keyboardType = .decimalPad
@@ -135,7 +140,13 @@ class CreditCardEditTableViewController: UITableViewController {
             descriptionField.text = secret.describe
             bankTextField.text = secret.stringFields["Bank"]
             cardNumberField.text = secret.stringFields["NumberCard"]
-            //expiredField.text = secret.dateFields["Expired"]
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM/yy"
+            if let expired = secret.dateFields["Expired"] {
+                expiredField.text = formatter.string(from: expired)
+                chosenExpiredDate = expired
+                expiryDatePicker.date = expired
+            }
             if let cvv = secret.decimalFields["CVV"] {
                 cvvField.text = "\(cvv)"
             }
@@ -174,13 +185,13 @@ class CreditCardEditTableViewController: UITableViewController {
     @objc private func updateChosenDate() {
         expiredField.resignFirstResponder()
         
-        let chosenDate = datePicker.date
-        print(chosenDate)
+        chosenExpiredDate = expiryDatePicker.date
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        let chosenDateString = formatter.string(from: chosenDate)
-        
+        //formatter.dateStyle = .long
+        formatter.dateFormat = "MM/yy"
+        let chosenDateString = formatter.string(from: expiryDatePicker.date)
+
         expiredField.text = chosenDateString
     }
 
