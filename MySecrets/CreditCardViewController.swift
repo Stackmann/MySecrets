@@ -44,8 +44,8 @@ class CreditCardViewController: UIViewController {
     }
     
     func configureController() {
-        if chosenRecordIndex >= 0, let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(chosenRecordIndex)  {
-            let chosenRecord = arraySecrets[chosenRecordIndex]
+        if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
+            let chosenRecord = Secrets.share.list[chosenRecordIndex]
             
             if let cardNumberStr = chosenRecord.stringFields["NumberCard"] {
                 let cardNumberFormatStr = getFormatedCardNumber(with: cardNumberStr)

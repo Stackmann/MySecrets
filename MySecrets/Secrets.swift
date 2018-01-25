@@ -13,11 +13,12 @@ import UIKit
 class Secrets {
     static let share = Secrets()
     
-    var list : [RecordPass]?
+    var list = [RecordPass]()
     var lastNum: Int = -1
+    var dataAvailable = false
     
     func loadData() {
-        if var arrayOfSecrets = list { arrayOfSecrets.removeAll() }
+        list.removeAll() 
         
         guard let avatar1 = UIImage(named: "if_credit_card_49367") else { return }
         guard let avatar2 = UIImage(named: "if_credit-cards_47679") else { return }

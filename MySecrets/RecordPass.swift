@@ -13,10 +13,6 @@ struct RecordPass: Codable {
     var stringFields: Dictionary<String, String>
     var decimalFields: Dictionary<String, Int>
     var dateFields: Dictionary<String, Date>
-//    var field1 : String
-//    var field2 : String
-//    var exp : Date
-//    var pass : String
     var avatar : Data
     var idPattern: String
     var num: Int

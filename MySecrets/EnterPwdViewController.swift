@@ -18,7 +18,10 @@ class EnterPwdViewController: UIViewController {
 
  
     @IBAction func PwdOk(_ sender: UIButton) {
-        Secrets.share.loadData()
+        if !Secrets.share.dataAvailable {
+            Secrets.share.loadData()
+            Secrets.share.dataAvailable = true
+        }
         dismiss(animated: true, completion: nil)
     }
 }

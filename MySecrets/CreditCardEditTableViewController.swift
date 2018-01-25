@@ -44,12 +44,7 @@ class CreditCardEditTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
-    // MARK: - Actions
 
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -117,6 +112,16 @@ class CreditCardEditTableViewController: UITableViewController {
     }
     */
 
+    // MARK: - Actions
+    
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
     // MARK: - self metods
     
     func setupUI() {
@@ -131,9 +136,9 @@ class CreditCardEditTableViewController: UITableViewController {
     }
     
     func configure() {
-        if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(chosenRecordIndex){
+        if Secrets.share.list.indices.contains(chosenRecordIndex){
             // Configure the tableView
-            let secret = arraySecrets[chosenRecordIndex]
+            let secret = Secrets.share.list[chosenRecordIndex]
             if let image = UIImage(data: secret.avatar) {
                 avatarImageView.image = image
             }
@@ -188,7 +193,7 @@ class CreditCardEditTableViewController: UITableViewController {
         chosenExpiredDate = expiryDatePicker.date
         
         let formatter = DateFormatter()
-        //formatter.dateStyle = .long
+        
         formatter.dateFormat = "MM/yy"
         let chosenDateString = formatter.string(from: expiryDatePicker.date)
 

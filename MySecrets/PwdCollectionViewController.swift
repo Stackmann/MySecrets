@@ -10,19 +10,28 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class PwdCollectionViewController: UICollectionViewController {
+class PwdCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
 
-    var chosenRecordIndex = -1
+    private var chosenRecordIndex = -1
+    private var chosenFilteredRecordIndex = -1
+    private var filteredList = [RecordPass]()
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchBar.becomeFirstResponder()
+        
+        self.navigationItem.titleView = searchController.searchBar
+        
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        
 //        for family: String in UIFont.familyNames
 //        {
 //            print("\(family)")
@@ -36,9 +45,12 @@ class PwdCollectionViewController: UICollectionViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Secrets.share.list == nil {
+        if !Secrets.share.dataAvailable {
             performSegue(withIdentifier: "enterPwd", sender: nil)
-        } else {
+        } else if let searchPattern = searchController.searchBar.text, searchPattern == "" ||
+            searchController.searchBar.text == nil {
+            filteredList = Secrets.share.list
+            chosenRecordIndex = -1
             self.collectionView!.reloadData()
         }
 
@@ -48,24 +60,22 @@ class PwdCollectionViewController: UICollectionViewController {
     @IBAction func openSettings(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showSettings", sender: nil)
     }
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return Secrets.share.list?.count ?? 0
+        return filteredList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "secretCell", for: indexPath) as! SecretCell
-        if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(indexPath.row){
+        if filteredList.indices.contains(indexPath.row){
             // Configure the cell
-            let secret = arraySecrets[indexPath.row]
+            let secret = filteredList[indexPath.row]
             if let image = UIImage(data: secret.avatar) {
                 cell.configure(image: image, descr: secret.describe)
             }
@@ -76,10 +86,16 @@ class PwdCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let arraySecrets = Secrets.share.list, arraySecrets.indices.contains(indexPath.row){
+        if filteredList.indices.contains(indexPath.row){
             // Configure the cell
-            let secret = arraySecrets[indexPath.row]
-            chosenRecordIndex = indexPath.row
+            let secret = filteredList[indexPath.row]
+            chosenFilteredRecordIndex = indexPath.row
+            for (index, secretST) in Secrets.share.list.enumerated() {
+                if secretST.num == secret.num {
+                    chosenRecordIndex = index
+                    break
+                }
+            }
             switch secret.idPattern {
             case "id" : performSegue(withIdentifier: "showIdRecord", sender: nil)
             case "creditcard" : performSegue(withIdentifier: "showCardRecord", sender: nil)
@@ -94,14 +110,8 @@ class PwdCollectionViewController: UICollectionViewController {
         } else if let chosenVC = segue.destination as? IdCardViewController {
             chosenVC.chosenRecordIndex = chosenRecordIndex
         }
-//        if let chosenTB = segue.destination as? UITabBarController, let listTBControllers = chosenTB.viewControllers {
-//            if let chosenVC = listTBControllers[0] as? CreditCardViewController {
-//                chosenVC.chosenRecordIndex = chosenRecordIndex
-//            } else if let chosenVC = listTBControllers[0] as? IdCardViewController {
-//                chosenVC.chosenRecordIndex = chosenRecordIndex
-//            }
-//        }
     }
+    
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -131,4 +141,23 @@ class PwdCollectionViewController: UICollectionViewController {
     }
     */
 
+    // MARK: - Search bar updater
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let lowerCasedQuery = searchController.searchBar.text?.lowercased() else { return }
+        if lowerCasedQuery == "" {
+            if filteredList.count != Secrets.share.list.count {
+                filteredList = Secrets.share.list
+                collectionView?.reloadSections([0])
+            }
+        } else {
+            let filtered = Secrets.share.list.filter { recordPass -> Bool in
+                let lowerCasedName = recordPass.describe.lowercased()
+                return lowerCasedName.contains(lowerCasedQuery)
+            }
+            filteredList = filtered
+            collectionView?.reloadSections([0])
+        }
+        
+    }
 }
