@@ -32,6 +32,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionIfNeed), name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
+        
 //        for family: String in UIFont.familyNames
 //        {
 //            print("\(family)")
@@ -159,5 +161,17 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             collectionView?.reloadSections([0])
         }
         
+    }
+    
+    // MARK: - own metods
+    
+    @objc private func updateCollectionIfNeed() {
+        if let lowerCasedQuery = searchController.searchBar.text?.lowercased(), lowerCasedQuery != "" {
+            updateSearchResults(for: searchController)
+        } else if chosenRecordIndex >= 0, chosenFilteredRecordIndex >= 0 {
+            let currentRecord = Secrets.share.list[chosenRecordIndex]
+            filteredList[chosenFilteredRecordIndex] = currentRecord
+            collectionView?.reloadSections([0])
+        }
     }
 }

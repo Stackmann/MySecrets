@@ -102,15 +102,6 @@ class CreditCardEditTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: - Actions
     
@@ -119,7 +110,39 @@ class CreditCardEditTableViewController: UITableViewController {
     }
     
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        guard let describe = descriptionField.text else {
+            let alert = UIAlertController(title: "Wrong data!", message: "Fill describe please", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        var stringFields = [String: String]()
+        var decimalFields = [String: Int]()
+        var dateFields = [String: Date]()
         
+        guard let avatarData = UIImagePNGRepresentation(avatarImageView.image!) else {
+            let alert = CommonFuncs.getAlert(title: "System error!", message: "Can not get image of record.")
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        if let bankName = bankTextField.text { stringFields["Bank"] = bankName }
+        if let cardNumber = cardNumberField.text { stringFields["NumberCard"] = cardNumber }
+        if let holder = holderField.text { stringFields["Holder"] = holder }
+        if let notes = notesField.text { stringFields["Notes"] = notes }
+        if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt }
+        if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt }
+        if let expiredData = chosenExpiredDate { dateFields["Expired"] = expiredData }
+        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: Secrets.share.lastNum + 1)
+
+        if chosenRecordIndex >= 0 {
+            Secrets.share.list[chosenRecordIndex] = currentRecord
+        } else {
+            Secrets.share.list.append(currentRecord)
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - self metods

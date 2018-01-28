@@ -10,16 +10,26 @@ import UIKit
 
 class CreditCardViewController: UIViewController {
 
+    @IBOutlet weak var recordImageView: UIImageView!
+    @IBOutlet weak var cardNumber: UILabel!
+    @IBOutlet weak var validDate: UILabel!
+    @IBOutlet weak var cardHolder: UILabel!
+    @IBOutlet weak var bankName: UILabel!
+ 
     var chosenRecordIndex: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        configureController()
+        
         //OCRAStd
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureController()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,7 +52,7 @@ class CreditCardViewController: UIViewController {
         }
         return formatedCardNumber
     }
-    
+
     func configureController() {
         if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
             let chosenRecord = Secrets.share.list[chosenRecordIndex]
@@ -63,7 +73,7 @@ class CreditCardViewController: UIViewController {
                 validDate.font = UIFont(name: "OCRAStd", size: 20)
                 validDate.textColor = UIColor.white
             }
-            
+
             if let holder = chosenRecord.stringFields["Holder"] {
                 cardHolder.textAlignment = NSTextAlignment.left
                 cardHolder.text = holder
@@ -92,10 +102,5 @@ class CreditCardViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var recordImageView: UIImageView!
-    @IBOutlet weak var cardNumber: UILabel!
-    @IBOutlet weak var validDate: UILabel!
-    @IBOutlet weak var cardHolder: UILabel!
-    @IBOutlet weak var bankName: UILabel!
-    
+
 }
