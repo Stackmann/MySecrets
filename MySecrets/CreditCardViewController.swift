@@ -17,24 +17,29 @@ class CreditCardViewController: UIViewController {
     @IBOutlet weak var bankName: UILabel!
  
     var chosenRecordIndex: Int!
-    
+
+    // MARK: lifecycle metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        //OCRAStd
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureController()
+        //OCRAStd
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenNC = segue.destination as? UINavigationController {
+            if let chosenVC = chosenNC.topViewController as? CreditCardEditTableViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            }
+        }
     }
-    
+
+    // MARK: - own metods
+
     private func getFormatedCardNumber(with cardNumber: String) -> String {
         var formatedCardNumber = ""
         if let _ = Int(cardNumber) {
@@ -89,18 +94,13 @@ class CreditCardViewController: UIViewController {
             }
         }
     }
-    
+
+    // MARK: - Actions
+
     @IBAction func editAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showCreditCardEditController", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let chosenNC = segue.destination as? UINavigationController {
-            if let chosenVC = chosenNC.topViewController as? CreditCardEditTableViewController {
-                chosenVC.chosenRecordIndex = chosenRecordIndex
-            }
-        }
-    }
-    
+
 
 }

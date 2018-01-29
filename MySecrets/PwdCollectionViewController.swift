@@ -24,7 +24,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         searchController.dimsBackgroundDuringPresentation = true
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        
+        definesPresentationContext = true //very important thing, otherwise wont segue to modal and crash if pressed cancel button in searchbar
+
         searchController.searchBar.becomeFirstResponder()
         
         self.navigationItem.titleView = searchController.searchBar
@@ -47,6 +48,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if !Secrets.share.dataAvailable {
             performSegue(withIdentifier: "enterPwd", sender: nil)
         } else if let searchPattern = searchController.searchBar.text, searchPattern == "" ||
@@ -58,9 +60,16 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
 
     }
 
-    
-    @IBAction func openSettings(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "showSettings", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenVC = segue.destination as? CreditCardViewController {
+            chosenVC.chosenRecordIndex = chosenRecordIndex
+        } else if let chosenVC = segue.destination as? IdCardViewController {
+            chosenVC.chosenRecordIndex = chosenRecordIndex
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: nil, object: nil)
     }
     
     // MARK: UICollectionViewDataSource
@@ -106,14 +115,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let chosenVC = segue.destination as? CreditCardViewController {
-            chosenVC.chosenRecordIndex = chosenRecordIndex
-        } else if let chosenVC = segue.destination as? IdCardViewController {
-            chosenVC.chosenRecordIndex = chosenRecordIndex
-        }
-    }
-    
+
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -163,6 +165,12 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         
     }
     
+    // MARK: - Actions
+    
+    @IBAction func openSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showSettings", sender: nil)
+    }
+
     // MARK: - own metods
     
     @objc private func updateCollectionIfNeed() {
