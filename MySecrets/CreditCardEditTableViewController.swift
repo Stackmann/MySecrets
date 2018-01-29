@@ -157,72 +157,8 @@ class CreditCardEditTableViewController: UITableViewController {
         expiredField.inputAccessoryView = returnToolBar()
         cvvField.keyboardType = .decimalPad
         pinField.keyboardType = .decimalPad
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
-//            let offset = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//            if keyboardSize.height == offset.height {
-//                UIView.animate(withDuration: 0.1, animations: { () -> Void in
-//                    self.view.frame.origin.y -= keyboardSize.height
-//                })
-//            } else {
-//                UIView.animate(withDuration: 0.1, animations: { () -> Void in
-//                    self.view.frame.origin.y += keyboardSize.height - offset.height
-//                })
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
-
-    //case 2
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
-
-// case1
-//    @objc func keyboardWillShow(notification:NSNotification){
-//
-//        var userInfo = notification.userInfo!
-//        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-//        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-//
-//        var contentInset:UIEdgeInsets = self.theScrollView.contentInset
-//        contentInset.bottom = keyboardFrame.size.height
-//        theScrollView.contentInset = contentInset
-//    }
-//
-//    @objc func keyboardWillHide(notification:NSNotification){
-//
-//        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-//        theScrollView.contentInset = contentInset
-//
-//    }
     
     func configure() {
         if Secrets.share.list.indices.contains(chosenRecordIndex){
