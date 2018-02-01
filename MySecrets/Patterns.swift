@@ -31,36 +31,36 @@ class Patterns {
                              "Password": "String",
                              "URL": "String",
                              "Notes": "String"]
-        var newPattern = PatternRecord(describe: "Websait", fields: patternFields, avatar: avatarData2)
-        listOfPatterns["websait"] = newPattern
+        var newPattern = PatternRecord(describe: "Websait", fields: patternFields, avatar: avatarData2, kind: PatternKind.websait)
+        listOfPatterns[PatternKind.websait.rawValue] = newPattern
 
         patternFields = ["Adress": "String",
                          "Login": "String",
                          "Password": "String"]
-        newPattern = PatternRecord(describe: "RDP Connection", fields: patternFields, avatar: avatarData3)
-        listOfPatterns["rdp"] = newPattern
+        newPattern = PatternRecord(describe: "RDP Connection", fields: patternFields, avatar: avatarData3, kind: PatternKind.rdp)
+        listOfPatterns[PatternKind.rdp.rawValue] = newPattern
 
         patternFields = ["Login": "String",
                          "Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Account", fields: patternFields, avatar: avatarData4)
-        listOfPatterns["account"] = newPattern
+        newPattern = PatternRecord(describe: "Account", fields: patternFields, avatar: avatarData4, kind: PatternKind.account)
+        listOfPatterns[PatternKind.account.rawValue] = newPattern
 
         patternFields = ["Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Password", fields: patternFields, avatar: avatarData3)
-        listOfPatterns["password"] = newPattern
+        newPattern = PatternRecord(describe: "Password", fields: patternFields, avatar: avatarData3, kind: PatternKind.password)
+        listOfPatterns[PatternKind.password.rawValue] = newPattern
 
         patternFields = ["Number": "Int",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Bonus card", fields: patternFields, avatar: avatarData4)
-        listOfPatterns["bonuscard"] = newPattern
+        newPattern = PatternRecord(describe: "Bonus card", fields: patternFields, avatar: avatarData4, kind: PatternKind.bonuscard)
+        listOfPatterns[PatternKind.bonuscard.rawValue] = newPattern
 
         patternFields = ["SSID": "String",
                          "Password": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "WiFi", fields: patternFields, avatar: avatarData2)
-        listOfPatterns["wifi"] = newPattern
+        newPattern = PatternRecord(describe: "WiFi", fields: patternFields, avatar: avatarData2, kind: PatternKind.wifi)
+        listOfPatterns[PatternKind.wifi.rawValue] = newPattern
 
         patternFields = ["Login": "String",
                          "Password": "String",
@@ -68,8 +68,8 @@ class Patterns {
                          "IMAP": "String",
                          "SMTP": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Email", fields: patternFields, avatar: avatarData3)
-        listOfPatterns["email"] = newPattern
+        newPattern = PatternRecord(describe: "Email", fields: patternFields, avatar: avatarData3, kind: PatternKind.email)
+        listOfPatterns[PatternKind.email.rawValue] = newPattern
 
         patternFields = ["Bank": "String",
                          "NumberCard": "String",
@@ -78,15 +78,15 @@ class Patterns {
                          "PIN": "Int",
                          "Holder": "String",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Credit Card", fields: patternFields, avatar: avatarCreditCardData)
-        listOfPatterns["creditcard"] = newPattern
+        newPattern = PatternRecord(describe: "Credit Card", fields: patternFields, avatar: avatarCreditCardData, kind: PatternKind.creditcard)
+        listOfPatterns[PatternKind.creditcard.rawValue] = newPattern
 
         patternFields = ["Bank": "String",
                          "BankMFO": "Int",
                          "Account": "Int",
                          "Notes": "String"]
-        newPattern = PatternRecord(describe: "Bank account", fields: patternFields, avatar: avatarData3)
-        listOfPatterns["bankaccount"] = newPattern
+        newPattern = PatternRecord(describe: "Bank account", fields: patternFields, avatar: avatarData3, kind: PatternKind.bankaccount)
+        listOfPatterns[PatternKind.bankaccount.rawValue] = newPattern
 
         patternFields = ["FirstName": "String",
                          "LastName": "String",
@@ -95,9 +95,10 @@ class Patterns {
                          "ReceivedDate": "Data",
                          "SN": "String",
                          "Number": "Int"]
-        newPattern = PatternRecord(describe: "Id Card", fields: patternFields, avatar: avatarIdCardData)
-        listOfPatterns["id"] = newPattern
+        newPattern = PatternRecord(describe: "Id Card", fields: patternFields, avatar: avatarIdCardData, kind: PatternKind.idcard)
+        listOfPatterns[PatternKind.idcard.rawValue] = newPattern
 
         list = listOfPatterns
     }
 }
+

@@ -12,4 +12,18 @@ struct PatternRecord {
     let describe: String
     let fields: Dictionary<String, String>
     let avatar: Data
+    let kind: PatternKind
+}
+
+enum PatternKind: String {
+    case websait = "Websait"
+    case rdp = "rdp"
+    case account = "account"
+    case password = "password"
+    case bonuscard = "bonuscard"
+    case wifi = "wifi"
+    case email = "email"
+    case creditcard = "creditcard"
+    case bankaccount = "bankaccount"
+    case idcard = "idcard"
 }

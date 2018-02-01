@@ -371,7 +371,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlg-mc-7Hz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3652" y="-1335"/>
+            <point key="canvasLocation" x="3994.4000000000001" y="-1335.2216748768474"/>
         </scene>
         <!--Pwd Collection View Controller-->
         <scene sceneID="p3h-6L-VOl">
@@ -448,7 +448,9 @@
                         <segue destination="eqw-AP-JRV" kind="show" identifier="showIdRecord" id="1Y7-UH-WW5"/>
                         <segue destination="oWi-8O-N9f" kind="show" identifier="showCardRecord" id="NRj-Bg-Wtr"/>
                         <segue destination="pSc-oZ-opj" kind="presentation" identifier="showSettings" id="igT-Nf-v1y"/>
-                        <segue destination="oDT-G0-RRu" kind="presentation" identifier="addNewRecord" id="UGu-eh-aif"/>
+                        <segue destination="OyR-Oq-eWU" kind="presentation" identifier="addNewRecord" id="UGu-eh-aif"/>
+                        <segue destination="PEL-Rh-TUO" kind="presentation" identifier="editCreditCardRecord" id="cg4-to-xW2"/>
+                        <segue destination="Yki-Z0-Xdt" kind="presentation" identifier="editIdCardRecord" id="Le6-PD-QmH"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-1D-ejB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -484,10 +486,17 @@
                             <outlet property="delegate" destination="oDT-G0-RRu" id="313-ty-nv7"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="vaL-zp-MJb">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BYI-QD-w5I">
+                            <connections>
+                                <action selector="cancelAction:" destination="oDT-G0-RRu" id="ol7-Db-erW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8D-jA-Y8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="-1312"/>
+            <point key="canvasLocation" x="1396" y="-1312.3152709359606"/>
         </scene>
         <!--View-->
         <scene sceneID="dfl-9s-86x">
@@ -622,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-Tj-3af" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2081" y="-1335"/>
+            <point key="canvasLocation" x="2423.1999999999998" y="-1335.2216748768474"/>
         </scene>
         <!--Settings-->
         <scene sceneID="vFJ-OE-YJv">
@@ -1096,7 +1105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfS-bV-ka1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4327.1999999999998" y="-830.54187192118229"/>
+            <point key="canvasLocation" x="4669.6000000000004" y="-830.54187192118229"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mAr-6Z-mYE">
@@ -1173,7 +1182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOX-QH-olv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2887" y="-1335"/>
+            <point key="canvasLocation" x="3228" y="-1335.2216748768474"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Pfp-bp-R0A">
@@ -1193,6 +1202,24 @@
             </objects>
             <point key="canvasLocation" x="1428.8" y="275.61576354679806"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4bE-PG-PQu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OyR-Oq-eWU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LVT-hN-5Aa">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oDT-G0-RRu" kind="relationship" relationship="rootViewController" id="GbG-jR-anx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="voq-oB-i0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="642" y="-1312"/>
+        </scene>
     </scenes>
     <resources>
         <image name="common-template" width="426" height="341"/>
@@ -1200,4 +1227,8 @@
         <image name="id-card-template" width="426" height="341"/>
         <image name="if_credit-cards_47679" width="16" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cg4-to-xW2"/>
+        <segue reference="Le6-PD-QmH"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,10 +10,11 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class PwdCollectionViewController: UICollectionViewController, UISearchResultsUpdating {
+class PwdCollectionViewController: UICollectionViewController, UISearchResultsUpdating, PwdCollection {
 
     private var chosenRecordIndex = -1
     private var chosenFilteredRecordIndex = -1
+    private var patternToCreate: PatternRecord?
     private var filteredList = [RecordPass]()
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -65,6 +66,9 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             chosenVC.chosenRecordIndex = chosenRecordIndex
         } else if let chosenVC = segue.destination as? IdCardViewController {
             chosenVC.chosenRecordIndex = chosenRecordIndex
+        } else if let chosenVC = segue.destination as? UINavigationController,
+            let chosenCVC = chosenVC.topViewController as? PatternCollectionViewController {
+            chosenCVC.delegat = self
         }
     }
 
@@ -108,7 +112,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
                 }
             }
             switch secret.idPattern {
-            case "id" : performSegue(withIdentifier: "showIdRecord", sender: nil)
+            case "idcard" : performSegue(withIdentifier: "showIdRecord", sender: nil)
             case "creditcard" : performSegue(withIdentifier: "showCardRecord", sender: nil)
             default : performSegue(withIdentifier: "showCommonRecord", sender: nil)
             }
@@ -144,6 +148,19 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     
     }
     */
+    
+    // MARK: PwdCollectionDelegate
+    func getNewRecord(with pattern: PatternRecord) {
+        patternToCreate = pattern
+        switch pattern.kind {
+        case .idcard:
+            performSegue(withIdentifier: "editIdCardRecord", sender: nil)
+        case .creditcard:
+            performSegue(withIdentifier: "editCreditCardRecord", sender: nil)
+        default:
+            performSegue(withIdentifier: "editOtherdRecord", sender: nil)
+        }
+    }
 
     // MARK: - Search bar updater
     
@@ -186,4 +203,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             collectionView?.reloadSections([0])
         }
     }
+}
+
+protocol PwdCollection {
+    func getNewRecord(with pattern: PatternRecord)
 }
