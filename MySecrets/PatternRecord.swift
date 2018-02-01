@@ -11,4 +11,5 @@ import Foundation
 struct PatternRecord {
     let describe: String
     let fields: Dictionary<String, String>
+    let avatar: Data
 }

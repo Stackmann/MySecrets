@@ -20,11 +20,11 @@ class Secrets {
     func loadData() {
         list.removeAll() 
         
-        guard let avatar1 = UIImage(named: "if_credit_card_49367") else { return }
+        guard let avatar1 = UIImage(named: "credit_card_pattern") else { return }
         guard let avatar2 = UIImage(named: "if_credit-cards_47679") else { return }
         guard let avatar3 = UIImage(named: "if_lock_49374") else { return }
         guard let avatar4 = UIImage(named: "if_secure-payment_47685") else { return }
-        guard let avatar5 = UIImage(named: "if_user_info_49399") else { return }
+        guard let avatar5 = UIImage(named: "user_id_pattern") else { return }
         guard let avatarData1 = UIImagePNGRepresentation(avatar1) else { return }
         guard let avatarData2 = UIImagePNGRepresentation(avatar2) else { return }
         guard let avatarData3 = UIImagePNGRepresentation(avatar3) else { return }

@@ -435,7 +435,11 @@
                                     <action selector="openSettings:" destination="aNb-8V-gLd" id="grz-wt-1rM"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="add" id="3Bj-Ek-aai"/>
+                            <barButtonItem systemItem="add" id="3Bj-Ek-aai">
+                                <connections>
+                                    <action selector="addNewRecord:" destination="aNb-8V-gLd" id="aDa-Fi-e8m"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -444,11 +448,46 @@
                         <segue destination="eqw-AP-JRV" kind="show" identifier="showIdRecord" id="1Y7-UH-WW5"/>
                         <segue destination="oWi-8O-N9f" kind="show" identifier="showCardRecord" id="NRj-Bg-Wtr"/>
                         <segue destination="pSc-oZ-opj" kind="presentation" identifier="showSettings" id="igT-Nf-v1y"/>
+                        <segue destination="oDT-G0-RRu" kind="presentation" identifier="addNewRecord" id="UGu-eh-aif"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-1D-ejB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1391.2" y="-655.32233883058473"/>
+        </scene>
+        <!--Pattern Collection View Controller-->
+        <scene sceneID="bw9-mz-Pep">
+            <objects>
+                <collectionViewController id="oDT-G0-RRu" customClass="PatternCollectionViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="68e-Ug-uGo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xae-M6-JyC">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4Jx-kb-Sxa">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="oDT-G0-RRu" id="pqn-DO-PBG"/>
+                            <outlet property="delegate" destination="oDT-G0-RRu" id="313-ty-nv7"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c8D-jA-Y8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1054" y="-1312"/>
         </scene>
         <!--View-->
         <scene sceneID="dfl-9s-86x">

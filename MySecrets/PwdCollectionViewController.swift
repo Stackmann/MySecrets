@@ -171,6 +171,10 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         performSegue(withIdentifier: "showSettings", sender: nil)
     }
 
+    @IBAction func addNewRecord(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "addNewRecord", sender: nil)
+    }
+    
     // MARK: - own metods
     
     @objc private func updateCollectionIfNeed() {
