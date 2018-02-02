@@ -52,6 +52,16 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         
         if !Secrets.share.dataAvailable {
             performSegue(withIdentifier: "enterPwd", sender: nil)
+        } else if let pattern = patternToCreate {
+            switch pattern.kind {
+            case .idcard:
+                performSegue(withIdentifier: "editIdCardRecord", sender: nil)
+            case .creditcard:
+                performSegue(withIdentifier: "editCreditCardRecord", sender: nil)
+            default:
+                performSegue(withIdentifier: "editOtherdRecord", sender: nil)
+            }
+            patternToCreate = nil
         } else if let searchPattern = searchController.searchBar.text, searchPattern == "" ||
             searchController.searchBar.text == nil {
             filteredList = Secrets.share.list
@@ -152,14 +162,6 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     // MARK: PwdCollectionDelegate
     func getNewRecord(with pattern: PatternRecord) {
         patternToCreate = pattern
-        switch pattern.kind {
-        case .idcard:
-            performSegue(withIdentifier: "editIdCardRecord", sender: nil)
-        case .creditcard:
-            performSegue(withIdentifier: "editCreditCardRecord", sender: nil)
-        default:
-            performSegue(withIdentifier: "editOtherdRecord", sender: nil)
-        }
     }
 
     // MARK: - Search bar updater

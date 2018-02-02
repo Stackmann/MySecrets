@@ -9,7 +9,7 @@
 import UIKit
 
 class CreditCardEditTableViewController: UITableViewController {
-    var chosenRecordIndex: Int!
+    var chosenRecordIndex = -1
     var chosenExpiredDate: Date?
     //    private let datePicker = UIDatePicker()
     private let expiryDatePicker = MonthYearPickerView()
