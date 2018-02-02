@@ -134,7 +134,8 @@ class CreditCardEditTableViewController: UITableViewController {
         if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt }
         if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt }
         if let expiredData = chosenExpiredDate { dateFields["Expired"] = expiredData }
-        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: Secrets.share.lastNum + 1)
+        Secrets.share.lastNum += 1
+        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: Secrets.share.lastNum)
 
         if chosenRecordIndex >= 0 {
             Secrets.share.list[chosenRecordIndex] = currentRecord
