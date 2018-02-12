@@ -50,7 +50,7 @@ class SettingsTableViewController: UITableViewController {
             }
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
-                tableView.deselectRow(at: indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: false)
             }
         }
     }
