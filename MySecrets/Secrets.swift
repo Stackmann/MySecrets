@@ -42,7 +42,7 @@ class Secrets {
         
         let fourPass = RecordPass(describe: "Шифр сейфа", stringFields: ["Password":"qwerty", "Notes":"Input with pause"], decimalFields: [String: Int](), dateFields: [String: Date](), avatar: avatarData4, idPattern: "password", num: 4)
         
-        let fivePass = RecordPass(describe: "Удостоверение", stringFields: ["FirstName":"Eric", "LastName":"Johns", "MiddleName":"Sasha", "SN":"MB"], decimalFields: ["Number": 102030], dateFields: ["BirthdayDate": date1, "ReceivedDate": date1], avatar: avatarData5, idPattern: "id", num: 5)
+        let fivePass = RecordPass(describe: "Удостоверение", stringFields: ["FirstName":"Eric", "LastName":"Johns", "MiddleName":"Sasha", "SN":"MB"], decimalFields: ["Number": 102030], dateFields: ["BirthdayDate": date1, "ReceivedDate": date1], avatar: avatarData5, idPattern: "idcard", num: 5)
 
         list = [firstPass, secondPass, thirdPass, fourPass, fivePass]
         lastNum = 5
