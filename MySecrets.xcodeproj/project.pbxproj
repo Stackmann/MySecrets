@@ -17,6 +17,7 @@
 		071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D311FBF7D6F00310F44 /* Assets.xcassets */; };
 		071E1D351FBF7D6F00310F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */; };
 		0727C5392020F194003E86B3 /* PatternCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0727C5382020F194003E86B3 /* PatternCollectionViewController.swift */; };
+		072861E020E3D29C00C12932 /* SecretsBD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072861DF20E3D29C00C12932 /* SecretsBD.swift */; };
 		072AD3F0200FF7E4004029C5 /* IdCardEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072AD3EF200FF7E4004029C5 /* IdCardEditTableViewController.swift */; };
 		072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */; };
 		073CBFF21FEAC1A500EBDFBF /* CreditCardEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CBFF11FEAC1A500EBDFBF /* CreditCardEditTableViewController.swift */; };
@@ -45,6 +46,7 @@
 		071E1D341FBF7D6F00310F44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		071E1D361FBF7D6F00310F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0727C5382020F194003E86B3 /* PatternCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternCollectionViewController.swift; sourceTree = "<group>"; };
+		072861DF20E3D29C00C12932 /* SecretsBD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsBD.swift; sourceTree = "<group>"; };
 		072AD3EF200FF7E4004029C5 /* IdCardEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdCardEditTableViewController.swift; sourceTree = "<group>"; };
 		072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPwdViewController.swift; sourceTree = "<group>"; };
 		073CBFF11FEAC1A500EBDFBF /* CreditCardEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardEditTableViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				071CE19B1FF4B1FA004BA08D /* Resources */,
 				071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */,
 				0777FDEA1FCED68200C7EFD9 /* Secrets.swift */,
+				072861DF20E3D29C00C12932 /* SecretsBD.swift */,
 				071D5AC51FD5EDAF00DF9D6A /* RecordPass.swift */,
 				075DBB3F1FE64789009676B3 /* PatternRecord.swift */,
 				075DBB411FE64C1E009676B3 /* Patterns.swift */,
@@ -293,6 +296,7 @@
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,
 				073E262620223A2900047E10 /* PwdCollectionViewCell.swift in Sources */,
 				072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */,
+				072861E020E3D29C00C12932 /* SecretsBD.swift in Sources */,
 				071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */,
 				071C5BE52003AF9D00A05BD2 /* IdCardViewController.swift in Sources */,
 				072AD3F0200FF7E4004029C5 /* IdCardEditTableViewController.swift in Sources */,

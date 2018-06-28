@@ -54,6 +54,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gWU-lA-QWw"/>
                     </view>
+                    <connections>
+                        <outlet property="inputPasswordField" destination="Fqr-Ye-weE" id="NDE-RT-bPE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz4-PU-Md9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

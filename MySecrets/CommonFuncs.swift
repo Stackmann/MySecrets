@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Realm
 
 class CommonFuncs {
     static func getAlert(title: String, message: String) -> UIAlertController {
