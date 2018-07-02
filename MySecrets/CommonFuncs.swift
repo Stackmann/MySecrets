@@ -18,3 +18,16 @@ class CommonFuncs {
         return alert
     }
 }
+
+extension String {
+    var isContainCorrectCharactersForRealmPassword: (Bool, Int) {
+        for (index, unicode) in self.unicodeScalars.enumerated() {
+            if (unicode.value < 32 || unicode.value > 127) { //use only latin characters, digits and symbols
+                print("not a correcr character")
+                print(unicode.value)
+                return (false, index)
+            }
+        }
+        return (true, -1)
+    }
+}
