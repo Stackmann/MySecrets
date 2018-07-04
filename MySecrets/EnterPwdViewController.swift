@@ -17,7 +17,7 @@ class EnterPwdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        warningPasswordLabel.text = "Please use only latin characters, digits and symbols"
+        warningPasswordLabel.text = "Use only latin characters, digits and symbols"
         warningPasswordLabel.textColor = UIColor(red: 255.0/255.0, green: 145.0/255.0, blue: 158.0/255.0, alpha: 1)
         warningPasswordLabel.numberOfLines = 0
     }
@@ -38,30 +38,24 @@ class EnterPwdViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            var userErrorStr = ""
-            var inputPasswordStr64 = inputPasswordStr
-            while inputPasswordStr64.count < 64 {
-                inputPasswordStr64 = "0" + inputPasswordStr64
+            
+            let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr)
+            if !resultInitDB.0 {
+                let alert = CommonFuncs.getAlert(title: "Error", message: resultInitDB.1)
+                self.present(alert, animated: true, completion: nil)
+                return
             }
-            if let encryptKey = inputPasswordStr64.data(using: .utf8) {
-                //print(encryptKey.count)
-                let realmConfig = Realm.Configuration(encryptionKey: encryptKey)
-                do {
-                    let _ = try Realm(configuration: realmConfig)
-                } catch {
-                    if error.localizedDescription.contains("Realm file decryption failed") {
-                        userErrorStr = "Wrong password!"
-                     } else {
-                        userErrorStr = "Error open database!"
-                    }
-                    let alert = CommonFuncs.getAlert(title: "Error", message: userErrorStr)
-                    self.present(alert, animated: true, completion: nil)
-                    print(error.localizedDescription)
-                    return
-               }
-            }
+            
             if !Secrets.share.dataAvailable {
-                Secrets.share.loadData()
+                //Secrets.share.loadData()
+                if !CommonFuncs.readFromRealmDB() {
+                    let alert = CommonFuncs.getAlert(title: "Error", message: "Error reading from DB. Try to recreate DB!")
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    for secret in Secrets.share.list {
+                        Secrets.share.lastNum = max(secret.num, Secrets.share.lastNum)
+                    }
+                }
                 Secrets.share.dataAvailable = true
             }
         }

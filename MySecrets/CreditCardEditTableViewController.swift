@@ -11,6 +11,7 @@ import UIKit
 class CreditCardEditTableViewController: UITableViewController {
     var chosenRecordIndex = -1
     var chosenExpiredDate: Date?
+    var currentNum = -1
     //    private let datePicker = UIDatePicker()
     private let expiryDatePicker = MonthYearPickerView()
     //    expiryDatePicker.onDateSelected = { (month: Int, year: Int) in
@@ -35,6 +36,8 @@ class CreditCardEditTableViewController: UITableViewController {
         setupUI()
         if chosenRecordIndex >= 0 {
             configure()
+        } else {
+            currentNum = Secrets.share.lastNum + 1
         }
     }
     
@@ -134,13 +137,14 @@ class CreditCardEditTableViewController: UITableViewController {
         if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt }
         if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt }
         if let expiredData = chosenExpiredDate { dateFields["Expired"] = expiredData }
-        Secrets.share.lastNum += 1
-        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: Secrets.share.lastNum)
+
+        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: currentNum)
 
         if chosenRecordIndex >= 0 {
             Secrets.share.list[chosenRecordIndex] = currentRecord
         } else {
             Secrets.share.list.append(currentRecord)
+            Secrets.share.lastNum = currentNum
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
@@ -165,6 +169,7 @@ class CreditCardEditTableViewController: UITableViewController {
         if Secrets.share.list.indices.contains(chosenRecordIndex){
             // Configure the tableView
             let secret = Secrets.share.list[chosenRecordIndex]
+            currentNum = secret.num
             if let image = UIImage(data: secret.avatar) {
                 avatarImageView.image = image
             }

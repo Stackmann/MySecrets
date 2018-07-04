@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
 
 class Secrets {
@@ -17,6 +18,7 @@ class Secrets {
     var lastNum: Int = -1
     var dataAvailable = false
     var isAccessPresent = false
+    var realmDB: Realm!
     
     func loadData() {
         list.removeAll() 
@@ -48,13 +50,13 @@ class Secrets {
         list = [firstPass, secondPass, thirdPass, fourPass, fivePass]
         lastNum = 5
         
-                let encoder = JSONEncoder()
-        
-                if let encoded = try? encoder.encode(Secrets.share.list) {
-                    if let jsonString = String(data: encoded, encoding: .utf8) {
-                        print(jsonString)
-                    }
-                }
+//                let encoder = JSONEncoder()
+//
+//                if let encoded = try? encoder.encode(Secrets.share.list) {
+//                    if let jsonString = String(data: encoded, encoding: .utf8) {
+//                        print(jsonString)
+//                    }
+//                }
 
     }
     

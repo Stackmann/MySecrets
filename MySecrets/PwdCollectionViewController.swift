@@ -197,6 +197,10 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     // MARK: - own metods
     
     @objc private func updateCollectionIfNeed() {
+        if !CommonFuncs.saveToRealmDB() {
+            let alert = CommonFuncs.getAlert(title: "Error", message: "Error saving to DB. Try to reinstall aplication!")
+            self.present(alert, animated: true, completion: nil)
+        }
         if let lowerCasedQuery = searchController.searchBar.text?.lowercased(), lowerCasedQuery != "" {
             updateSearchResults(for: searchController)
         } else if chosenRecordIndex >= 0, chosenFilteredRecordIndex >= 0 {

@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Realm
+import RealmSwift
 
 class CommonFuncs {
     static func getAlert(title: String, message: String) -> UIAlertController {
@@ -16,6 +16,87 @@ class CommonFuncs {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         return alert
+    }
+    
+    static func initRealmDB(inputPasswordStr: String) -> (Bool, String) {
+        var userErrorStr = ""
+        var inputPasswordStr64 = inputPasswordStr
+        while inputPasswordStr64.count < 64 {
+            inputPasswordStr64 = "0" + inputPasswordStr64
+        }
+        if let encryptKey = inputPasswordStr64.data(using: .utf8) {
+            //print(encryptKey.count)
+            print(Realm.Configuration.defaultConfiguration.fileURL ?? "realm file path doesn't exist")
+            let realmConfig = Realm.Configuration(encryptionKey: encryptKey)
+            do {
+                Secrets.share.realmDB = try Realm(configuration: realmConfig)
+            } catch {
+                if error.localizedDescription.contains("Realm file decryption failed") {
+                    userErrorStr = "Wrong password!"
+                } else {
+                    userErrorStr = "Error open database!"
+                }
+                print(error.localizedDescription)
+                return (false, userErrorStr)
+            }
+        } else {
+            return (false, "Can't used input password!")
+        }
+        return (true, "")
+    }
+
+    static func readFromRealmDB() -> Bool {
+        let listsFromRealm = Secrets.share.realmDB.objects(SecretsDB.self)
+        if listsFromRealm.count > 0 {
+            if let listFromRealm = listsFromRealm.first {
+                if !decodeToMainList(encodedList: listFromRealm.data) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    static func saveToRealmDB() -> Bool {
+        let encodedList = encodeMainList()
+        
+        let listsFromRealm = Secrets.share.realmDB.objects(SecretsDB.self)
+        if listsFromRealm.count > 0 {
+            if let listFromRealm = listsFromRealm.first {
+                try! Secrets.share.realmDB.write {
+                    listFromRealm.data = encodedList
+                }
+            }
+        } else {
+            let secretsDB = SecretsDB()
+            secretsDB.data = encodedList
+            try! Secrets.share.realmDB.write {
+                Secrets.share.realmDB.add(secretsDB)
+            }
+        }
+        return true
+    }
+    
+    static func encodeMainList() -> Data {
+        let encoder = JSONEncoder()
+        
+        if let encoded = try? encoder.encode(Secrets.share.list) {
+            return encoded
+        } else {
+            return Data()
+        }
+    }
+
+    static func decodeToMainList(encodedList: Data) -> Bool {
+        let decoder = JSONDecoder()
+        let decodedList_ = try? decoder.decode([RecordPass].self, from: encodedList)
+        
+        if let decodedList = decodedList_ {
+            Secrets.share.list = decodedList
+            return true
+        } else {
+            return false
+        }
     }
 }
 
