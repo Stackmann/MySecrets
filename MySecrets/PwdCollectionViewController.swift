@@ -34,8 +34,10 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCollectionIfNeed), name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(editUpdateCollectionIfNeed), name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteUpdateCollectionIfNeed), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
+
 //        for family: String in UIFont.familyNames
 //        {
 //            print("\(family)")
@@ -196,7 +198,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     
     // MARK: - own metods
     
-    @objc private func updateCollectionIfNeed() {
+    @objc private func editUpdateCollectionIfNeed() {
         if !CommonFuncs.saveToRealmDB() {
             let alert = CommonFuncs.getAlert(title: "Error", message: "Error saving to DB. Try to reinstall aplication!")
             self.present(alert, animated: true, completion: nil)
@@ -206,6 +208,20 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         } else if chosenRecordIndex >= 0, chosenFilteredRecordIndex >= 0 {
             let currentRecord = Secrets.share.list[chosenRecordIndex]
             filteredList[chosenFilteredRecordIndex] = currentRecord
+            collectionView?.reloadSections([0])
+        }
+    }
+
+    @objc private func deleteUpdateCollectionIfNeed() {
+        if !CommonFuncs.saveToRealmDB() {
+            let alert = CommonFuncs.getAlert(title: "Error", message: "Error saving to DB. Try to reinstall aplication!")
+            self.present(alert, animated: true, completion: nil)
+        }
+        if let lowerCasedQuery = searchController.searchBar.text?.lowercased(), lowerCasedQuery != "" {
+            updateSearchResults(for: searchController)
+        } else if chosenRecordIndex >= 0, chosenFilteredRecordIndex >= 0 {
+            filteredList = Secrets.share.list
+            chosenRecordIndex = -1
             collectionView?.reloadSections([0])
         }
     }

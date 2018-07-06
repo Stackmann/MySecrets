@@ -357,21 +357,31 @@
                             <outlet property="delegate" destination="Qlj-Pa-9Is" id="Wjd-N2-q3r"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="dEA-Rv-Zqd">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="KGj-1j-wnX">
                             <connections>
                                 <action selector="cancelAction:" destination="Qlj-Pa-9Is" id="EUt-C4-8pW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0H4-IT-Oum">
-                            <connections>
-                                <action selector="saveAction:" destination="Qlj-Pa-9Is" id="Ixs-OS-MBa"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="0H4-IT-Oum">
+                                <connections>
+                                    <action selector="saveAction:" destination="Qlj-Pa-9Is" id="Ixs-OS-MBa"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="dgs-QR-jPq">
+                                <connections>
+                                    <action selector="deleteAction:" destination="Qlj-Pa-9Is" id="sQM-Jj-Kvk"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="avatarImageView" destination="kIB-qO-F3s" id="vwn-Hc-odG"/>
                         <outlet property="bankTextField" destination="Z2v-mr-ZfB" id="Gyu-s3-rD1"/>
+                        <outlet property="barButtonDelete" destination="dgs-QR-jPq" id="G2A-xo-H3B"/>
                         <outlet property="cardNumberField" destination="VGA-Ou-5jg" id="ZBE-eq-0BL"/>
                         <outlet property="cvvField" destination="5Ow-hc-OwC" id="iaS-E7-DOn"/>
                         <outlet property="descriptionField" destination="64z-WD-lV8" id="DIQ-Wa-zXP"/>

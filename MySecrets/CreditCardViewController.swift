@@ -22,6 +22,7 @@ class CreditCardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +94,10 @@ class CreditCardViewController: UIViewController {
                 bankName.textColor = UIColor.white
             }
         }
+    }
+
+    @objc private func deleteReturnToMainList() {
+        navigationController?.popToRootViewController(animated: true)
     }
 
     // MARK: - Actions

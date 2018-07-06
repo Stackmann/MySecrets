@@ -28,7 +28,8 @@ class CreditCardEditTableViewController: UITableViewController {
     @IBOutlet weak var pinField: UITextField!
     @IBOutlet weak var holderField: UITextField!
     @IBOutlet weak var notesField: UITextField!
-
+    @IBOutlet weak var barButtonDelete: UIBarButtonItem!
+    
     // MARK: lifecycle metods
     
     override func viewDidLoad() {
@@ -39,6 +40,7 @@ class CreditCardEditTableViewController: UITableViewController {
         } else {
             currentNum = Secrets.share.lastNum + 1
         }
+        //barButtonDelete.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 200)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -113,6 +115,18 @@ class CreditCardEditTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Confirmation", message: "Remove the record?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.deleteRecord()
+        })
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+
+    }
+    
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         guard let describe = descriptionField.text else {
             let alert = UIAlertController(title: "Wrong data!", message: "Fill describe please", preferredStyle: .alert)
@@ -162,6 +176,9 @@ class CreditCardEditTableViewController: UITableViewController {
         expiredField.inputAccessoryView = returnToolBar()
         cvvField.keyboardType = .decimalPad
         pinField.keyboardType = .decimalPad
+        if chosenRecordIndex < 0 {
+            barButtonDelete.isEnabled = false
+        }
     }
     
     
@@ -229,6 +246,14 @@ class CreditCardEditTableViewController: UITableViewController {
         let chosenDateString = formatter.string(from: expiryDatePicker.date)
 
         expiredField.text = chosenDateString
+    }
+
+    func deleteRecord() {
+        if chosenRecordIndex >= 0 {
+            Secrets.share.list.remove(at: chosenRecordIndex)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }
