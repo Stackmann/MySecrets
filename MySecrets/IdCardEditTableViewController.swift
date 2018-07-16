@@ -10,6 +10,16 @@ import UIKit
 
 class IdCardEditTableViewController: UITableViewController {
 
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var middleNameTextField: UITextField!
+    @IBOutlet weak var birthdayTextField: UITextField!
+    @IBOutlet weak var receivedDateTextField: UITextField!
+    @IBOutlet weak var snTextField: UITextField!
+    @IBOutlet weak var numberTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
