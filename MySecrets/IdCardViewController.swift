@@ -37,6 +37,14 @@ class IdCardViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenNC = segue.destination as? UINavigationController {
+            if let chosenVC = chosenNC.topViewController as? IdCardEditTableViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            }
+        }
+    }
+
     func configureController() {
         if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
             let chosenRecord = Secrets.share.list[chosenRecordIndex]

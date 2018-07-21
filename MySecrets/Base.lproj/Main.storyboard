@@ -1273,14 +1273,18 @@
                                 <action selector="cancelAction:" destination="OWV-GK-oE4" id="kbY-tv-Gpb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="GgQ-Di-Tnn">
-                            <connections>
-                                <action selector="saveAction:" destination="OWV-GK-oE4" id="Tbe-ns-xbb"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="GgQ-Di-Tnn">
+                                <connections>
+                                    <action selector="saveAction:" destination="OWV-GK-oE4" id="Tbe-ns-xbb"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="oOb-ku-bbd"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="avatarImageView" destination="O0P-oJ-JA5" id="Kaq-s5-pfB"/>
+                        <outlet property="barButtonDelete" destination="oOb-ku-bbd" id="lSC-uU-9FA"/>
                         <outlet property="birthdayTextField" destination="Acd-zh-MgF" id="fLe-G7-5u3"/>
                         <outlet property="descriptionTextField" destination="jtd-ps-2l2" id="4xj-UH-tlP"/>
                         <outlet property="firstNameTextField" destination="9AX-Ao-0V0" id="T5t-81-XMb"/>
