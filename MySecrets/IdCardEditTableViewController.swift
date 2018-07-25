@@ -62,22 +62,21 @@ class IdCardEditTableViewController: UITableViewController {
             present(alert, animated: true, completion: nil)
             return
         }
-//        if let firstName = firstNameTextField.text { stringFields["Bank"] = bankName }
-//        if let cardNumber = cardNumberField.text { stringFields["NumberCard"] = cardNumber }
-//        if let holder = holderField.text { stringFields["Holder"] = holder }
-//        if let notes = notesField.text { stringFields["Notes"] = notes }
-//        if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt }
-//        if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt }
-//        if let expiredData = chosenExpiredDate { dateFields["Expired"] = expiredData }
-//        
-//        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: currentNum)
-//        
-//        if chosenRecordIndex >= 0 {
-//            Secrets.share.list[chosenRecordIndex] = currentRecord
-//        } else {
-//            Secrets.share.list.append(currentRecord)
-//            Secrets.share.lastNum = currentNum
-//        }
+        if let firstName = firstNameTextField.text { stringFields["FirstName"] = firstName }
+        if let lastName = lastNameTextField.text { stringFields["LastName"] = lastName }
+        if let middleName = middleNameTextField.text { stringFields["MiddleName"] = middleName }
+        if let sn = snTextField.text { stringFields["SN"] = sn }
+        if let number = numberTextField.text, let numberInt = Int(number) { decimalFields["Number"] = numberInt }
+        if let birthday = chosenBirthday { dateFields["BirthdayDate"] = birthday }
+        
+        let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "idcard", num: currentNum)
+        
+        if chosenRecordIndex >= 0 {
+            Secrets.share.list[chosenRecordIndex] = currentRecord
+        } else {
+            Secrets.share.list.append(currentRecord)
+            Secrets.share.lastNum = currentNum
+        }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
         dismiss(animated: true, completion: nil)

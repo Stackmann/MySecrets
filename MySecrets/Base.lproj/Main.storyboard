@@ -1003,29 +1003,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O0P-oJ-JA5">
-                                                    <rect key="frame" x="20" y="15.999999999999996" width="38" height="37.666666666666657"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="O0P-oJ-JA5" secondAttribute="height" multiplier="1:1" id="w16-pX-e2v"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jtd-ps-2l2">
-                                                    <rect key="frame" x="74" y="19" width="284" height="30"/>
+                                                    <rect key="frame" x="74" y="20" width="284" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_id_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="O0P-oJ-JA5">
+                                                    <rect key="frame" x="16" y="11" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="f7b-k6-SAi"/>
+                                                        <constraint firstAttribute="width" secondItem="O0P-oJ-JA5" secondAttribute="height" multiplier="1:1" id="viW-2K-D2x"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="jtd-ps-2l2" firstAttribute="leading" secondItem="O0P-oJ-JA5" secondAttribute="trailing" constant="16" id="W1t-SL-VGT"/>
-                                                <constraint firstAttribute="trailing" secondItem="jtd-ps-2l2" secondAttribute="trailing" constant="17" id="WGb-EX-rH5"/>
-                                                <constraint firstItem="jtd-ps-2l2" firstAttribute="centerY" secondItem="oRe-dO-tNk" secondAttribute="centerY" id="bef-En-aYs"/>
-                                                <constraint firstItem="O0P-oJ-JA5" firstAttribute="leading" secondItem="oRe-dO-tNk" secondAttribute="leading" constant="20" id="hVK-0I-NhT"/>
-                                                <constraint firstItem="O0P-oJ-JA5" firstAttribute="centerY" secondItem="oRe-dO-tNk" secondAttribute="centerY" id="lgr-q8-XnD"/>
-                                                <constraint firstItem="O0P-oJ-JA5" firstAttribute="height" secondItem="oRe-dO-tNk" secondAttribute="height" multiplier="0.5" constant="3" id="rDH-qQ-WZB"/>
+                                                <constraint firstItem="jtd-ps-2l2" firstAttribute="leading" secondItem="O0P-oJ-JA5" secondAttribute="trailing" constant="10" id="gDk-3o-l8z"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="O0P-oJ-JA5" firstAttribute="leading" secondItem="J80-nb-tmW" secondAttribute="leading" constant="16" id="0TJ-Id-zHl"/>
+                                            <constraint firstAttribute="trailing" secondItem="jtd-ps-2l2" secondAttribute="trailing" constant="17" id="5fj-dQ-04P"/>
+                                            <constraint firstItem="O0P-oJ-JA5" firstAttribute="centerY" secondItem="J80-nb-tmW" secondAttribute="centerY" id="AtH-Pu-L5L"/>
+                                            <constraint firstItem="jtd-ps-2l2" firstAttribute="centerY" secondItem="J80-nb-tmW" secondAttribute="centerY" id="x8W-i0-R2x"/>
+                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstName" id="lmv-Tw-Kll">
                                         <rect key="frame" x="0.0" y="70" width="375" height="44"/>
@@ -1297,7 +1299,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8H-VT-JbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4210.3999999999996" y="275.61576354679806"/>
+            <point key="canvasLocation" x="4198" y="282"/>
         </scene>
         <!--Edit-->
         <scene sceneID="KY9-s1-c0h">
@@ -1463,6 +1465,7 @@
         <image name="credit-card-empty-backgr" width="1666" height="1166"/>
         <image name="id-card-template" width="426" height="341"/>
         <image name="if_credit-cards_47679" width="16" height="16"/>
+        <image name="user_id_pattern" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cg4-to-xW2"/>
