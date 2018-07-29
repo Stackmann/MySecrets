@@ -8,9 +8,10 @@
 
 import UIKit
 
-class IdCardEditTableViewController: UITableViewController {
+class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate {
     var chosenRecordIndex = -1
     var chosenBirthday: Date?
+    var chosenReceivedDate: Date?
     var currentNum = -1
     private let customDatePicker = DayMonthYearPickerView()
 
@@ -33,7 +34,8 @@ class IdCardEditTableViewController: UITableViewController {
         } else {
             currentNum = Secrets.share.lastNum + 1
         }
-
+        birthdayTextField.delegate = self
+        receivedDateTextField.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = UIColor.black
@@ -68,7 +70,8 @@ class IdCardEditTableViewController: UITableViewController {
         if let sn = snTextField.text { stringFields["SN"] = sn }
         if let number = numberTextField.text, let numberInt = Int(number) { decimalFields["Number"] = numberInt }
         if let birthday = chosenBirthday { dateFields["BirthdayDate"] = birthday }
-        
+        if let receivedDate = chosenReceivedDate { dateFields["ReceivedDate"] = receivedDate }
+
         let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "idcard", num: currentNum)
         
         if chosenRecordIndex >= 0 {
@@ -91,9 +94,9 @@ class IdCardEditTableViewController: UITableViewController {
         tableView.allowsSelection = false
         numberTextField.keyboardType = .decimalPad
         birthdayTextField.inputView = customDatePicker // datePicker
-        birthdayTextField.inputAccessoryView = returnToolBar()
-        //receivedDateTextField.inputView = customDatePicker // datePicker
-        //receivedDateTextField.inputAccessoryView = returnToolBar()
+        birthdayTextField.inputAccessoryView = returnToolBarForBirthday()
+        receivedDateTextField.inputView = customDatePicker // datePicker
+        receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
@@ -116,7 +119,12 @@ class IdCardEditTableViewController: UITableViewController {
             if let birthday = secret.dateFields["BirthdayDate"] {
                 birthdayTextField.text = formatter.string(from: birthday)
                 chosenBirthday = birthday
-                customDatePicker.date = birthday
+                //customDatePicker.date = birthday
+            }
+            if let receivedDate = secret.dateFields["ReceivedDate"] {
+                receivedDateTextField.text = formatter.string(from: receivedDate)
+                chosenReceivedDate = receivedDate
+                //customDatePicker.date = receivedDate
             }
             if let number = secret.decimalFields["Number"] {
                 numberTextField.text = "\(number)"
@@ -125,7 +133,7 @@ class IdCardEditTableViewController: UITableViewController {
         }
     }
     
-    private func returnToolBar() -> UIToolbar {
+    private func returnToolBarForBirthday() -> UIToolbar {
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
@@ -139,7 +147,7 @@ class IdCardEditTableViewController: UITableViewController {
         let doneButton = UIBarButtonItem(title: "Готово",
                                          style: .plain,
                                          target: self,
-                                         action: #selector(self.updateChosenDate))
+                                         action: #selector(self.updateChosenBirthday))
         
         doneButton.tintColor = UIColor.blue
         
@@ -149,7 +157,7 @@ class IdCardEditTableViewController: UITableViewController {
         return toolBar
     }
     
-    @objc private func updateChosenDate() {
+    @objc private func updateChosenBirthday() {
         birthdayTextField.resignFirstResponder()
         
         chosenBirthday = customDatePicker.date
@@ -160,6 +168,61 @@ class IdCardEditTableViewController: UITableViewController {
         let chosenBirthdayString = formatter.string(from: customDatePicker.date)
         
         birthdayTextField.text = chosenBirthdayString
+    }
+
+    private func returnToolBarForReceivedDate() -> UIToolbar {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        //        toolBar.sizeToFit()
+        toolBar.frame = CGRect(x: toolBar.frame.origin.x,
+                               y: toolBar.frame.origin.y,
+                               width: toolBar.frame.width,
+                               height: 32)
+        
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Готово",
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(self.updateChosenReceivedDate))
+        
+        doneButton.tintColor = UIColor.blue
+        
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }
+    
+    @objc private func updateChosenReceivedDate() {
+        receivedDateTextField.resignFirstResponder()
+        
+        chosenReceivedDate = customDatePicker.date
+        
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = "dd/MM/yyyy"
+        let chosenReceivedDateString = formatter.string(from: customDatePicker.date)
+        
+        receivedDateTextField.text = chosenReceivedDateString
+    }
+
+    // MARK: - textfield delegate metods
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        switch textField {
+        case birthdayTextField:
+            if let chosenDate = chosenBirthday {
+                customDatePicker.date = chosenDate
+            }
+        case receivedDateTextField:
+            if let chosenDate = chosenReceivedDate {
+                customDatePicker.date = chosenDate
+            }
+        default:
+            return true
+        }
+        return true
     }
 
 }
