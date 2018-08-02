@@ -78,6 +78,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             chosenVC.chosenRecordIndex = chosenRecordIndex
         } else if let chosenVC = segue.destination as? IdCardViewController {
             chosenVC.chosenRecordIndex = chosenRecordIndex
+        } else if let chosenVC = segue.destination as? CommonViewController {
+            chosenVC.chosenRecordIndex = chosenRecordIndex
         } else if let chosenVC = segue.destination as? UINavigationController,
             let chosenCVC = chosenVC.topViewController as? PatternCollectionViewController {
             chosenCVC.delegat = self

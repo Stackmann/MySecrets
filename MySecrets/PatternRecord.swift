@@ -16,7 +16,7 @@ struct PatternRecord {
 }
 
 enum PatternKind: String {
-    case websait = "Websait"
+    case websait = "websait"
     case rdp = "rdp"
     case account = "account"
     case password = "password"

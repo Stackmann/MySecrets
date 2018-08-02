@@ -32,6 +32,7 @@
 		07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */; };
 		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
 		CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */; };
+		CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F702111F1F6004C8678 /* CommonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		59E049058BDA40146DD601FF /* Pods-MySecrets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D7CAA033FA9E123B8C24E7 /* Pods-MySecrets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.release.xcconfig"; sourceTree = "<group>"; };
 		CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMonthYearPickerView.swift; sourceTree = "<group>"; };
+		CEFD1F702111F1F6004C8678 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				0727C5382020F194003E86B3 /* PatternCollectionViewController.swift */,
 				072AD3EF200FF7E4004029C5 /* IdCardEditTableViewController.swift */,
 				071C5BE42003AF9C00A05BD2 /* IdCardViewController.swift */,
+				CEFD1F702111F1F6004C8678 /* CommonViewController.swift */,
 				071B51871FED90EE00EEE18E /* CreditCardViewController.swift */,
 				07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
@@ -303,6 +306,7 @@
 				072861E020E3D29C00C12932 /* SecretsBD.swift in Sources */,
 				071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */,
 				071C5BE52003AF9D00A05BD2 /* IdCardViewController.swift in Sources */,
+				CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */,
 				072AD3F0200FF7E4004029C5 /* IdCardEditTableViewController.swift in Sources */,
 				07F7B692201E39BC000FA2F3 /* CommonFuncs.swift in Sources */,
 			);

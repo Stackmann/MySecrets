@@ -13,6 +13,7 @@ class IdCardViewController: UIViewController {
     var chosenRecordIndex: Int = -1
 
     
+    @IBOutlet weak var descriptionValue: UILabel!
     @IBOutlet weak var firstNameValue: UILabel!
     @IBOutlet weak var lastNameValue: UILabel!
     @IBOutlet weak var middleNameValue: UILabel!
@@ -31,11 +32,6 @@ class IdCardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         configureController()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let chosenNC = segue.destination as? UINavigationController {
@@ -49,23 +45,31 @@ class IdCardViewController: UIViewController {
         if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
             let chosenRecord = Secrets.share.list[chosenRecordIndex]
             
+            descriptionValue.text = chosenRecord.describe
+            descriptionValue.textColor = UIColor.black
             if let firstNameStr = chosenRecord.stringFields["FirstName"] {
                 firstNameValue.textAlignment = NSTextAlignment.left
                 firstNameValue.text = firstNameStr
                 //firstNameValue = UIFont(name: "OCRAStd", size: 35)
                 firstNameValue.textColor = UIColor.yellow
+            } else {
+                firstNameValue.text = ""
             }
             if let lastNameStr = chosenRecord.stringFields["LastName"] {
                 lastNameValue.textAlignment = NSTextAlignment.left
                 lastNameValue.text = lastNameStr
                 //lastNameValue = UIFont(name: "OCRAStd", size: 35)
                 lastNameValue.textColor = UIColor.yellow
+            } else {
+                lastNameValue.text = ""
             }
             if let middleNameStr = chosenRecord.stringFields["MiddleName"] {
                 middleNameValue.textAlignment = NSTextAlignment.left
                 middleNameValue.text = middleNameStr
                 //middleNameValue = UIFont(name: "OCRAStd", size: 35)
                 middleNameValue.textColor = UIColor.yellow
+            } else {
+                middleNameValue.text = ""
             }
 
             if let BirthdayDateStr = chosenRecord.dateFields["BirthdayDate"] {
@@ -75,6 +79,8 @@ class IdCardViewController: UIViewController {
                 birthdayValue.text = formatter.string(from: BirthdayDateStr)
                 //birthdayValue.font = UIFont(name: "OCRAStd", size: 20)
                 birthdayValue.textColor = UIColor.yellow
+            } else {
+                birthdayValue.text = ""
             }
 
             if let ReceivedDateStr = chosenRecord.dateFields["ReceivedDate"] {
@@ -84,6 +90,8 @@ class IdCardViewController: UIViewController {
                 receivedDateValue.text = formatter.string(from: ReceivedDateStr)
                 //receivedDateValue = UIFont(name: "OCRAStd", size: 20)
                 receivedDateValue.textColor = UIColor.yellow
+            } else {
+                receivedDateValue.text = ""
             }
 
             if let snStr = chosenRecord.stringFields["SN"] {
@@ -91,13 +99,17 @@ class IdCardViewController: UIViewController {
                 snValue.text = snStr
                 //snValue.font = UIFont(name: "OCRAStd", size: 20)
                 snValue.textColor = UIColor.yellow
+            } else {
+                snValue.text = ""
             }
-            
+
             if let numberStr = chosenRecord.decimalFields["Number"] {
                 numberValue.textAlignment = NSTextAlignment.left
                 numberValue.text = "\(numberStr)"
                 //numberValue.font = UIFont(name: "OCRAStd", size: 20)
                 numberValue.textColor = UIColor.yellow
+            } else {
+                numberValue.text = ""
             }
         }
     }
@@ -105,17 +117,5 @@ class IdCardViewController: UIViewController {
     @IBAction func editAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showIdEditController", sender: nil)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 
 }
