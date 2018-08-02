@@ -10,6 +10,7 @@ import UIKit
 
 class CommonViewController: UIViewController {
     var chosenRecordIndex: Int = -1
+    var maxRowOfLabelCount = 5
     
     @IBOutlet weak var descriptionValue: UILabel!
     @IBOutlet weak var label1: UILabel!
@@ -25,7 +26,6 @@ class CommonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +40,7 @@ class CommonViewController: UIViewController {
             
             descriptionValue.text = chosenRecord.describe
             descriptionValue.textColor = UIColor.white
-            switch chosenRecord.idPattern {
-                case "websait" : configureWebsait()
-                default : print("Unexpected idPattern")
-            }
+            configureLabels(chosenRecord.idPattern)
             
 //            if let firstNameStr = chosenRecord.stringFields["FirstName"] {
 //                firstNameValue.textAlignment = NSTextAlignment.left
@@ -112,10 +109,20 @@ class CommonViewController: UIViewController {
         }
     }
     
-    func configureWebsait() {
-        label1.textColor = UIColor.white
-        label1.text = "Login"
-        label2.textColor = UIColor.white
-        label2.text = "Password"
+    func configureLabels(_ id:String) {
+        if let patern = Patterns.share.list[id] {
+            let labels = [label1, label2, label3, label4, label5, label1Value, label2Value, label3Value, label4Value, label5Value]
+            var count = 0
+            for patternField in patern.fields {
+                labels[count]?.text = patternField.key
+                labels[count]?.textColor = UIColor.white
+                count += 1
+            }
+            while count < maxRowOfLabelCount {
+                labels[count]?.isHidden = true
+                labels[count + maxRowOfLabelCount]?.isHidden = true
+                count += 1
+            }
+        }
     }
 }

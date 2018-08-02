@@ -98,12 +98,6 @@ class CommonFuncs {
             return false
         }
     }
-    
-    static func findPatternById(_ id: String) {
-        for pattern in Patterns.share.list {
-            
-        }
-    }
 }
 
 extension String {
