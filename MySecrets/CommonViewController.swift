@@ -52,6 +52,10 @@ class CommonViewController: UIViewController {
                         labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
                         labels[count + maxRowOfLabelCount]?.text = valueStr
                         labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
+                    } else if patternField.value == "Int", let valueInt = chosenRecord.decimalFields[patternField.key] {
+                        labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
+                        labels[count + maxRowOfLabelCount]?.text = "\(valueInt)"
+                        labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
                     } else {
                         labels[count + maxRowOfLabelCount]?.text = ""
                     }

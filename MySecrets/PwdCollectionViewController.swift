@@ -61,7 +61,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             case .creditcard:
                 performSegue(withIdentifier: "editCreditCardRecord", sender: nil)
             default:
-                performSegue(withIdentifier: "editOtherdRecord", sender: nil)
+                performSegue(withIdentifier: "editCommonRecord", sender: nil)
             }
             patternToCreate = nil
         } else if let searchPattern = searchController.searchBar.text, searchPattern == "" ||
@@ -126,7 +126,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
                 }
             }
             switch secret.idPattern {
-            case "idcard" : performSegue(withIdentifier: "showIdRecord", sender: nil)
+            case "idcard" : performSegue(withIdentifier: "showIdCardRecord", sender: nil)
             case "creditcard" : performSegue(withIdentifier: "showCardRecord", sender: nil)
             default : performSegue(withIdentifier: "showCommonRecord", sender: nil)
             }
