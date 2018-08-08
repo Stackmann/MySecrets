@@ -15,10 +15,20 @@ class CommonEditTableViewController: UITableViewController {
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var field1TextField: UITextField!
+    @IBOutlet weak var field2TextField: UITextField!
+    @IBOutlet weak var field3TextField: UITextField!
+    @IBOutlet weak var field4TextField: UITextField!
+    @IBOutlet weak var field5TextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        if chosenRecordIndex >= 0 {
+            configure()
+        } else {
+            currentNum = Secrets.share.lastNum + 1
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +107,37 @@ class CommonEditTableViewController: UITableViewController {
         tableView.allowsSelection = false
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
+        }
+    }
+
+    func configure() {
+        if Secrets.share.list.indices.contains(chosenRecordIndex){
+            // Configure the tableView
+            let secret = Secrets.share.list[chosenRecordIndex]
+            currentNum = secret.num
+            if let image = UIImage(data: secret.avatar) {
+                avatarImageView.image = image
+            }
+            descriptionTextField.text = secret.describe
+//            firstNameTextField.text = secret.stringFields["FirstName"]
+//            lastNameTextField.text = secret.stringFields["LastName"]
+//            middleNameTextField.text = secret.stringFields["MiddleName"]
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "dd/MM/yyyy"
+//            if let birthday = secret.dateFields["BirthdayDate"] {
+//                birthdayTextField.text = formatter.string(from: birthday)
+//                chosenBirthday = birthday
+//                //customDatePicker.date = birthday
+//            }
+//            if let receivedDate = secret.dateFields["ReceivedDate"] {
+//                receivedDateTextField.text = formatter.string(from: receivedDate)
+//                chosenReceivedDate = receivedDate
+//                //customDatePicker.date = receivedDate
+//            }
+//            if let number = secret.decimalFields["Number"] {
+//                numberTextField.text = "\(number)"
+//            }
+//            snTextField.text = secret.stringFields["SN"]
         }
     }
 

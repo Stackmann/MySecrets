@@ -32,6 +32,14 @@ class CommonViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         configureController()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let chosenNC = segue.destination as? UINavigationController {
+            if let chosenVC = chosenNC.topViewController as? CommonEditTableViewController {
+                chosenVC.chosenRecordIndex = chosenRecordIndex
+            }
+        }
+    }
 
     // MARK: - add metodes
     
@@ -74,4 +82,7 @@ class CommonViewController: UIViewController {
         }
     }
     
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showCommonEditController", sender: nil)
+    }
 }

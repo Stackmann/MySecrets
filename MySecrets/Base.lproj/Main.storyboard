@@ -472,8 +472,8 @@
                         <segue destination="OyR-Oq-eWU" kind="presentation" identifier="addNewRecord" id="UGu-eh-aif"/>
                         <segue destination="PEL-Rh-TUO" kind="presentation" identifier="editCreditCardRecord" id="cg4-to-xW2"/>
                         <segue destination="Yki-Z0-Xdt" kind="presentation" identifier="editIdCardRecord" id="Le6-PD-QmH"/>
-                        <segue destination="pW0-f7-gdX" kind="show" identifier="showCommonRecord" id="YTz-m7-zVJ"/>
                         <segue destination="dXE-3l-m0b" kind="presentation" identifier="editCommonRecord" id="fhQ-ps-prY"/>
+                        <segue destination="pW0-f7-gdX" kind="show" identifier="showCommonRecord" id="XhX-SP-ST6"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RRx-1D-ejB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1303,7 +1303,7 @@
             </objects>
             <point key="canvasLocation" x="4198" y="282"/>
         </scene>
-        <!--View-->
+        <!--Common View Controller-->
         <scene sceneID="MKp-ld-nWM">
             <objects>
                 <viewController id="pW0-f7-gdX" customClass="CommonViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
@@ -1479,7 +1479,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="View" id="fnH-RA-Z3J"/>
+                    <navigationItem key="navigationItem" id="YzQ-dQ-NXV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="KDh-aq-W36">
+                            <connections>
+                                <action selector="editAction:" destination="pW0-f7-gdX" id="fDj-qZ-nBy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionValue" destination="P6O-hy-gqB" id="x4N-pp-ozW"/>
                         <outlet property="label1" destination="iaN-WM-gzL" id="igU-eF-VfC"/>
@@ -1493,7 +1499,7 @@
                         <outlet property="label5" destination="hh2-5E-v3s" id="BPt-cd-05G"/>
                         <outlet property="label5Value" destination="quT-13-1di" id="Skd-cy-G5o"/>
                         <outlet property="patternImageView" destination="Zwy-7z-BZv" id="NGQ-H8-OgL"/>
-                        <segue destination="dXE-3l-m0b" kind="presentation" identifier="showCommonRecord" id="K4l-G9-xFR"/>
+                        <segue destination="dXE-3l-m0b" kind="presentation" identifier="showCommonEditController" id="K4l-G9-xFR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfS-bV-ka1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1813,6 +1819,11 @@
                         <outlet property="avatarImageView" destination="QXW-YM-Nac" id="gQX-OH-lvY"/>
                         <outlet property="barButtonDelete" destination="6DT-Jt-ssA" id="eTs-IB-vSR"/>
                         <outlet property="descriptionTextField" destination="oWE-aS-RXH" id="2I9-mV-DZv"/>
+                        <outlet property="field1TextField" destination="j5R-Fp-ChC" id="ULS-YG-xRu"/>
+                        <outlet property="field2TextField" destination="Bfo-t1-oYw" id="Y8e-bJ-JEz"/>
+                        <outlet property="field3TextField" destination="7gO-wC-kJL" id="pCR-FG-Ijv"/>
+                        <outlet property="field4TextField" destination="pYM-Ue-unQ" id="fiJ-lG-bdA"/>
+                        <outlet property="field5TextField" destination="Wk5-ef-cc8" id="DfS-DT-opZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b67-gH-tqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1846,8 +1857,8 @@
         <image name="user_id_pattern" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fhQ-ps-prY"/>
-        <segue reference="cg4-to-xW2"/>
-        <segue reference="Le6-PD-QmH"/>
+        <segue reference="K4l-G9-xFR"/>
+        <segue reference="sRE-Wh-5vg"/>
+        <segue reference="jpP-zI-ed0"/>
     </inferredMetricsTieBreakers>
 </document>
