@@ -11,6 +11,7 @@ import UIKit
 class CommonEditTableViewController: UITableViewController {
     var chosenRecordIndex = -1
     var currentNum = -1
+    var patternToCreate: PatternRecord?
 
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -107,6 +108,13 @@ class CommonEditTableViewController: UITableViewController {
         tableView.allowsSelection = false
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
+        }
+        if let pattern = patternToCreate {
+            if let image = UIImage(data: pattern.avatar) {
+                avatarImageView.image = image
+            }
+            // configure labels
+            
         }
     }
 

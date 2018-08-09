@@ -80,9 +80,12 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             chosenVC.chosenRecordIndex = chosenRecordIndex
         } else if let chosenVC = segue.destination as? CommonViewController {
             chosenVC.chosenRecordIndex = chosenRecordIndex
-        } else if let chosenVC = segue.destination as? UINavigationController,
-            let chosenCVC = chosenVC.topViewController as? PatternCollectionViewController {
-            chosenCVC.delegat = self
+        } else if let chosenVC = segue.destination as? UINavigationController {
+            if let chosenCVC = chosenVC.topViewController as? PatternCollectionViewController {
+                chosenCVC.delegat = self
+            } else if let chosenCVC = chosenVC.topViewController as? CommonEditTableViewController {
+                chosenCVC.patternToCreate = patternToCreate
+            }
         }
     }
 
