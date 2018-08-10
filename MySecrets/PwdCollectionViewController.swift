@@ -84,7 +84,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             if let chosenCVC = chosenVC.topViewController as? PatternCollectionViewController {
                 chosenCVC.delegat = self
             } else if let chosenCVC = chosenVC.topViewController as? CommonEditTableViewController {
-                chosenCVC.patternToCreate = patternToCreate
+                chosenCVC.patternKind = patternToCreate
             }
         }
     }

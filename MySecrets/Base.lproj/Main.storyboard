@@ -1819,10 +1819,15 @@
                         <outlet property="avatarImageView" destination="QXW-YM-Nac" id="gQX-OH-lvY"/>
                         <outlet property="barButtonDelete" destination="6DT-Jt-ssA" id="eTs-IB-vSR"/>
                         <outlet property="descriptionTextField" destination="oWE-aS-RXH" id="2I9-mV-DZv"/>
+                        <outlet property="field1Label" destination="kwa-WK-fP4" id="5Vu-T2-OCp"/>
                         <outlet property="field1TextField" destination="j5R-Fp-ChC" id="ULS-YG-xRu"/>
+                        <outlet property="field2Label" destination="4Ht-YI-9M9" id="l2T-wQ-jDa"/>
                         <outlet property="field2TextField" destination="Bfo-t1-oYw" id="Y8e-bJ-JEz"/>
+                        <outlet property="field3Label" destination="pYc-5l-IgZ" id="zRL-9m-m1q"/>
                         <outlet property="field3TextField" destination="7gO-wC-kJL" id="pCR-FG-Ijv"/>
+                        <outlet property="field4Label" destination="M5G-TR-6PA" id="g8E-Vy-068"/>
                         <outlet property="field4TextField" destination="pYM-Ue-unQ" id="fiJ-lG-bdA"/>
+                        <outlet property="field5Label" destination="SPT-ZI-QKl" id="MTG-p3-tf5"/>
                         <outlet property="field5TextField" destination="Wk5-ef-cc8" id="DfS-DT-opZ"/>
                     </connections>
                 </tableViewController>

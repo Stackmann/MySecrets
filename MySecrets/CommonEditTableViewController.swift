@@ -11,8 +11,9 @@ import UIKit
 class CommonEditTableViewController: UITableViewController {
     var chosenRecordIndex = -1
     var currentNum = -1
-    var patternToCreate: PatternRecord?
-
+    var patternKind: PatternRecord?
+    var maxRowOfLabelCount = 5
+    
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -21,13 +22,23 @@ class CommonEditTableViewController: UITableViewController {
     @IBOutlet weak var field3TextField: UITextField!
     @IBOutlet weak var field4TextField: UITextField!
     @IBOutlet weak var field5TextField: UITextField!
+    @IBOutlet weak var field1Label: UILabel!
+    @IBOutlet weak var field2Label: UILabel!
+    @IBOutlet weak var field3Label: UILabel!
+    @IBOutlet weak var field4Label: UILabel!
+    @IBOutlet weak var field5Label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
         if chosenRecordIndex >= 0 {
-            configure()
+            if Secrets.share.list.indices.contains(chosenRecordIndex) {
+                let secret = Secrets.share.list[chosenRecordIndex]
+                patternKind = Patterns.share.list[secret.idPattern]
+                setupUI()
+                configure()
+            }
         } else {
+            setupUI()
             currentNum = Secrets.share.lastNum + 1
         }
     }
@@ -109,25 +120,51 @@ class CommonEditTableViewController: UITableViewController {
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
-        if let pattern = patternToCreate {
+        if let pattern = patternKind {
             if let image = UIImage(data: pattern.avatar) {
                 avatarImageView.image = image
             }
-            // configure labels
-            
+            // configure labels and textFields
+            let labels = [field1Label, field2Label, field3Label, field4Label, field5Label]
+            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField]
+            var count = 0
+            for patternField in pattern.fields {
+                labels[count]?.text = patternField.key
+                if patternField.value == "Int" {
+                    textFields[count]?.keyboardType = .decimalPad
+                }
+                count += 1
+            }
+            while count < maxRowOfLabelCount {
+                labels[count]?.isHidden = true
+                textFields[count]?.isHidden = true
+                count += 1
+            }
         }
     }
 
     func configure() {
         if Secrets.share.list.indices.contains(chosenRecordIndex){
             // Configure the tableView
+            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField]
             let secret = Secrets.share.list[chosenRecordIndex]
             currentNum = secret.num
             if let image = UIImage(data: secret.avatar) {
                 avatarImageView.image = image
             }
             descriptionTextField.text = secret.describe
-//            firstNameTextField.text = secret.stringFields["FirstName"]
+            if let patern = Patterns.share.list[secret.idPattern] {
+                var count = 0
+                for patternField in patern.fields {
+                    if patternField.value == "String" {
+                        textFields[count]?.text = secret.stringFields[patternField.key]
+                    } else if let intValue = secret.decimalFields[patternField.key] {
+                        textFields[count]?.text = "\(intValue)"
+                    }
+                    count += 1
+                }
+            }
+            //            firstNameTextField.text = secret.stringFields["FirstName"]
 //            lastNameTextField.text = secret.stringFields["LastName"]
 //            middleNameTextField.text = secret.stringFields["MiddleName"]
 //            let formatter = DateFormatter()
