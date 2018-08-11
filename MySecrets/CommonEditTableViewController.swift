@@ -12,7 +12,7 @@ class CommonEditTableViewController: UITableViewController {
     var chosenRecordIndex = -1
     var currentNum = -1
     var patternKind: PatternRecord?
-    var maxRowOfLabelCount = 5
+    var maxRowOfLabelCount = 6
     
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -22,11 +22,13 @@ class CommonEditTableViewController: UITableViewController {
     @IBOutlet weak var field3TextField: UITextField!
     @IBOutlet weak var field4TextField: UITextField!
     @IBOutlet weak var field5TextField: UITextField!
+    @IBOutlet weak var field6TextField: UITextField!
     @IBOutlet weak var field1Label: UILabel!
     @IBOutlet weak var field2Label: UILabel!
     @IBOutlet weak var field3Label: UILabel!
     @IBOutlet weak var field4Label: UILabel!
     @IBOutlet weak var field5Label: UILabel!
+    @IBOutlet weak var field6Label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,55 +65,13 @@ class CommonEditTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 6
+        if let pattern = patternKind {
+            return pattern.fields.count + 1
+        } else {
+            return 6
+        }
     }
 
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     // MARK: - self metods
     
     func setupUI() {
@@ -125,8 +85,8 @@ class CommonEditTableViewController: UITableViewController {
                 avatarImageView.image = image
             }
             // configure labels and textFields
-            let labels = [field1Label, field2Label, field3Label, field4Label, field5Label]
-            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField]
+            let labels = [field1Label, field2Label, field3Label, field4Label, field5Label, field6Label]
+            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField, field6TextField]
             var count = 0
             for patternField in pattern.fields {
                 labels[count]?.text = patternField.key
@@ -135,25 +95,20 @@ class CommonEditTableViewController: UITableViewController {
                 }
                 count += 1
             }
-            while count < maxRowOfLabelCount {
-                labels[count]?.isHidden = true
-                textFields[count]?.isHidden = true
-                count += 1
-            }
         }
     }
 
     func configure() {
         if Secrets.share.list.indices.contains(chosenRecordIndex){
             // Configure the tableView
-            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField]
+            let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField, field6TextField]
             let secret = Secrets.share.list[chosenRecordIndex]
             currentNum = secret.num
             if let image = UIImage(data: secret.avatar) {
                 avatarImageView.image = image
             }
             descriptionTextField.text = secret.describe
-            if let patern = Patterns.share.list[secret.idPattern] {
+            if let patern = patternKind {
                 var count = 0
                 for patternField in patern.fields {
                     if patternField.value == "String" {
@@ -164,25 +119,6 @@ class CommonEditTableViewController: UITableViewController {
                     count += 1
                 }
             }
-            //            firstNameTextField.text = secret.stringFields["FirstName"]
-//            lastNameTextField.text = secret.stringFields["LastName"]
-//            middleNameTextField.text = secret.stringFields["MiddleName"]
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "dd/MM/yyyy"
-//            if let birthday = secret.dateFields["BirthdayDate"] {
-//                birthdayTextField.text = formatter.string(from: birthday)
-//                chosenBirthday = birthday
-//                //customDatePicker.date = birthday
-//            }
-//            if let receivedDate = secret.dateFields["ReceivedDate"] {
-//                receivedDateTextField.text = formatter.string(from: receivedDate)
-//                chosenReceivedDate = receivedDate
-//                //customDatePicker.date = receivedDate
-//            }
-//            if let number = secret.decimalFields["Number"] {
-//                numberTextField.text = "\(number)"
-//            }
-//            snTextField.text = secret.stringFields["SN"]
         }
     }
 

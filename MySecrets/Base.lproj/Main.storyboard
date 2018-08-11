@@ -1795,6 +1795,36 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell6" id="IiW-O9-OC7">
+                                        <rect key="frame" x="0.0" y="290" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IiW-O9-OC7" id="DCf-fa-PLB">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWO-pd-Ugb">
+                                                    <rect key="frame" x="15" y="11" width="52" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Onx-c2-hKZ">
+                                                    <rect key="frame" x="77" y="6" width="281" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Onx-c2-hKZ" secondAttribute="trailing" constant="17" id="TDp-qP-zLQ"/>
+                                                <constraint firstItem="tWO-pd-Ugb" firstAttribute="leading" secondItem="DCf-fa-PLB" secondAttribute="leading" constant="15" id="WXt-iS-irH"/>
+                                                <constraint firstItem="Onx-c2-hKZ" firstAttribute="centerY" secondItem="DCf-fa-PLB" secondAttribute="centerY" id="YAM-Ba-jgn"/>
+                                                <constraint firstItem="tWO-pd-Ugb" firstAttribute="centerY" secondItem="DCf-fa-PLB" secondAttribute="centerY" id="e4M-6D-6dW"/>
+                                                <constraint firstItem="Onx-c2-hKZ" firstAttribute="leading" secondItem="tWO-pd-Ugb" secondAttribute="trailing" constant="10" id="vpF-ag-vj2"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1829,6 +1859,8 @@
                         <outlet property="field4TextField" destination="pYM-Ue-unQ" id="fiJ-lG-bdA"/>
                         <outlet property="field5Label" destination="SPT-ZI-QKl" id="MTG-p3-tf5"/>
                         <outlet property="field5TextField" destination="Wk5-ef-cc8" id="DfS-DT-opZ"/>
+                        <outlet property="field6Label" destination="tWO-pd-Ugb" id="Wtj-Ij-ZJo"/>
+                        <outlet property="field6TextField" destination="Onx-c2-hKZ" id="Byp-JZ-bVP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b67-gH-tqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
