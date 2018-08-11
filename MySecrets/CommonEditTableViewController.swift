@@ -56,6 +56,65 @@ class CommonEditTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func saveAction(_ sender: UIBarButtonItem) {
+        guard let describe = descriptionTextField.text else {
+            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Fill describe please")
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        var stringFields = [String: String]()
+        var decimalFields = [String: Int]()
+        let dateFields = [String: Date]()
+
+        guard let avatarData = UIImagePNGRepresentation(avatarImageView.image!) else {
+            let alert = CommonFuncs.getAlert(title: "System error!", message: "Can't get image of the record.")
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField, field6TextField]
+        if let pattern = patternKind {
+            var count = 0
+            for field in pattern.fields {
+                if field.value == "Int" {
+                    if let valueStr = textFields[count]?.text {
+                        if let valueInt = Int(valueStr) { decimalFields[field.key] = valueInt} else {
+                            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Invalid field " + field.key + ". Please, use only digits.")
+                            present(alert, animated: true, completion: nil)
+                            return
+                        }
+                    }
+                } else { //string
+                    if let valueStr = textFields[count]?.text { stringFields[field.key] = valueStr}
+                }
+                count += 1
+            }
+            let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: pattern.kind.rawValue, num: currentNum)
+            
+            if chosenRecordIndex >= 0 {
+                Secrets.share.list[chosenRecordIndex] = currentRecord
+            } else {
+                Secrets.share.list.append(currentRecord)
+                Secrets.share.lastNum = currentNum
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
+            dismiss(animated: true, completion: nil)
+
+        }
+    }
+    
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Confirmation", message: "Remove the record?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.deleteRecord()
+        })
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -120,6 +179,14 @@ class CommonEditTableViewController: UITableViewController {
                 }
             }
         }
+    }
+
+    func deleteRecord() {
+        if chosenRecordIndex >= 0 {
+            Secrets.share.list.remove(at: chosenRecordIndex)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

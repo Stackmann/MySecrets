@@ -129,9 +129,7 @@ class CreditCardEditTableViewController: UITableViewController {
     
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         guard let describe = descriptionField.text else {
-            let alert = UIAlertController(title: "Wrong data!", message: "Fill describe please", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
+            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Fill describe please")
             present(alert, animated: true, completion: nil)
             return
         }

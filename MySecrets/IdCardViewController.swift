@@ -24,6 +24,7 @@ class IdCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
 
         // Do any additional setup after loading the view.
         
@@ -116,6 +117,10 @@ class IdCardViewController: UIViewController {
     
     @IBAction func editAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showIdEditController", sender: nil)
+    }
+
+    @objc private func deleteReturnToMainList() {
+        navigationController?.popToRootViewController(animated: true)
     }
 
 }

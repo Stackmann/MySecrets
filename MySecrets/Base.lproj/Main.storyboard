@@ -1283,7 +1283,11 @@
                                     <action selector="saveAction:" destination="OWV-GK-oE4" id="Tbe-ns-xbb"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="trash" id="oOb-ku-bbd"/>
+                            <barButtonItem systemItem="trash" id="oOb-ku-bbd">
+                                <connections>
+                                    <action selector="deleteAction:" destination="OWV-GK-oE4" id="yeK-Mv-JiW"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -1840,8 +1844,16 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="save" id="Mpy-Cy-1hy"/>
-                            <barButtonItem systemItem="trash" id="6DT-Jt-ssA"/>
+                            <barButtonItem systemItem="save" id="Mpy-Cy-1hy">
+                                <connections>
+                                    <action selector="saveAction:" destination="MrT-1U-Eed" id="FH4-OC-orH"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="6DT-Jt-ssA">
+                                <connections>
+                                    <action selector="deleteAction:" destination="MrT-1U-Eed" id="LrA-Fo-gyb"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

@@ -47,11 +47,20 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Confirmation", message: "Remove the record?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.deleteRecord()
+        })
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
         guard let describe = descriptionTextField.text else {
-            let alert = UIAlertController(title: "Wrong data!", message: "Fill describe please", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(okAction)
+            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Fill describe please")
             present(alert, animated: true, completion: nil)
             return
         }
@@ -205,6 +214,14 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         let chosenReceivedDateString = formatter.string(from: customDatePicker.date)
         
         receivedDateTextField.text = chosenReceivedDateString
+    }
+
+    func deleteRecord() {
+        if chosenRecordIndex >= 0 {
+            Secrets.share.list.remove(at: chosenRecordIndex)
+        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - textfield delegate metods

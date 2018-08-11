@@ -27,7 +27,7 @@ class CommonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         configureController()
@@ -81,7 +81,11 @@ class CommonViewController: UIViewController {
 
         }
     }
-    
+
+    @objc private func deleteReturnToMainList() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+
     @IBAction func editAction(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "showCommonEditController", sender: nil)
     }
