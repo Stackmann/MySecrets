@@ -36,6 +36,8 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         }
         birthdayTextField.delegate = self
         receivedDateTextField.delegate = self
+        snTextField.delegate = self
+        snTextField.returnKeyType = .done
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = UIColor.black
@@ -242,4 +244,8 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         return true
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

@@ -11,6 +11,7 @@ import Foundation
 struct PatternRecord {
     let describe: String
     let fields: Dictionary<String, String>
+    let localizedFields: Dictionary<String, String>
     let avatar: Data
     let kind: PatternKind
 }
