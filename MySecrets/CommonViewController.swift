@@ -55,9 +55,13 @@ class CommonViewController: UIViewController {
             if let patern = Patterns.share.list[chosenRecord.idPattern] {
                 let labels = [label1, label2, label3, label4, label5, label6, label1Value, label2Value, label3Value, label4Value, label5Value, label6Value]
                 var count = 0
-                for patternField in patern.fields {
-                    labels[count]?.text = patternField.key
+                for patternField in patern.localizedFields {
+                    labels[count]?.text = patternField.value
                     labels[count]?.textColor = UIColor.white
+                    count += 1
+                }
+                count = 0
+                for patternField in patern.fields {
                     if patternField.value == "String", let valueStr = chosenRecord.stringFields[patternField.key] {
                         labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
                         labels[count + maxRowOfLabelCount]?.text = valueStr

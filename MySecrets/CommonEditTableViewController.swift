@@ -147,8 +147,12 @@ class CommonEditTableViewController: UITableViewController {
             let labels = [field1Label, field2Label, field3Label, field4Label, field5Label, field6Label]
             let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField, field6TextField]
             var count = 0
+            for patternField in pattern.localizedFields {
+                labels[count]?.text = patternField.value
+                count += 1
+            }
+            count = 0
             for patternField in pattern.fields {
-                labels[count]?.text = patternField.key
                 if patternField.value == "Int" {
                     textFields[count]?.keyboardType = .decimalPad
                 }
