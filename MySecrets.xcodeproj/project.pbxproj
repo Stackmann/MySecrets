@@ -32,6 +32,7 @@
 		07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */; };
 		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
 		CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */; };
+		CEF940502137004500E1A264 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEF940522137004500E1A264 /* Localizable.strings */; };
 		CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */; };
 		CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F702111F1F6004C8678 /* CommonViewController.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,8 @@
 		59E049058BDA40146DD601FF /* Pods-MySecrets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D7CAA033FA9E123B8C24E7 /* Pods-MySecrets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.release.xcconfig"; sourceTree = "<group>"; };
 		CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditTableViewController.swift; sourceTree = "<group>"; };
+		CEF940512137004500E1A264 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEF940532137010F00E1A264 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMonthYearPickerView.swift; sourceTree = "<group>"; };
 		CEFD1F702111F1F6004C8678 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +133,7 @@
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
 				07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */,
 				CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */,
+				CEF940522137004500E1A264 /* Localizable.strings */,
 				072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */,
 				073CBFF11FEAC1A500EBDFBF /* CreditCardEditTableViewController.swift */,
 				07F7B691201E39BC000FA2F3 /* CommonFuncs.swift */,
@@ -205,6 +209,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 071E1D1E1FBF7D6F00310F44;
 			productRefGroup = 071E1D281FBF7D6F00310F44 /* Products */;
@@ -222,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				071CE19D1FF4B279004BA08D /* Card Number font.otf in Resources */,
+				CEF940502137004500E1A264 /* Localizable.strings in Resources */,
 				073E262720223A2900047E10 /* PwdCollectionViewCell.xib in Resources */,
 				071E1D351FBF7D6F00310F44 /* LaunchScreen.storyboard in Resources */,
 				071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */,
@@ -335,6 +341,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		CEF940522137004500E1A264 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEF940512137004500E1A264 /* en */,
+				CEF940532137010F00E1A264 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -342,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -399,6 +415,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
