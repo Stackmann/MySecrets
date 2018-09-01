@@ -5,3 +5,92 @@
   Created by User on 8/29/18.
   Copyright © 2018 Piligrim. All rights reserved.
 */
+/* Number of bank account */
+"Account" = "Account";
+
+/* Adress of RDP server */
+"Adress" = "Adress";
+
+/* Bank of bank account
+ Bank of credit card */
+"Bank" = "Bank";
+
+/* MFO Bank of bank account */
+"BankMFO" = "BankMFO";
+
+/* BirthdayDate of id card */
+"BirthdayDate" = "BirthdayDate";
+
+/* CVV code of credit card */
+"CVV" = "CVV";
+
+/* Date expired of credit card */
+"Expired" = "Expired";
+
+/* FirstName of id card */
+"FirstName" = "FirstName";
+
+/* Holder of credit card */
+"Holder" = "Holder";
+
+/* IMAP server of email */
+"IMAP" = "IMAP";
+
+/* LastName of id card */
+"LastName" = "LastName";
+
+/* Login of account
+ Login of email authorization
+ Login to RDP server
+ Login to websait */
+"Login" = "Login";
+
+/* MiddleName of id card */
+"MiddleName" = "MiddleName";
+
+/* Notes about account
+ Notes about bank account
+ Notes about credit card
+ Notes about email
+ Notes about secret
+ Notes of bonus card
+ Notes of secret with pattern Password
+ Notes of WiFi networks */
+"Notes" = "Notes";
+
+/* Number of bonus card
+ Number of id card */
+"Number" = "Number";
+
+/* Number of credit card */
+"NumberCard" = "NumberCard";
+
+/* Key phrase of WiFi networks
+ Password of account
+ Password of email authorization
+ Password of secret with pattern Password
+ Password to RDP server
+ Password to websait */
+"Password" = "Password";
+
+/* PIN code of credit card */
+"PIN" = "PIN";
+
+/* POP3 server of email */
+"POP3" = "POP3";
+
+/* ReceivedDate of id card */
+"ReceivedDate" = "ReceivedDate";
+
+/* SMTP server of email */
+"SMTP" = "SMTP";
+
+/* Serial number of id card */
+"SN" = "SN";
+
+/* SSID of WiFi networks */
+"SSID" = "SSID";
+
+/* URL of websait */
+"URL" = "URL";
+
