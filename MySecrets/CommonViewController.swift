@@ -52,26 +52,28 @@ class CommonViewController: UIViewController {
             descriptionValue.text = chosenRecord.describe
             descriptionValue.textColor = UIColor.white
             
-            if let patern = Patterns.share.list[chosenRecord.idPattern] {
+            if let pattern = Patterns.share.list[chosenRecord.idPattern] {
                 let labels = [label1, label2, label3, label4, label5, label6, label1Value, label2Value, label3Value, label4Value, label5Value, label6Value]
                 var count = 0
-                for patternField in patern.localizedFields {
-                    labels[count]?.text = patternField.value
+                for patternField in pattern.fields {
+                    labels[count]?.text = pattern.localizedFields[patternField]
                     labels[count]?.textColor = UIColor.white
                     count += 1
                 }
                 count = 0
-                for patternField in patern.fields {
-                    if patternField.value == "String", let valueStr = chosenRecord.stringFields[patternField.key] {
-                        labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
-                        labels[count + maxRowOfLabelCount]?.text = valueStr
-                        labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
-                    } else if patternField.value == "Int", let valueInt = chosenRecord.decimalFields[patternField.key] {
-                        labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
-                        labels[count + maxRowOfLabelCount]?.text = "\(valueInt)"
-                        labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
-                    } else {
-                        labels[count + maxRowOfLabelCount]?.text = ""
+                for patternField in pattern.fields {
+                    if let typeField = pattern.typesOfFields[patternField] {
+                        if typeField == "String", let valueStr = chosenRecord.stringFields[patternField] {
+                            labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
+                            labels[count + maxRowOfLabelCount]?.text = valueStr
+                            labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
+                        } else if typeField == "Int", let valueInt = chosenRecord.decimalFields[patternField] {
+                            labels[count + maxRowOfLabelCount]?.textAlignment = NSTextAlignment.left
+                            labels[count + maxRowOfLabelCount]?.text = "\(valueInt)"
+                            labels[count + maxRowOfLabelCount]?.textColor = UIColor.yellow
+                        } else {
+                            labels[count + maxRowOfLabelCount]?.text = ""
+                        }
                     }
                     count += 1
                 }
@@ -80,7 +82,7 @@ class CommonViewController: UIViewController {
                     labels[count + maxRowOfLabelCount]?.isHidden = true
                     count += 1
                 }
-                if let image = UIImage(data: patern.avatar) {
+                if let image = UIImage(data: pattern.avatar) {
                     patternImageView.image = image
                 }
             }

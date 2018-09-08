@@ -12,6 +12,7 @@ class CreditCardEditTableViewController: UITableViewController {
     var chosenRecordIndex = -1
     var chosenExpiredDate: Date?
     var currentNum = -1
+    var patternKind: PatternRecord?
     //    private let datePicker = UIDatePicker()
     private let expiryDatePicker = MonthYearPickerView()
     //    expiryDatePicker.onDateSelected = { (month: Int, year: Int) in
@@ -29,11 +30,19 @@ class CreditCardEditTableViewController: UITableViewController {
     @IBOutlet weak var holderField: UITextField!
     @IBOutlet weak var notesField: UITextField!
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
+    @IBOutlet weak var bankLabel: UILabel!
+    @IBOutlet weak var cardNumberLabel: UILabel!
+    @IBOutlet weak var cardExpiredLabel: UILabel!
+    @IBOutlet weak var cvvLabel: UILabel!
+    @IBOutlet weak var pinCodeLabel: UILabel!
+    @IBOutlet weak var holderLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
     
     // MARK: lifecycle metods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        patternKind = Patterns.share.list[PatternKind.creditcard.rawValue]
         setupUI()
         if chosenRecordIndex >= 0 {
             configure()
@@ -62,51 +71,6 @@ class CreditCardEditTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 8
     }
-    
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 
     // MARK: - Actions
@@ -177,6 +141,19 @@ class CreditCardEditTableViewController: UITableViewController {
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
+        if let pattern = patternKind {
+            if let image = UIImage(data: pattern.avatar) {
+                avatarImageView.image = image
+            }
+            // configure labels
+            let labels = [bankLabel, cardNumberLabel, cardExpiredLabel, cvvLabel, pinCodeLabel, holderLabel, notesLabel]
+            var count = 0
+            for patternField in pattern.fields {
+                labels[count]?.text = pattern.localizedFields[patternField]
+                count += 1
+            }
+        }
+
     }
     
     

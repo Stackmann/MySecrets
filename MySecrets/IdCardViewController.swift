@@ -21,6 +21,13 @@ class IdCardViewController: UIViewController {
     @IBOutlet weak var receivedDateValue: UILabel!
     @IBOutlet weak var snValue: UILabel!
     @IBOutlet weak var numberValue: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var middleNameLabel: UILabel!
+    @IBOutlet weak var birthdayLabel: UILabel!
+    @IBOutlet weak var receivedDateLabel: UILabel!
+    @IBOutlet weak var snLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +55,17 @@ class IdCardViewController: UIViewController {
             
             descriptionValue.text = chosenRecord.describe
             descriptionValue.textColor = UIColor.black
+            if let pattern = Patterns.share.list[chosenRecord.idPattern] {
+                let labels = [firstNameLabel, lastNameLabel, middleNameLabel, birthdayLabel, receivedDateLabel, snLabel, numberLabel]
+                var count = 0
+                for patternField in pattern.fields {
+                    labels[count]?.text = pattern.localizedFields[patternField]
+                    count += 1
+                }
+            }
             if let firstNameStr = chosenRecord.stringFields["FirstName"] {
                 firstNameValue.textAlignment = NSTextAlignment.left
                 firstNameValue.text = firstNameStr
-                //firstNameValue = UIFont(name: "OCRAStd", size: 35)
                 firstNameValue.textColor = UIColor.yellow
             } else {
                 firstNameValue.text = ""
@@ -59,7 +73,6 @@ class IdCardViewController: UIViewController {
             if let lastNameStr = chosenRecord.stringFields["LastName"] {
                 lastNameValue.textAlignment = NSTextAlignment.left
                 lastNameValue.text = lastNameStr
-                //lastNameValue = UIFont(name: "OCRAStd", size: 35)
                 lastNameValue.textColor = UIColor.yellow
             } else {
                 lastNameValue.text = ""
@@ -67,7 +80,6 @@ class IdCardViewController: UIViewController {
             if let middleNameStr = chosenRecord.stringFields["MiddleName"] {
                 middleNameValue.textAlignment = NSTextAlignment.left
                 middleNameValue.text = middleNameStr
-                //middleNameValue = UIFont(name: "OCRAStd", size: 35)
                 middleNameValue.textColor = UIColor.yellow
             } else {
                 middleNameValue.text = ""
@@ -78,7 +90,6 @@ class IdCardViewController: UIViewController {
                 formatter.dateFormat = "dd/MM/yyyy"
                 birthdayValue.textAlignment = NSTextAlignment.left
                 birthdayValue.text = formatter.string(from: BirthdayDateStr)
-                //birthdayValue.font = UIFont(name: "OCRAStd", size: 20)
                 birthdayValue.textColor = UIColor.yellow
             } else {
                 birthdayValue.text = ""
@@ -89,7 +100,6 @@ class IdCardViewController: UIViewController {
                 formatter.dateFormat = "dd/MM/yyyy"
                 receivedDateValue.textAlignment = NSTextAlignment.left
                 receivedDateValue.text = formatter.string(from: ReceivedDateStr)
-                //receivedDateValue = UIFont(name: "OCRAStd", size: 20)
                 receivedDateValue.textColor = UIColor.yellow
             } else {
                 receivedDateValue.text = ""
@@ -98,7 +108,6 @@ class IdCardViewController: UIViewController {
             if let snStr = chosenRecord.stringFields["SN"] {
                 snValue.textAlignment = NSTextAlignment.left
                 snValue.text = snStr
-                //snValue.font = UIFont(name: "OCRAStd", size: 20)
                 snValue.textColor = UIColor.yellow
             } else {
                 snValue.text = ""
@@ -107,7 +116,6 @@ class IdCardViewController: UIViewController {
             if let numberStr = chosenRecord.decimalFields["Number"] {
                 numberValue.textAlignment = NSTextAlignment.left
                 numberValue.text = "\(numberStr)"
-                //numberValue.font = UIFont(name: "OCRAStd", size: 20)
                 numberValue.textColor = UIColor.yellow
             } else {
                 numberValue.text = ""

@@ -75,16 +75,17 @@ class CommonEditTableViewController: UITableViewController {
         if let pattern = patternKind {
             var count = 0
             for field in pattern.fields {
-                if field.value == "Int" {
+                if let typeField = pattern.typesOfFields[field], typeField == "Int" {
                     if let valueStr = textFields[count]?.text {
-                        if let valueInt = Int(valueStr) { decimalFields[field.key] = valueInt} else {
-                            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Invalid field " + field.key + ". Please, use only digits.")
+                        if let valueInt = Int(valueStr) { decimalFields[field] = valueInt} else {
+                            guard let localizedField = pattern.localizedFields[field] else { return }
+                            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Invalid field " + localizedField + ". Please, use only digits.")
                             present(alert, animated: true, completion: nil)
                             return
                         }
                     }
                 } else { //string
-                    if let valueStr = textFields[count]?.text { stringFields[field.key] = valueStr}
+                    if let valueStr = textFields[count]?.text { stringFields[field] = valueStr}
                 }
                 count += 1
             }
@@ -147,13 +148,9 @@ class CommonEditTableViewController: UITableViewController {
             let labels = [field1Label, field2Label, field3Label, field4Label, field5Label, field6Label]
             let textFields = [field1TextField, field2TextField, field3TextField, field4TextField, field5TextField, field6TextField]
             var count = 0
-            for patternField in pattern.localizedFields {
-                labels[count]?.text = patternField.value
-                count += 1
-            }
-            count = 0
             for patternField in pattern.fields {
-                if patternField.value == "Int" {
+                labels[count]?.text = pattern.localizedFields[patternField]
+                if let typeField = pattern.typesOfFields[patternField], typeField == "Int" {
                     textFields[count]?.keyboardType = .decimalPad
                 }
                 count += 1
@@ -171,13 +168,15 @@ class CommonEditTableViewController: UITableViewController {
                 avatarImageView.image = image
             }
             descriptionTextField.text = secret.describe
-            if let patern = patternKind {
+            if let pattern = patternKind {
                 var count = 0
-                for patternField in patern.fields {
-                    if patternField.value == "String" {
-                        textFields[count]?.text = secret.stringFields[patternField.key]
-                    } else if let intValue = secret.decimalFields[patternField.key] {
-                        textFields[count]?.text = "\(intValue)"
+                for patternField in pattern.fields {
+                    if let typeField = pattern.typesOfFields[patternField] {
+                        if typeField == "String" {
+                            textFields[count]?.text = secret.stringFields[patternField]
+                        } else if let intValue = secret.decimalFields[patternField] {
+                            textFields[count]?.text = "\(intValue)"
+                    }
                     }
                     count += 1
                 }

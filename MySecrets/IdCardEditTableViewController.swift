@@ -13,6 +13,7 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
     var chosenBirthday: Date?
     var chosenReceivedDate: Date?
     var currentNum = -1
+    var patternKind: PatternRecord?
     private let customDatePicker = DayMonthYearPickerView()
 
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -25,9 +26,17 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
     @IBOutlet weak var snTextField: UITextField!
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var barButtonDelete: UIBarButtonItem!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var middleNameLabel: UILabel!
+    @IBOutlet weak var birthdayLabel: UILabel!
+    @IBOutlet weak var receivedDateLabel: UILabel!
+    @IBOutlet weak var snLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        patternKind = Patterns.share.list[PatternKind.idcard.rawValue]
         setupUI()
         if chosenRecordIndex >= 0 {
             configure()
@@ -110,6 +119,18 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
+        }
+        if let pattern = patternKind {
+            if let image = UIImage(data: pattern.avatar) {
+                avatarImageView.image = image
+            }
+            // configure labels
+            let labels = [firstNameLabel, lastNameLabel, middleNameLabel, birthdayLabel, receivedDateLabel, snLabel, numberLabel]
+            var count = 0
+            for patternField in pattern.fields {
+                labels[count]?.text = pattern.localizedFields[patternField]
+                count += 1
+            }
         }
     }
     

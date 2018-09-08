@@ -36,8 +36,9 @@ class Patterns {
         guard let avatarData3 = UIImagePNGRepresentation(avatar3) else { list = listOfPatterns; return }
         guard let avatarBonusCardData = UIImagePNGRepresentation(avatarBonusCard) else { list = listOfPatterns; return }
         guard let avatarIdCardData = UIImagePNGRepresentation(avatarIdCard) else { list = listOfPatterns; return }
-
-        var patternFields = ["Login": "String",
+        
+        var fields = ["Login","Password","URL","Notes"]
+        var typesOfFields = ["Login": "String",
                              "Password": "String",
                              "URL": "String",
                              "Notes": "String"]
@@ -45,51 +46,57 @@ class Patterns {
                                "Password": NSLocalizedString("Password", comment: "Password to websait"),
                                "URL": NSLocalizedString("URL", comment: "URL of websait"),
                                "Notes": NSLocalizedString("Notes", comment: "Notes about secret")]
-        var newPattern = PatternRecord(describe: "Websait", fields: patternFields, localizedFields: localizedFields, avatar: avatarWWWData, kind: PatternKind.websait)
+        var newPattern = PatternRecord(describe: "Websait", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarWWWData, kind: PatternKind.websait)
         listOfPatterns[PatternKind.websait.rawValue] = newPattern
 
-        patternFields = ["Adress": "String",
+        fields = ["Adress","Login","Password"]
+        typesOfFields = ["Adress": "String",
                          "Login": "String",
                          "Password": "String"]
         localizedFields = ["Adress": NSLocalizedString("Adress", comment: "Adress of RDP server"),
                            "Login": NSLocalizedString("Login", comment: "Login to RDP server"),
                            "Password": NSLocalizedString("Password", comment: "Password to RDP server")]
-        newPattern = PatternRecord(describe: "RDP", fields: patternFields, localizedFields: localizedFields, avatar: avatarRDPData, kind: PatternKind.rdp)
+        newPattern = PatternRecord(describe: "RDP", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarRDPData, kind: PatternKind.rdp)
         listOfPatterns[PatternKind.rdp.rawValue] = newPattern
 
-        patternFields = ["Login": "String",
+        fields = ["Login","Password","Notes"]
+        typesOfFields = ["Login": "String",
                          "Password": "String",
                          "Notes": "String"]
         localizedFields = ["Login": NSLocalizedString("Login", comment: "Login of account"),
                            "Password": NSLocalizedString("Password", comment: "Password of account"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes about account")]
-        newPattern = PatternRecord(describe: "Account", fields: patternFields, localizedFields: localizedFields, avatar: avatarAccountData, kind: PatternKind.account)
+        newPattern = PatternRecord(describe: "Account", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarAccountData, kind: PatternKind.account)
         listOfPatterns[PatternKind.account.rawValue] = newPattern
 
-        patternFields = ["Password": "String",
+        fields = ["Password","Notes"]
+        typesOfFields = ["Password": "String",
                          "Notes": "String"]
         localizedFields = ["Password": NSLocalizedString("Password", comment: "Password of secret with pattern Password"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes of secret with pattern Password")]
-        newPattern = PatternRecord(describe: "Password", fields: patternFields, localizedFields: localizedFields, avatar: avatarPasswordData, kind: PatternKind.password)
+        newPattern = PatternRecord(describe: "Password", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarPasswordData, kind: PatternKind.password)
         listOfPatterns[PatternKind.password.rawValue] = newPattern
 
-        patternFields = ["Number": "Int",
+        fields = ["Number","Notes"]
+        typesOfFields = ["Number": "Int",
                          "Notes": "String"]
         localizedFields = ["Number": NSLocalizedString("Number", comment: "Number of bonus card"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes of bonus card")]
-        newPattern = PatternRecord(describe: "Bonus card", fields: patternFields, localizedFields: localizedFields, avatar: avatarBonusCardData, kind: PatternKind.bonuscard)
+        newPattern = PatternRecord(describe: "Bonus card", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarBonusCardData, kind: PatternKind.bonuscard)
         listOfPatterns[PatternKind.bonuscard.rawValue] = newPattern
 
-        patternFields = ["SSID": "String",
+        fields = ["SSID","Password","Notes"]
+        typesOfFields = ["SSID": "String",
                          "Password": "String",
                          "Notes": "String"]
         localizedFields = ["SSID": NSLocalizedString("SSID", comment: "SSID of WiFi networks"),
                            "Password": NSLocalizedString("Password", comment: "Key phrase of WiFi networks"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes of WiFi networks")]
-        newPattern = PatternRecord(describe: "WiFi", fields: patternFields, localizedFields: localizedFields, avatar: avatarWiFiData, kind: PatternKind.wifi)
+        newPattern = PatternRecord(describe: "WiFi", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarWiFiData, kind: PatternKind.wifi)
         listOfPatterns[PatternKind.wifi.rawValue] = newPattern
 
-        patternFields = ["Login": "String",
+        fields = ["Login","Password","POP3","IMAP","SMTP","Notes"]
+        typesOfFields = ["Login": "String",
                          "Password": "String",
                          "POP3": "String",
                          "IMAP": "String",
@@ -101,10 +108,11 @@ class Patterns {
                            "IMAP": NSLocalizedString("IMAP", comment: "IMAP server of email"),
                            "SMTP": NSLocalizedString("SMTP", comment: "SMTP server of email"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes about email")]
-        newPattern = PatternRecord(describe: "Email", fields: patternFields, localizedFields: localizedFields, avatar: avatarEmailData, kind: PatternKind.email)
+        newPattern = PatternRecord(describe: "Email", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarEmailData, kind: PatternKind.email)
         listOfPatterns[PatternKind.email.rawValue] = newPattern
 
-        patternFields = ["Bank": "String",
+        fields = ["Bank","NumberCard","Expired","CVV","PIN","Holder","Notes"]
+        typesOfFields = ["Bank": "String",
                          "NumberCard": "String",
                          "Expired": "Data",
                          "CVV": "Int",
@@ -118,10 +126,11 @@ class Patterns {
                            "PIN": NSLocalizedString("PIN", comment: "PIN code of credit card"),
                            "Holder": NSLocalizedString("Holder", comment: "Holder of credit card"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes about credit card")]
-        newPattern = PatternRecord(describe: "Credit Card", fields: patternFields, localizedFields: localizedFields, avatar: avatarCreditCardData, kind: PatternKind.creditcard)
+        newPattern = PatternRecord(describe: "Credit Card", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarCreditCardData, kind: PatternKind.creditcard)
         listOfPatterns[PatternKind.creditcard.rawValue] = newPattern
 
-        patternFields = ["Bank": "String",
+        fields = ["Bank","BankMFO","Account","Notes"]
+        typesOfFields = ["Bank": "String",
                          "BankMFO": "Int",
                          "Account": "Int",
                          "Notes": "String"]
@@ -129,10 +138,11 @@ class Patterns {
                            "BankMFO": NSLocalizedString("BankMFO", comment: "MFO Bank of bank account"),
                            "Account": NSLocalizedString("Account", comment: "Number of bank account"),
                            "Notes": NSLocalizedString("Notes", comment: "Notes about bank account")]
-        newPattern = PatternRecord(describe: "Bank acc.", fields: patternFields, localizedFields: localizedFields, avatar: avatarData3, kind: PatternKind.bankaccount)
+        newPattern = PatternRecord(describe: "Bank acc.", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarData3, kind: PatternKind.bankaccount)
         listOfPatterns[PatternKind.bankaccount.rawValue] = newPattern
 
-        patternFields = ["FirstName": "String",
+        fields = ["FirstName","LastName","MiddleName","BirthdayDate","ReceivedDate","SN","Number"]
+        typesOfFields = ["FirstName": "String",
                          "LastName": "String",
                          "MiddleName": "String",
                          "BirthdayDate": "Data",
@@ -146,7 +156,7 @@ class Patterns {
                            "ReceivedDate": NSLocalizedString("ReceivedDate", comment: "ReceivedDate of id card"),
                            "SN": NSLocalizedString("SN", comment: "Serial number of id card"),
                            "Number": NSLocalizedString("Number", comment: "Number of id card")]
-        newPattern = PatternRecord(describe: "Id Card", fields: patternFields, localizedFields: localizedFields, avatar: avatarIdCardData, kind: PatternKind.idcard)
+        newPattern = PatternRecord(describe: "Id Card", fields: fields, typesOfFields: typesOfFields, localizedFields: localizedFields, avatar: avatarIdCardData, kind: PatternKind.idcard)
         listOfPatterns[PatternKind.idcard.rawValue] = newPattern
 
         list = listOfPatterns
