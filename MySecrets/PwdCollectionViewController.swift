@@ -70,9 +70,17 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             chosenRecordIndex = -1
             self.collectionView!.reloadData()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.closeActivityController), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openactivity), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
 
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let chosenVC = segue.destination as? CreditCardViewController {
             chosenVC.chosenRecordIndex = chosenRecordIndex
@@ -230,6 +238,17 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
             collectionView?.reloadSections([0])
         }
     }
+    
+    @objc private func closeActivityController()  {
+        Secrets.share.dataAvailable = false
+    }
+    
+    @objc private func openactivity()  {
+        if !Secrets.share.dataAvailable {
+            performSegue(withIdentifier: "enterPwd", sender: nil)
+        }
+    }
+    
 }
 
 protocol PwdCollection {

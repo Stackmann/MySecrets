@@ -39,22 +39,26 @@ class EnterPwdViewController: UIViewController {
                 return
             }
             
-            let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr)
-            if !resultInitDB.0 {
-                let alert = CommonFuncs.getAlert(title: "Error", message: resultInitDB.1)
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            
+
             if !Secrets.share.dataAvailable {
-                //Secrets.share.loadData()
-                if !CommonFuncs.readFromRealmDB() {
-                    let alert = CommonFuncs.getAlert(title: "Error", message: "Error reading from DB. Try to recreate DB!")
+                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr)
+                if !resultInitDB.0 {
+                    let alert = CommonFuncs.getAlert(title: "Error", message: resultInitDB.1)
                     self.present(alert, animated: true, completion: nil)
-                } else {
-                    for secret in Secrets.share.list {
-                        Secrets.share.lastNum = max(secret.num, Secrets.share.lastNum)
+                    return
+                }
+                //Secrets.share.loadData()
+                if Secrets.share.dataFirstReading {
+                    if !CommonFuncs.readFromRealmDB() {
+                        let alert = CommonFuncs.getAlert(title: "Error", message: "Error reading from DB. Try to recreate DB!")
+                        self.present(alert, animated: true, completion: nil)
+                        return
+                    } else {
+                        for secret in Secrets.share.list {
+                            Secrets.share.lastNum = max(secret.num, Secrets.share.lastNum)
+                        }
                     }
+                    Secrets.share.dataFirstReading = false
                 }
                 Secrets.share.dataAvailable = true
             }

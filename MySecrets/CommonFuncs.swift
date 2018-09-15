@@ -44,7 +44,11 @@ class CommonFuncs {
         }
         return (true, "")
     }
-
+    
+    static func closeRealmDB() {
+        Secrets.share.realmDB = nil
+    }
+    
     static func readFromRealmDB() -> Bool {
         let listsFromRealm = Secrets.share.realmDB.objects(SecretsDB.self)
         if listsFromRealm.count > 0 {

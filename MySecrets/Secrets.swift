@@ -16,8 +16,14 @@ class Secrets {
     
     var list = [RecordPass]()
     var lastNum: Int = -1
-    var dataAvailable = false
-    var isAccessPresent = false
+    var dataAvailable = false {
+        didSet {
+            if !dataAvailable {
+                CommonFuncs.closeRealmDB()
+            }
+        }
+    }
+    var dataFirstReading = true
     var realmDB: Realm!
     
     func loadData() {

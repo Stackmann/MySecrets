@@ -59,6 +59,15 @@ class CreditCardEditTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.closeActivityController), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openactivity), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
 
     // MARK: - Table view data source
 
@@ -229,6 +238,16 @@ class CreditCardEditTableViewController: UITableViewController {
         }
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
         dismiss(animated: true, completion: nil)
+    }
+
+    @objc private func closeActivityController()  {
+        Secrets.share.dataAvailable = false
+    }
+    
+    @objc private func openactivity()  {
+        if !Secrets.share.dataAvailable {
+            performSegue(withIdentifier: "enterPwd", sender: nil)
+        }
     }
 
 }

@@ -375,6 +375,7 @@
                         <outlet property="notesLabel" destination="N4k-kj-QNH" id="n1m-HN-3sc"/>
                         <outlet property="pinCodeLabel" destination="wbz-8r-Ufw" id="KDP-yT-6iX"/>
                         <outlet property="pinField" destination="h3h-z2-g8h" id="0Vq-V0-Xa9"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="B1g-g5-G02"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nlg-mc-7Hz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -502,6 +503,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="oJC-E4-4oP"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8D-jA-Y8O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -636,6 +640,7 @@
                         <outlet property="recordImageView" destination="xw3-RZ-4cl" id="2ii-uK-L2v"/>
                         <outlet property="validDate" destination="hj4-2V-FTb" id="Eol-VB-vTZ"/>
                         <segue destination="PEL-Rh-TUO" kind="presentation" identifier="showCreditCardEditController" id="sRE-Wh-5vg"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="qFu-k4-Mls"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gso-Tj-3af" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -985,6 +990,7 @@
                         <outlet property="snLabel" destination="OI1-ep-6K3" id="AGc-Up-7wu"/>
                         <outlet property="snValue" destination="Xul-Yx-eeX" id="gqf-8Z-u1z"/>
                         <segue destination="Yki-Z0-Xdt" kind="presentation" identifier="showIdEditController" id="jpP-zI-ed0"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="qgg-Cr-1Ob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyc-cm-DOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1290,6 +1296,7 @@
                         <outlet property="receivedDateTextField" destination="t7D-Wv-BFN" id="sdY-Ai-BZT"/>
                         <outlet property="snLabel" destination="AJf-ID-ie0" id="Jws-RD-pSh"/>
                         <outlet property="snTextField" destination="npM-di-rMZ" id="ynD-bT-Shr"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="HT3-gT-1ya"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8H-VT-JbI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1521,6 +1528,7 @@
                         <outlet property="label6Value" destination="8ec-3d-UxX" id="YPX-nE-au7"/>
                         <outlet property="patternImageView" destination="Zwy-7z-BZv" id="NGQ-H8-OgL"/>
                         <segue destination="dXE-3l-m0b" kind="presentation" identifier="showCommonEditController" id="K4l-G9-xFR"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="Zpu-Ob-ZcE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lfS-bV-ka1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1890,6 +1898,7 @@
                         <outlet property="field5TextField" destination="Wk5-ef-cc8" id="DfS-DT-opZ"/>
                         <outlet property="field6Label" destination="tWO-pd-Ugb" id="Wtj-Ij-ZJo"/>
                         <outlet property="field6TextField" destination="Onx-c2-hKZ" id="Byp-JZ-bVP"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="0KK-cl-lO4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b67-gH-tqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1924,7 +1933,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="K4l-G9-xFR"/>
-        <segue reference="cg4-to-xW2"/>
+        <segue reference="sRE-Wh-5vg"/>
         <segue reference="jpP-zI-ed0"/>
+        <segue reference="B1g-g5-G02"/>
     </inferredMetricsTieBreakers>
 </document>

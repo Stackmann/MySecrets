@@ -32,15 +32,22 @@ class IdCardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
-
-        // Do any additional setup after loading the view.
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         configureController()
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.closeActivityController), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openactivity), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let chosenNC = segue.destination as? UINavigationController {
             if let chosenVC = chosenNC.topViewController as? IdCardEditTableViewController {
@@ -129,6 +136,16 @@ class IdCardViewController: UIViewController {
 
     @objc private func deleteReturnToMainList() {
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    @objc private func closeActivityController()  {
+        Secrets.share.dataAvailable = false
+    }
+    
+    @objc private func openactivity()  {
+        if !Secrets.share.dataAvailable {
+            performSegue(withIdentifier: "enterPwd", sender: nil)
+        }
     }
 
 }

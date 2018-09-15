@@ -33,7 +33,9 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
     @IBOutlet weak var receivedDateLabel: UILabel!
     @IBOutlet weak var snLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         patternKind = Patterns.share.list[PatternKind.idcard.rawValue]
@@ -53,6 +55,18 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         navigationController?.navigationBar.tintColor = UIColor.blue
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.closeActivityController), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.openactivity), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    }
+
+    // MARK: - actions
 
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
@@ -105,7 +119,6 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         dismiss(animated: true, completion: nil)
 
     }
-
     
     // MARK: - self metods
     
@@ -247,6 +260,16 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         dismiss(animated: true, completion: nil)
     }
 
+    @objc private func closeActivityController()  {
+        Secrets.share.dataAvailable = false
+    }
+    
+    @objc private func openactivity()  {
+        if !Secrets.share.dataAvailable {
+            performSegue(withIdentifier: "enterPwd", sender: nil)
+        }
+    }
+
     // MARK: - textfield delegate metods
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -269,4 +292,5 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         textField.resignFirstResponder()
         return true
     }
+
 }
