@@ -17,7 +17,9 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     private var patternToCreate: PatternRecord?
     private var filteredList = [RecordPass]()
     let searchController = UISearchController(searchResultsController: nil)
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -125,6 +127,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     }
 
     // MARK: UICollectionViewDelegate
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if filteredList.indices.contains(indexPath.row){
             // Configure the cell
@@ -144,37 +147,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         }
     }
     
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-    
     // MARK: PwdCollectionDelegate
+    
     func getNewRecord(with pattern: PatternRecord) {
         patternToCreate = pattern
     }

@@ -29,7 +29,9 @@ class CommonEditTableViewController: UITableViewController {
     @IBOutlet weak var field4Label: UILabel!
     @IBOutlet weak var field5Label: UILabel!
     @IBOutlet weak var field6Label: UILabel!
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if chosenRecordIndex >= 0 {
@@ -61,6 +63,8 @@ class CommonEditTableViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
+
+    // MARK: - actions
 
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)

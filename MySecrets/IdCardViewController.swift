@@ -28,7 +28,9 @@ class IdCardViewController: UIViewController {
     @IBOutlet weak var receivedDateLabel: UILabel!
     @IBOutlet weak var snLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
@@ -55,6 +57,8 @@ class IdCardViewController: UIViewController {
             }
         }
     }
+
+    // MARK: - self metods
 
     func configureController() {
         if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
@@ -129,15 +133,11 @@ class IdCardViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func editAction(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "showIdEditController", sender: nil)
-    }
 
     @objc private func deleteReturnToMainList() {
         navigationController?.popToRootViewController(animated: true)
     }
-
+    
     @objc private func closeActivityController()  {
         Secrets.share.dataAvailable = false
     }
@@ -147,5 +147,12 @@ class IdCardViewController: UIViewController {
             performSegue(withIdentifier: "enterPwd", sender: nil)
         }
     }
+
+    // MARK: - actions
+
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showIdEditController", sender: nil)
+    }
+
 
 }

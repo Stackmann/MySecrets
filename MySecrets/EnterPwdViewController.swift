@@ -13,7 +13,9 @@ class EnterPwdViewController: UIViewController {
 
     @IBOutlet weak var inputPasswordField: UITextField!
     @IBOutlet weak var warningPasswordLabel: UILabel!
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,8 @@ class EnterPwdViewController: UIViewController {
         warningPasswordLabel.numberOfLines = 0
     }
 
- 
+    // MARK: - actions
+
     @IBAction func PwdOk(_ sender: UIButton) {
         
         if let inputPasswordStr = inputPasswordField.text {
@@ -34,7 +37,6 @@ class EnterPwdViewController: UIViewController {
             let isContainCorrectCharacters = inputPasswordStr.isContainCorrectCharactersForRealmPassword
             if !isContainCorrectCharacters.0 {
                 let alert = CommonFuncs.getAlert(title: "Error", message: "Incorrect \(isContainCorrectCharacters.1 + 1) character!")
-                //let alert = CommonFuncs.getAlert(title: "Error", message: "Please use only latin characters, digits and symbols for password!")
                 self.present(alert, animated: true, completion: nil)
                 return
             }

@@ -13,12 +13,7 @@ class CreditCardEditTableViewController: UITableViewController {
     var chosenExpiredDate: Date?
     var currentNum = -1
     var patternKind: PatternRecord?
-    //    private let datePicker = UIDatePicker()
     private let expiryDatePicker = MonthYearPickerView()
-    //    expiryDatePicker.onDateSelected = { (month: Int, year: Int) in
-    //    let string = String(format: "%02d/%d", month, year)
-    //    NSLog(string) // should show something like 05/2015
-    //    }
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var descriptionField: UITextField!
@@ -49,7 +44,6 @@ class CreditCardEditTableViewController: UITableViewController {
         } else {
             currentNum = Secrets.share.lastNum + 1
         }
-        //barButtonDelete.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 200)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,7 +136,6 @@ class CreditCardEditTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         cardNumberField.keyboardType = .decimalPad
-        //datePicker.datePickerMode = .date
         expiredField.inputView = expiryDatePicker // datePicker
         expiredField.inputAccessoryView = returnToolBar()
         cvvField.keyboardType = .decimalPad

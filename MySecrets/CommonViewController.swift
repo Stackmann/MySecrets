@@ -26,7 +26,9 @@ class CommonViewController: UIViewController {
     @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var patternImageView: UIImageView!
     @IBOutlet weak var label6Value: UILabel!
-    
+
+    // MARK: - lifecycle viewController metods
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(deleteReturnToMainList), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
@@ -54,7 +56,7 @@ class CommonViewController: UIViewController {
         }
     }
 
-    // MARK: - add metodes
+    // MARK: - self metodes
     
     func configureController() {
         if chosenRecordIndex >= 0, Secrets.share.list.indices.contains(chosenRecordIndex)  {
@@ -105,10 +107,6 @@ class CommonViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
 
-    @IBAction func editAction(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "showCommonEditController", sender: nil)
-    }
-
     @objc private func closeActivityController()  {
         Secrets.share.dataAvailable = false
     }
@@ -118,4 +116,11 @@ class CommonViewController: UIViewController {
             performSegue(withIdentifier: "enterPwd", sender: nil)
         }
     }
+
+    // MARK: - actions
+
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "showCommonEditController", sender: nil)
+    }
+
 }

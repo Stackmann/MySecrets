@@ -164,12 +164,10 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
             if let birthday = secret.dateFields["BirthdayDate"] {
                 birthdayTextField.text = formatter.string(from: birthday)
                 chosenBirthday = birthday
-                //customDatePicker.date = birthday
             }
             if let receivedDate = secret.dateFields["ReceivedDate"] {
                 receivedDateTextField.text = formatter.string(from: receivedDate)
                 chosenReceivedDate = receivedDate
-                //customDatePicker.date = receivedDate
             }
             if let number = secret.decimalFields["Number"] {
                 numberTextField.text = "\(number)"
