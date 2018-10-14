@@ -15,8 +15,15 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
     var currentNum = -1
     var patternKind: PatternRecord?
     private let customDatePicker = DayMonthYearPickerView()
+    //private let customAvatarCollection = AvatarCollectionView(frame: CGRect.zero)
 
-    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var avatarImageView: AvatarView! {
+        didSet {
+            avatarImageView.isUserInteractionEnabled = true
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAvatarView(recognizer:)))
+            avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -49,7 +56,14 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         receivedDateTextField.delegate = self
         snTextField.delegate = self
         snTextField.returnKeyType = .done
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: NSNotification.Name.UIKeyboardWillShow,
+            object: nil
+        )
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.tintColor = UIColor.blue
@@ -130,6 +144,7 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         birthdayTextField.inputAccessoryView = returnToolBarForBirthday()
         receivedDateTextField.inputView = customDatePicker // datePicker
         receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
+        //avatarImageView.inputView = customAvatarCollection
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
@@ -265,6 +280,21 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
     @objc private func openactivity()  {
         if !Secrets.share.dataAvailable {
             performSegue(withIdentifier: "enterPwd", sender: nil)
+        }
+    }
+
+    @objc private func tapAvatarView (recognizer: UITapGestureRecognizer) {
+        avatarImageView.becomeFirstResponder()
+    }
+
+    @objc private func keyboardWillShow (_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            //let keyboardHeight = keyboardRectangle.height
+            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle)
+            //birthdayTextField.inputView = customAvatarCollection
+            avatarImageView.inputView = customAvatarCollection
+            avatarImageView.reloadInputViews()
         }
     }
 

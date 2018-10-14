@@ -1021,7 +1021,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_id_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="O0P-oJ-JA5">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_id_pattern" translatesAutoresizingMaskIntoConstraints="NO" id="O0P-oJ-JA5" customClass="AvatarView" customModule="MySecrets" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="11" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="48" id="f7b-k6-SAi"/>
@@ -1535,6 +1535,21 @@
             </objects>
             <point key="canvasLocation" x="3000.8000000000002" y="-587.4384236453202"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="zXT-Ps-GGN">
+            <objects>
+                <viewController id="Pyo-qI-EZh" customClass="TestViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kyj-25-WeA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="qmq-Ut-3Dk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfg-Hg-Q15" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-570" y="-567"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="37r-1N-Ffc">
             <objects>
@@ -1935,6 +1950,6 @@
         <segue reference="K4l-G9-xFR"/>
         <segue reference="sRE-Wh-5vg"/>
         <segue reference="jpP-zI-ed0"/>
-        <segue reference="B1g-g5-G02"/>
+        <segue reference="HT3-gT-1ya"/>
     </inferredMetricsTieBreakers>
 </document>

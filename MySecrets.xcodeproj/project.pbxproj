@@ -33,6 +33,11 @@
 		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
 		CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */; };
 		CEF940502137004500E1A264 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEF940522137004500E1A264 /* Localizable.strings */; };
+		CEF94055214EC94B00E1A264 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF94054214EC94B00E1A264 /* AvatarView.swift */; };
+		CEF9405721518BE700E1A264 /* AvatarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */; };
+		CEF9405A216A900000E1A264 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF94058216A900000E1A264 /* AvatarCollectionViewCell.swift */; };
+		CEF9405B216A900000E1A264 /* AvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */; };
+		CEF9405D21727ADC00E1A264 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9405C21727ADB00E1A264 /* TestViewController.swift */; };
 		CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */; };
 		CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F702111F1F6004C8678 /* CommonViewController.swift */; };
 /* End PBXBuildFile section */
@@ -69,6 +74,11 @@
 		CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditTableViewController.swift; sourceTree = "<group>"; };
 		CEF940512137004500E1A264 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEF940532137010F00E1A264 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CEF94054214EC94B00E1A264 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionView.swift; sourceTree = "<group>"; };
+		CEF94058216A900000E1A264 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
+		CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCollectionViewCell.xib; sourceTree = "<group>"; };
+		CEF9405C21727ADB00E1A264 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMonthYearPickerView.swift; sourceTree = "<group>"; };
 		CEFD1F702111F1F6004C8678 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +133,8 @@
 				075DBB411FE64C1E009676B3 /* Patterns.swift */,
 				071E1D2E1FBF7D6F00310F44 /* Main.storyboard */,
 				073E262420223A2900047E10 /* PwdCollectionViewCell.swift */,
+				CEF94058216A900000E1A264 /* AvatarCollectionViewCell.swift */,
+				CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */,
 				073E262520223A2900047E10 /* PwdCollectionViewCell.xib */,
 				0727C5382020F194003E86B3 /* PatternCollectionViewController.swift */,
 				072AD3EF200FF7E4004029C5 /* IdCardEditTableViewController.swift */,
@@ -132,12 +144,15 @@
 				07D4E6391FD1AB6400AFC74F /* SettingsTableViewController.swift */,
 				07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */,
 				07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */,
+				CEF94054214EC94B00E1A264 /* AvatarView.swift */,
 				CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */,
 				CEF940522137004500E1A264 /* Localizable.strings */,
 				072D21021FC31B69005D8E21 /* EnterPwdViewController.swift */,
 				073CBFF11FEAC1A500EBDFBF /* CreditCardEditTableViewController.swift */,
 				07F7B691201E39BC000FA2F3 /* CommonFuncs.swift */,
 				07039188201689F1001BB3C8 /* MonthYearPickerView.swift */,
+				CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */,
+				CEF9405C21727ADB00E1A264 /* TestViewController.swift */,
 				CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */,
 				071E1D311FBF7D6F00310F44 /* Assets.xcassets */,
 				071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */,
@@ -230,6 +245,7 @@
 				CEF940502137004500E1A264 /* Localizable.strings in Resources */,
 				073E262720223A2900047E10 /* PwdCollectionViewCell.xib in Resources */,
 				071E1D351FBF7D6F00310F44 /* LaunchScreen.storyboard in Resources */,
+				CEF9405B216A900000E1A264 /* AvatarCollectionViewCell.xib in Resources */,
 				071E1D321FBF7D6F00310F44 /* Assets.xcassets in Resources */,
 				071E1D301FBF7D6F00310F44 /* Main.storyboard in Resources */,
 			);
@@ -308,17 +324,21 @@
 				071B51881FED90EE00EEE18E /* CreditCardViewController.swift in Sources */,
 				CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */,
 				075DBB421FE64C1E009676B3 /* Patterns.swift in Sources */,
+				CEF9405D21727ADC00E1A264 /* TestViewController.swift in Sources */,
 				0727C5392020F194003E86B3 /* PatternCollectionViewController.swift in Sources */,
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,
 				CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */,
+				CEF9405721518BE700E1A264 /* AvatarCollectionView.swift in Sources */,
 				073E262620223A2900047E10 /* PwdCollectionViewCell.swift in Sources */,
 				072D21031FC31B69005D8E21 /* EnterPwdViewController.swift in Sources */,
+				CEF94055214EC94B00E1A264 /* AvatarView.swift in Sources */,
 				072861E020E3D29C00C12932 /* SecretsBD.swift in Sources */,
 				071E1D2B1FBF7D6F00310F44 /* AppDelegate.swift in Sources */,
 				071C5BE52003AF9D00A05BD2 /* IdCardViewController.swift in Sources */,
 				CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */,
 				072AD3F0200FF7E4004029C5 /* IdCardEditTableViewController.swift in Sources */,
 				07F7B692201E39BC000FA2F3 /* CommonFuncs.swift in Sources */,
+				CEF9405A216A900000E1A264 /* AvatarCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
