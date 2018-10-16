@@ -15,7 +15,7 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
     var currentNum = -1
     var patternKind: PatternRecord?
     private let customDatePicker = DayMonthYearPickerView()
-    private var customAvatarCollection: AvatarCollectionView?
+    //private var customAvatarCollection: AvatarCollectionView?
 
     @IBOutlet weak var avatarImageView: AvatarView! {
         didSet {
@@ -144,7 +144,7 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
         birthdayTextField.inputAccessoryView = returnToolBarForBirthday()
         receivedDateTextField.inputView = customDatePicker // datePicker
         receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
-        customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
+        let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
         avatarImageView.inputView = customAvatarCollection
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false

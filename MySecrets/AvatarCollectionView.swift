@@ -19,11 +19,11 @@ class AvatarCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
         
         self.delegat = delegat
         
-        let imageNamesString = "market64,key64,idcard64,security64x64,user64x64,world64x64,rdp64x64"
+        let imageNamesString = "market64,key64,idcard64,security64x64,user64x64,world64x64,rdp64x64,credit_card_48x48,credit-cards_48x48,lock_48x48,secure-payment_48x48,user_id_48x48"
         self.collectionImageName = imageNamesString.components(separatedBy: ",").map{$0}
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.itemSize = CGSize(width: 64, height: 64)
+        layout.itemSize = CGSize(width: 48, height: 48)
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.dataSource = self

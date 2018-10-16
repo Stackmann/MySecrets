@@ -51,12 +51,6 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
             setupUI()
             currentNum = Secrets.share.lastNum + 1
         }
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: NSNotification.Name.UIKeyboardWillShow,
-            object: nil
-        )
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -166,6 +160,8 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
+        let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
+        avatarImageView.inputView = customAvatarCollection
         if let pattern = patternKind {
             if let image = UIImage(data: pattern.avatar) {
                 avatarImageView.image = image
@@ -232,14 +228,14 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
         avatarImageView.becomeFirstResponder()
     }
 
-    @objc private func keyboardWillShow (_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle, delegat: self)
-            avatarImageView.inputView = customAvatarCollection
-            avatarImageView.reloadInputViews()
-        }
-    }
+//    @objc private func keyboardWillShow (_ notification: Notification) {
+//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle, delegat: self)
+//            avatarImageView.inputView = customAvatarCollection
+//            avatarImageView.reloadInputViews()
+//        }
+//    }
 
     // MARK: - AssetsAvatarSelected delegate metods
     
