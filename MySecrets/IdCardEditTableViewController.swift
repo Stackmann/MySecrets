@@ -8,14 +8,14 @@
 
 import UIKit
 
-class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate {
+class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate, AssetsAvatarSelected {
     var chosenRecordIndex = -1
     var chosenBirthday: Date?
     var chosenReceivedDate: Date?
     var currentNum = -1
     var patternKind: PatternRecord?
     private let customDatePicker = DayMonthYearPickerView()
-    //private let customAvatarCollection = AvatarCollectionView(frame: CGRect.zero)
+    private var customAvatarCollection: AvatarCollectionView?
 
     @IBOutlet weak var avatarImageView: AvatarView! {
         didSet {
@@ -56,12 +56,12 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         receivedDateTextField.delegate = self
         snTextField.delegate = self
         snTextField.returnKeyType = .done
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillShow),
-            name: NSNotification.Name.UIKeyboardWillShow,
-            object: nil
-        )
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(keyboardWillShow),
+//            name: NSNotification.Name.UIKeyboardWillShow,
+//            object: nil
+//        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,7 +144,8 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         birthdayTextField.inputAccessoryView = returnToolBarForBirthday()
         receivedDateTextField.inputView = customDatePicker // datePicker
         receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
-        //avatarImageView.inputView = customAvatarCollection
+        customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
+        avatarImageView.inputView = customAvatarCollection
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
@@ -287,17 +288,22 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         avatarImageView.becomeFirstResponder()
     }
 
-    @objc private func keyboardWillShow (_ notification: Notification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            //let keyboardHeight = keyboardRectangle.height
-            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle)
-            //birthdayTextField.inputView = customAvatarCollection
-            avatarImageView.inputView = customAvatarCollection
-            avatarImageView.reloadInputViews()
-        }
+//    @objc private func keyboardWillShow (_ notification: Notification) {
+//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle, delegat: self)
+//            avatarImageView.inputView = customAvatarCollection
+//            avatarImageView.reloadInputViews()
+//        }
+//    }
+    
+    // MARK: - AssetsAvatarSelected delegate metods
+    
+    func setNewAvatar(with imageName: String) {
+        avatarImageView.image = UIImage(named: imageName)
+        avatarImageView.resignFirstResponder()
     }
-
+    
     // MARK: - textfield delegate metods
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -321,4 +327,8 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate 
         return true
     }
 
+}
+
+protocol AssetsAvatarSelected {
+    func setNewAvatar(with imageName: String)
 }

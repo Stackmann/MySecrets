@@ -1663,7 +1663,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-YM-Nac">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QXW-YM-Nac" customClass="AvatarView" customModule="MySecrets" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="11" width="48" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="QXW-YM-Nac" secondAttribute="height" multiplier="1:1" id="LKs-e9-ssh"/>
@@ -1950,6 +1950,6 @@
         <segue reference="K4l-G9-xFR"/>
         <segue reference="sRE-Wh-5vg"/>
         <segue reference="jpP-zI-ed0"/>
-        <segue reference="HT3-gT-1ya"/>
+        <segue reference="0KK-cl-lO4"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -204,7 +204,7 @@ class CreditCardEditTableViewController: UITableViewController {
                                          target: self,
                                          action: #selector(self.updateChosenDate))
         
-        doneButton.tintColor = UIColor.green
+        doneButton.tintColor = UIColor.blue
         
         toolBar.setItems([spaceButton, doneButton], animated: false)
         toolBar.isUserInteractionEnabled = true
