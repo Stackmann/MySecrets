@@ -8,10 +8,10 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
 
 class PwdCollectionViewController: UICollectionViewController, UISearchResultsUpdating, PwdCollection {
-
+    
+    private let reuseIdentifier = "secretCell"
     private var chosenRecordIndex = -1
     private var chosenFilteredRecordIndex = -1
     private var patternToCreate: PatternRecord?
@@ -33,8 +33,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         
         self.navigationItem.titleView = searchController.searchBar
         
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        // Register cell classes: not needed if cell present in storyboard with same identifier
+        //self.collectionView!.register(SecretCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(editUpdateCollectionIfNeed), name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
 
@@ -114,7 +114,7 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "secretCell", for: indexPath) as! SecretCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SecretCollectionViewCell
         if filteredList.indices.contains(indexPath.row){
             // Configure the cell
             let secret = filteredList[indexPath.row]

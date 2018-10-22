@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecretCell: UICollectionViewCell {
+class SecretCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var secretDescription: UILabel!
    
@@ -21,6 +21,7 @@ class SecretCell: UICollectionViewCell {
 
     func configure(image: UIImage, descr: String) {
         secretDescription.text = descr
+        secretDescription.textAlignment = .center
         secretIcon.image = image
     }
 
