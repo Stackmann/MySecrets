@@ -15,7 +15,6 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
     var currentNum = -1
     var patternKind: PatternRecord?
     private let customDatePicker = DayMonthYearPickerView()
-    //private var customAvatarCollection: AvatarCollectionView?
 
     @IBOutlet weak var avatarImageView: AvatarView! {
         didSet {
@@ -56,12 +55,6 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
         receivedDateTextField.delegate = self
         snTextField.delegate = self
         snTextField.returnKeyType = .done
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(keyboardWillShow),
-//            name: NSNotification.Name.UIKeyboardWillShow,
-//            object: nil
-//        )
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -288,15 +281,6 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
         avatarImageView.becomeFirstResponder()
     }
 
-//    @objc private func keyboardWillShow (_ notification: Notification) {
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle, delegat: self)
-//            avatarImageView.inputView = customAvatarCollection
-//            avatarImageView.reloadInputViews()
-//        }
-//    }
-    
     // MARK: - AssetsAvatarSelected delegate metods
     
     func setNewAvatar(with imageName: String) {

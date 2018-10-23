@@ -37,7 +37,6 @@
 		CEF9405721518BE700E1A264 /* AvatarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */; };
 		CEF9405A216A900000E1A264 /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF94058216A900000E1A264 /* AvatarCollectionViewCell.swift */; };
 		CEF9405B216A900000E1A264 /* AvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */; };
-		CEF9405D21727ADC00E1A264 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9405C21727ADB00E1A264 /* TestViewController.swift */; };
 		CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */; };
 		CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F702111F1F6004C8678 /* CommonViewController.swift */; };
 /* End PBXBuildFile section */
@@ -78,7 +77,6 @@
 		CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionView.swift; sourceTree = "<group>"; };
 		CEF94058216A900000E1A264 /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarCollectionViewCell.xib; sourceTree = "<group>"; };
-		CEF9405C21727ADB00E1A264 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayMonthYearPickerView.swift; sourceTree = "<group>"; };
 		CEFD1F702111F1F6004C8678 /* CommonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,7 +150,6 @@
 				07F7B691201E39BC000FA2F3 /* CommonFuncs.swift */,
 				07039188201689F1001BB3C8 /* MonthYearPickerView.swift */,
 				CEF9405621518BE700E1A264 /* AvatarCollectionView.swift */,
-				CEF9405C21727ADB00E1A264 /* TestViewController.swift */,
 				CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */,
 				071E1D311FBF7D6F00310F44 /* Assets.xcassets */,
 				071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */,
@@ -324,7 +321,6 @@
 				071B51881FED90EE00EEE18E /* CreditCardViewController.swift in Sources */,
 				CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */,
 				075DBB421FE64C1E009676B3 /* Patterns.swift in Sources */,
-				CEF9405D21727ADC00E1A264 /* TestViewController.swift in Sources */,
 				0727C5392020F194003E86B3 /* PatternCollectionViewController.swift in Sources */,
 				075DBB401FE64789009676B3 /* PatternRecord.swift in Sources */,
 				CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */,

@@ -8,14 +8,20 @@
 
 import UIKit
 
-class CreditCardEditTableViewController: UITableViewController {
+class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSelected {
     var chosenRecordIndex = -1
     var chosenExpiredDate: Date?
     var currentNum = -1
     var patternKind: PatternRecord?
     private let expiryDatePicker = MonthYearPickerView()
 
-    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var avatarImageView: AvatarView! {
+        didSet {
+            avatarImageView.isUserInteractionEnabled = true
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAvatarView(recognizer:)))
+            avatarImageView.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
     @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var bankTextField: UITextField!
     @IBOutlet weak var cardNumberField: UITextField!
@@ -140,6 +146,8 @@ class CreditCardEditTableViewController: UITableViewController {
         expiredField.inputAccessoryView = returnToolBar()
         cvvField.keyboardType = .decimalPad
         pinField.keyboardType = .decimalPad
+        let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
+        avatarImageView.inputView = customAvatarCollection
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
@@ -241,6 +249,17 @@ class CreditCardEditTableViewController: UITableViewController {
         if !Secrets.share.dataAvailable {
             performSegue(withIdentifier: "enterPwd", sender: nil)
         }
+    }
+
+    @objc private func tapAvatarView (recognizer: UITapGestureRecognizer) {
+        avatarImageView.becomeFirstResponder()
+    }
+
+    // MARK: - AssetsAvatarSelected delegate metods
+    
+    func setNewAvatar(with imageName: String) {
+        avatarImageView.image = UIImage(named: imageName)
+        avatarImageView.resignFirstResponder()
     }
 
 }

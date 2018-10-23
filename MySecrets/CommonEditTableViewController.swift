@@ -228,15 +228,6 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
         avatarImageView.becomeFirstResponder()
     }
 
-//    @objc private func keyboardWillShow (_ notification: Notification) {
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let customAvatarCollection = AvatarCollectionView(frame: keyboardRectangle, delegat: self)
-//            avatarImageView.inputView = customAvatarCollection
-//            avatarImageView.reloadInputViews()
-//        }
-//    }
-
     // MARK: - AssetsAvatarSelected delegate metods
     
     func setNewAvatar(with imageName: String) {
