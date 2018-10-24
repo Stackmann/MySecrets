@@ -19,7 +19,7 @@ class AvatarCollectionView: UIView, UICollectionViewDelegate, UICollectionViewDa
         
         self.delegat = delegat
         
-        let imageNamesString = "market64,key64,idcard64,security64x64,user64x64,world64x64,rdp64x64,credit_card_48x48,credit-cards_48x48,lock_48x48,secure-payment_48x48,user_id_48x48,Chrome,youtube57x57,twitter57x57,skype57x57,pinterest57x57,linkedin57x57,instagram57x57,googleplus57x57,flickr57x57,facebook57x57,Google40x40,Yahoo40x40,visa-card-icon,email64x64,bank64"
+        let imageNamesString = "market64,key64,idcard64,security64x64,user64x64,world64x64,rdp64x64,credit_card_48x48,credit-cards_48x48,lock_48x48,secure-payment_48x48,user_id_48x48,youtube57x57,twitter57x57,skype57x57,pinterest57x57,linkedin57x57,instagram57x57,googleplus57x57,flickr57x57,facebook57x57,Google40x40,Yahoo40x40,visa-card-icon,email64x64,bank64,gmail64x64,payPal64x64,whatsapp64x64,youtube64x64,apple64x64,android64x64,ebay64x64,dropbox64x64,amazon64x64,stackoverflow64x64,googleChrome64x64,hangouts64x64,wallet64x64,viber64x64,slack64x64"
         self.collectionImageName = imageNamesString.components(separatedBy: ",").map{$0}
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
