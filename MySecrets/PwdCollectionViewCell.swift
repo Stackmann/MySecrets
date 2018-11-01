@@ -13,11 +13,6 @@ class PwdCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var describePatternLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     func configure(with pattern: PatternRecord) {
         avatarImageView.image = UIImage(data: pattern.avatar)
         describePatternLabel.text = pattern.describe
