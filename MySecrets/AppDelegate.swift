@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //UINavigationBar.appearance().backgroundColor = UIColor.black
         UIApplication.shared.statusBarStyle = .lightContent
+
+        MSAppCenter.start("5ea00d20-bcaa-4951-af4f-3f762f014a02", withServices:[
+            MSAnalytics.self,
+            MSCrashes.self
+            ])
         return true
     }
     

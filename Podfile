@@ -7,4 +7,6 @@ target 'MySecrets' do
 
 pod ‘RealmSwift’
 
+pod 'AppCenter'
+
 end

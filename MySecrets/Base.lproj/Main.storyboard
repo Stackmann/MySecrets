@@ -597,20 +597,20 @@
                                 <exclude reference="7gD-Om-ZoF"/>
                                 <exclude reference="mf4-RW-HcX"/>
                                 <exclude reference="vrE-0r-8Of"/>
-                                <exclude reference="Bzh-uW-kCo"/>
-                                <exclude reference="r2e-me-gVo"/>
-                                <exclude reference="fbY-8d-ItJ"/>
-                                <exclude reference="s3P-Tp-Gjp"/>
                                 <exclude reference="Gjv-nH-6dE"/>
                                 <exclude reference="e8o-7o-Boj"/>
+                                <exclude reference="fbY-8d-ItJ"/>
+                                <exclude reference="s3P-Tp-Gjp"/>
+                                <exclude reference="Bzh-uW-kCo"/>
+                                <exclude reference="r2e-me-gVo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="mf4-RW-HcX"/>
-                                <include reference="Bzh-uW-kCo"/>
-                                <include reference="fbY-8d-ItJ"/>
                                 <include reference="Gjv-nH-6dE"/>
+                                <include reference="fbY-8d-ItJ"/>
+                                <include reference="Bzh-uW-kCo"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -621,9 +621,9 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="7gD-Om-ZoF"/>
-                                <include reference="r2e-me-gVo"/>
-                                <include reference="s3P-Tp-Gjp"/>
                                 <include reference="e8o-7o-Boj"/>
+                                <include reference="s3P-Tp-Gjp"/>
+                                <include reference="r2e-me-gVo"/>
                             </mask>
                         </variation>
                     </view>
@@ -938,20 +938,20 @@
                                 <exclude reference="5LV-lU-NrC"/>
                                 <exclude reference="GmA-97-DoW"/>
                                 <exclude reference="RZC-yj-Cia"/>
-                                <exclude reference="1TL-2C-wtO"/>
-                                <exclude reference="YTc-Es-2lI"/>
                                 <exclude reference="Euy-hf-nRf"/>
                                 <exclude reference="LaQ-iS-v5C"/>
                                 <exclude reference="UyX-my-rEp"/>
                                 <exclude reference="VPc-sn-orK"/>
+                                <exclude reference="1TL-2C-wtO"/>
+                                <exclude reference="YTc-Es-2lI"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="RZC-yj-Cia"/>
-                                <include reference="1TL-2C-wtO"/>
                                 <include reference="LaQ-iS-v5C"/>
                                 <include reference="UyX-my-rEp"/>
+                                <include reference="1TL-2C-wtO"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -962,9 +962,9 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="5LV-lU-NrC"/>
-                                <include reference="YTc-Es-2lI"/>
                                 <include reference="Euy-hf-nRf"/>
                                 <include reference="VPc-sn-orK"/>
+                                <include reference="YTc-Es-2lI"/>
                             </mask>
                         </variation>
                     </view>
