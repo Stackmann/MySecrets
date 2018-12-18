@@ -165,7 +165,8 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         } else {
             let filtered = Secrets.share.list.filter { recordPass -> Bool in
                 let lowerCasedName = recordPass.describe.lowercased()
-                return lowerCasedName.contains(lowerCasedQuery)
+                let lowerCasedPatternKind = recordPass.idPattern.lowercased()
+                return lowerCasedName.contains(lowerCasedQuery) || lowerCasedPatternKind.contains(lowerCasedQuery)
             }
             filteredList = filtered
             collectionView?.reloadSections([0])
