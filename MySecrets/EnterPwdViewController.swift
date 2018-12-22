@@ -10,18 +10,30 @@ import UIKit
 import RealmSwift
 
 class EnterPwdViewController: UIViewController {
-
+    
+    var isPasswordHidden = true
     @IBOutlet weak var inputPasswordField: UITextField!
     @IBOutlet weak var warningPasswordLabel: UILabel!
-
+    @IBOutlet weak var showHiddenPasswordLabel: UILabel!{
+        didSet {
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EnterPwdViewController.tapLabel))
+            showHiddenPasswordLabel.isUserInteractionEnabled = true
+            showHiddenPasswordLabel.addGestureRecognizer(tapGestureRecognizer)
+        }
+    }
+    
     // MARK: - lifecycle viewController metods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        warningPasswordLabel.text = "Use only latin characters, digits and symbols"
+        
+        inputPasswordField.isSecureTextEntry = isPasswordHidden
+        warningPasswordLabel.text = NSLocalizedString("EnterPasswordWarning", comment: "Warning for using correct symbols in password")
         warningPasswordLabel.textColor = UIColor(red: 255.0/255.0, green: 145.0/255.0, blue: 158.0/255.0, alpha: 1)
         warningPasswordLabel.numberOfLines = 0
+
+        showHiddenPasswordLabel.text = NSLocalizedString("EnterPasswordShowPasswordSymbols", comment: "Message that can switch visibility input symbols")
+        showHiddenPasswordLabel.textColor = UIColor(red: 29.0/255.0, green: 193.0/255.0, blue: 38.0/255.0, alpha: 1)
     }
 
     // MARK: - actions
@@ -66,5 +78,12 @@ class EnterPwdViewController: UIViewController {
             }
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func tapLabel(sender:UITapGestureRecognizer) {
+        isPasswordHidden = !isPasswordHidden
+        inputPasswordField.isSecureTextEntry = isPasswordHidden
+        let enterPasswordMessageId = isPasswordHidden ? "EnterPasswordShowPasswordSymbols" : "EnterPasswordHiddenPasswordSymbols"
+            showHiddenPasswordLabel.text = NSLocalizedString(enterPasswordMessageId, comment: "Message that can switch visibility input symbols")
     }
 }

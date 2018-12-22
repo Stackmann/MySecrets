@@ -94,3 +94,12 @@
 /* URL of websait */
 "URL" = "URL";
 
+/* Warning for using correct symbols in password */
+"EnterPasswordWarning" = "Use only latin characters, digits and symbols";
+
+/* Message that can switch visibility input symbols */
+"EnterPasswordShowPasswordSymbols" = "Show password";
+
+/* Message that can switch visibility input symbols */
+"EnterPasswordHiddenPasswordSymbols" = "Hidden password";
+

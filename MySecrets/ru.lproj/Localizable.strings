@@ -94,3 +94,11 @@
 /* URL of websait */
 "URL" = "URL";
 
+/* Warning for using correct symbols in password */
+"EnterPasswordWarning" = "Используйте только латинские буквы, цифры и символы";
+
+/* Message that can switch visibility input symbols */
+"EnterPasswordShowPasswordSymbols" = "Показать пароль";
+
+/* Message that can switch visibility input symbols */
+"EnterPasswordHiddenPasswordSymbols" = "Скрыть пароль";
