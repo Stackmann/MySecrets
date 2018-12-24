@@ -162,6 +162,7 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
         }
         let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
         avatarImageView.inputView = customAvatarCollection
+        descriptionTextField.autocapitalizationType = UITextAutocapitalizationType.sentences
         if let pattern = patternKind {
             if let image = UIImage(data: pattern.avatar) {
                 avatarImageView.image = image
@@ -174,6 +175,9 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
                 labels[count]?.text = pattern.localizedFields[patternField]
                 if let typeField = pattern.typesOfFields[patternField], typeField == "Int" {
                     textFields[count]?.keyboardType = .decimalPad
+                }
+                if patternField.contains("Notes") || patternField.contains("Bank") {
+                    textFields[count]?.autocapitalizationType = UITextAutocapitalizationType.sentences
                 }
                 count += 1
             }

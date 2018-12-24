@@ -148,6 +148,12 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
         pinField.keyboardType = .decimalPad
         let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
         avatarImageView.inputView = customAvatarCollection
+
+        let textFields = [descriptionField, bankTextField, holderField, notesField]
+        for curTextField in textFields {
+            curTextField?.autocapitalizationType = UITextAutocapitalizationType.sentences
+        }
+
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }

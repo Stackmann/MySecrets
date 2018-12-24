@@ -139,6 +139,12 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
         receivedDateTextField.inputAccessoryView = returnToolBarForReceivedDate()
         let customAvatarCollection = AvatarCollectionView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 216), delegat: self)
         avatarImageView.inputView = customAvatarCollection
+
+        let textFields = [descriptionTextField, firstNameTextField, lastNameTextField, middleNameTextField, snTextField]
+        for curTextField in textFields {
+            curTextField?.autocapitalizationType = UITextAutocapitalizationType.sentences
+        }
+
         if chosenRecordIndex < 0 {
             barButtonDelete.isEnabled = false
         }
