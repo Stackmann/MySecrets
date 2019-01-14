@@ -89,7 +89,7 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
     }
     
     @IBAction func deleteAction(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Confirmation", message: "Remove the record?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("ConfirmationAlertTitle", comment: "Title confirmation alert"), message: NSLocalizedString("RemoveTheRecord", comment: "Text confirmation about remove the record"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancelAction)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in
@@ -101,8 +101,8 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
     }
     
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
-        guard let describe = descriptionField.text else {
-            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Fill describe please")
+        guard let describe = descriptionField.text, !describe.isEmpty else {
+            let alert = CommonFuncs.getAlert(title: NSLocalizedString("WrongDataAlertTitle", comment: "Title wrong data alert"), message: NSLocalizedString("DescribeIsNotFilled", comment: "Text message about describe that not filled"))
             present(alert, animated: true, completion: nil)
             return
         }
@@ -111,7 +111,7 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
         var dateFields = [String: Date]()
         
         guard let avatarData = UIImagePNGRepresentation(avatarImageView.image!) else {
-            let alert = CommonFuncs.getAlert(title: "System error!", message: "Can not get image of record.")
+            let alert = CommonFuncs.getAlert(title: NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert"), message: NSLocalizedString("CanNotGetImageOfRecord", comment: "Text message about inability to find image of record"))
             present(alert, animated: true, completion: nil)
             return
         }
@@ -213,7 +213,7 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
                                height: 32)
         
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Готово",
+        let doneButton = UIBarButtonItem(title: NSLocalizedString("ApplyButtonTitle", comment: "Title button Apple"),
                                          style: .plain,
                                          target: self,
                                          action: #selector(self.updateChosenDate))

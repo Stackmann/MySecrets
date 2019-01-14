@@ -26,28 +26,28 @@ class SettingsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            var indexPath2 = indexPath
-            for row in 0...1 {
-                indexPath2.row = row
-                if let cell = tableView.cellForRow(at: indexPath2) {
-                    cell.accessoryType = .none
-                }
-            }
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.accessoryType = .checkmark
-                tableView.deselectRow(at: indexPath, animated: false)
-            }
-        }
+//        if indexPath.section == 0 {
+//            var indexPath2 = indexPath
+//            for row in 0...1 {
+//                indexPath2.row = row
+//                if let cell = tableView.cellForRow(at: indexPath2) {
+//                    cell.accessoryType = .none
+//                }
+//            }
+//            if let cell = tableView.cellForRow(at: indexPath) {
+//                cell.accessoryType = .checkmark
+//                tableView.deselectRow(at: indexPath, animated: false)
+//            }
+//        }
     }
     
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

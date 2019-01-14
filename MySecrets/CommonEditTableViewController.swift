@@ -77,8 +77,8 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
     }
     
     @IBAction func saveAction(_ sender: UIBarButtonItem) {
-        guard let describe = descriptionTextField.text else {
-            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Fill describe please")
+        guard let describe = descriptionTextField.text, !describe.isEmpty else {
+            let alert = CommonFuncs.getAlert(title: NSLocalizedString("WrongDataAlertTitle", comment: "Title wrong data alert"), message: NSLocalizedString("DescribeIsNotFilled", comment: "Text message about describe that not filled"))
             present(alert, animated: true, completion: nil)
             return
         }
@@ -87,7 +87,7 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
         let dateFields = [String: Date]()
 
         guard let avatarData = UIImagePNGRepresentation(avatarImageView.image!) else {
-            let alert = CommonFuncs.getAlert(title: "System error!", message: "Can't get image of the record.")
+            let alert = CommonFuncs.getAlert(title: NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert"), message: NSLocalizedString("CanNotGetImageOfRecord", comment: "Text message about inability to find image of record"))
             present(alert, animated: true, completion: nil)
             return
         }
@@ -125,7 +125,7 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
     }
     
     @IBAction func deleteAction(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Confirmation", message: "Remove the record?", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("ConfirmationAlertTitle", comment: "Title confirmation alert"), message: NSLocalizedString("RemoveTheRecord", comment: "Text confirmation about remove the record"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         alert.addAction(cancelAction)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: { action in

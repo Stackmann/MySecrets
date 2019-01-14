@@ -102,3 +102,24 @@
 
 /* Message that can switch visibility input symbols */
 "EnterPasswordHiddenPasswordSymbols" = "Скрыть пароль";
+
+/* Title confirmation alert */
+"ConfirmationAlertTitle" = "Подтверждение";
+
+/* Text confirmation about remove the record */
+"RemoveTheRecord" = "Удалить запись?";
+
+/* Title wrong data alert */
+"WrongDataAlertTitle" = "Некорректные данные!";
+
+/* Text message about describe that not filled */
+"DescribeIsNotFilled" = "Заполните пожалуйста описание!";
+
+/* Title system error alert */
+"SystemErrorAlertTitle" = "Системная ошибка!";
+
+/* Text message about inability to find image of record */
+"CanNotGetImageOfRecord" = "Не удается получить изображение для записи!";
+
+/* Title button Apple */
+"ApplyButtonTitle" = "Готово";

@@ -103,3 +103,23 @@
 /* Message that can switch visibility input symbols */
 "EnterPasswordHiddenPasswordSymbols" = "Hidden password";
 
+/* Title confirmation alert */
+"ConfirmationAlertTitle" = "Confirmation";
+
+/* Text confirmation about remove the record */
+"RemoveTheRecord" = "Remove the record?";
+
+/* Title wrong data alert */
+"WrongDataAlertTitle" = "Wrong data!";
+
+/* Text message about describe that not filled */
+"DescribeIsNotFilled" = "Fill describe please!";
+
+/* Title system error alert */
+"SystemErrorAlertTitle" = "System error!";
+
+/* Text message about inability to find image of record*/
+"CanNotGetImageOfRecord" = "Can not get image of record!";
+
+/* Title button Apple */
+"ApplyButtonTitle" = "Apply";

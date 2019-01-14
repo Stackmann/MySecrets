@@ -31,6 +31,7 @@
 		07F9F4EC1FD0A66B004B9A25 /* PwdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */; };
 		07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */; };
 		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
+		CE060B9721ED1B2D00012118 /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE060B9621ED1B2D00012118 /* ChangePasswordTableViewController.swift */; };
 		CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */; };
 		CEF940502137004500E1A264 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEF940522137004500E1A264 /* Localizable.strings */; };
 		CEF94055214EC94B00E1A264 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF94054214EC94B00E1A264 /* AvatarView.swift */; };
@@ -70,6 +71,7 @@
 		15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySecrets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E049058BDA40146DD601FF /* Pods-MySecrets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D7CAA033FA9E123B8C24E7 /* Pods-MySecrets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.release.xcconfig"; sourceTree = "<group>"; };
+		CE060B9621ED1B2D00012118 /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
 		CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditTableViewController.swift; sourceTree = "<group>"; };
 		CEF940512137004500E1A264 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEF940532137010F00E1A264 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				071E1D311FBF7D6F00310F44 /* Assets.xcassets */,
 				071E1D331FBF7D6F00310F44 /* LaunchScreen.storyboard */,
 				071E1D361FBF7D6F00310F44 /* Info.plist */,
+				CE060B9621ED1B2D00012118 /* ChangePasswordTableViewController.swift */,
 			);
 			path = MySecrets;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				072AD3F0200FF7E4004029C5 /* IdCardEditTableViewController.swift in Sources */,
 				07F7B692201E39BC000FA2F3 /* CommonFuncs.swift in Sources */,
 				CEF9405A216A900000E1A264 /* AvatarCollectionViewCell.swift in Sources */,
+				CE060B9721ED1B2D00012118 /* ChangePasswordTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

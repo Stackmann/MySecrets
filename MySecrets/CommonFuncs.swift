@@ -18,7 +18,7 @@ class CommonFuncs {
         return alert
     }
     
-    static func initRealmDB(inputPasswordStr: String) -> (Bool, String) {
+    static func initRealmDB(inputPasswordStr: String, suffixInMsg: String) -> (Bool, String) {
         var userErrorStr = ""
         var inputPasswordStr64 = inputPasswordStr
         while inputPasswordStr64.count < 64 {
@@ -26,13 +26,13 @@ class CommonFuncs {
         }
         if let encryptKey = inputPasswordStr64.data(using: .utf8) {
             //print(encryptKey.count)
-            print(Realm.Configuration.defaultConfiguration.fileURL ?? "realm file path doesn't exist")
+            print(Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent ?? "realm file path doesn't exist")
             let realmConfig = Realm.Configuration(encryptionKey: encryptKey)
             do {
                 Secrets.share.realmDB = try Realm(configuration: realmConfig)
             } catch {
                 if error.localizedDescription.contains("Realm file decryption failed") {
-                    userErrorStr = "Wrong password!"
+                    userErrorStr = "Wrong " + suffixInMsg + " password!"
                 } else {
                     userErrorStr = "Error open database!"
                 }
@@ -80,7 +80,37 @@ class CommonFuncs {
         }
         return true
     }
-    
+
+    static func changeKeyRealmDB(oldPasswordStr: String, newPasswordStr: String) -> (Bool, String) {
+        var newPasswordStr64 = newPasswordStr
+
+        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: oldPasswordStr, suffixInMsg: "old")
+        if !resultInitDB.0 {
+            return resultInitDB
+        }
+
+        while newPasswordStr64.count < 64 {
+            newPasswordStr64 = "0" + newPasswordStr64
+        }
+        if let encryptKey = newPasswordStr64.data(using: .utf8) {
+            //print(encryptKey.count)
+            if let oldFileName = Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent, let oldFilePath = Realm.Configuration.defaultConfiguration.fileURL?.path {
+                let newFileName = returnNextNameRealmFile(for: oldFileName)
+                let newFilePath = oldFilePath.replacingOccurrences(of: oldFileName, with: newFileName)
+                let newFileURL = NSURL(fileURLWithPath: newFilePath)
+                do {
+                    try Secrets.share.realmDB.writeCopy(toFile: newFileURL as URL, encryptionKey: encryptKey)
+                    print(Realm.Configuration.defaultConfiguration.fileURL?.pathComponents ?? "realm file path doesn't exist")
+                } catch {
+                    print("Can't change password!")
+                }
+            }
+        } else {
+            return (false, "Can't used input password!")
+        }
+        return (true, "")
+    }
+
     static func encodeMainList() -> Data {
         let encoder = JSONEncoder()
         
@@ -102,6 +132,33 @@ class CommonFuncs {
             return false
         }
     }
+    
+    static func returnNextNameRealmFile(for previousName: String) -> String {
+        var nextName = previousName
+        if var currentIndex = previousName.range(of: ".realm")?.lowerBound {
+            var currentCharacter = previousName[previousName.startIndex]
+            var strNumber = ""
+            while currentIndex > previousName.startIndex {
+                currentIndex = previousName.index(before: currentIndex)
+                currentCharacter = previousName[currentIndex]
+                //digits value >= 48 && value <= 57
+                if CharacterSet.decimalDigits.contains(currentCharacter.unicodeScalar()) {
+                    strNumber.insert(currentCharacter, at: strNumber.startIndex)
+                } else {
+                    break
+                }
+            }
+            if strNumber.isEmpty {
+                nextName = "default1.realm"
+            } else {
+                if var number = Int(strNumber) {
+                    number += 1
+                    nextName = "default" + String(number) + ".realm"
+                }
+            }
+        }
+        return nextName
+    }
 }
 
 extension String {
@@ -114,5 +171,21 @@ extension String {
             }
         }
         return (true, -1)
+    }
+}
+
+extension Character {
+    func unicodeScalarCodePoint() -> UInt32 {
+        let characterString = String(self)
+        let scalars = characterString.unicodeScalars
+        
+        return scalars[scalars.startIndex].value
+    }
+
+    func unicodeScalar() -> UnicodeScalar {
+        let characterString = String(self)
+        let scalars = characterString.unicodeScalars
+        
+        return scalars[scalars.startIndex]
     }
 }

@@ -55,7 +55,7 @@ class EnterPwdViewController: UIViewController {
             
 
             if !Secrets.share.dataAvailable {
-                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr)
+                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr, suffixInMsg: "")
                 if !resultInitDB.0 {
                     let alert = CommonFuncs.getAlert(title: "Error", message: resultInitDB.1)
                     self.present(alert, animated: true, completion: nil)
