@@ -25,11 +25,16 @@ class CommonFuncs {
             inputPasswordStr64 = "0" + inputPasswordStr64
         }
         if let encryptKey = inputPasswordStr64.data(using: .utf8) {
-            //print(encryptKey.count)
-            print(Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent ?? "realm file path doesn't exist")
-            let realmConfig = Realm.Configuration(encryptionKey: encryptKey)
+//            print(Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent ?? "realm file path doesn't exist")
+            let realmDefaultConfig = Realm.Configuration(encryptionKey: encryptKey)
+            if Secrets.share.realmDBConfiguration == nil {
+               Secrets.share.realmDBConfiguration = realmDefaultConfig
+            } else {
+                Secrets.share.realmDBConfiguration?.encryptionKey = encryptKey
+            }
+            print(Secrets.share.realmDBConfiguration?.fileURL ?? "realm file path doesn't exist")
             do {
-                Secrets.share.realmDB = try Realm(configuration: realmConfig)
+                Secrets.share.realmDB = try Realm(configuration: Secrets.share.realmDBConfiguration!)
             } catch {
                 if error.localizedDescription.contains("Realm file decryption failed") {
                     userErrorStr = "Wrong " + suffixInMsg + " password!"
@@ -84,26 +89,46 @@ class CommonFuncs {
     static func changeKeyRealmDB(oldPasswordStr: String, newPasswordStr: String) -> (Bool, String) {
         var newPasswordStr64 = newPasswordStr
 
-        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: oldPasswordStr, suffixInMsg: "old")
-        if !resultInitDB.0 {
-            return resultInitDB
-        }
+//        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: oldPasswordStr, suffixInMsg: "old")
+//        if !resultInitDB.0 {
+//            return resultInitDB
+//        }
 
         while newPasswordStr64.count < 64 {
             newPasswordStr64 = "0" + newPasswordStr64
         }
         if let encryptKey = newPasswordStr64.data(using: .utf8) {
             //print(encryptKey.count)
-            if let oldFileName = Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent, let oldFilePath = Realm.Configuration.defaultConfiguration.fileURL?.path {
+            if let oldFileName = Secrets.share.realmDBConfiguration?.fileURL?.lastPathComponent, let oldFilePath = Secrets.share.realmDBConfiguration?.fileURL?.path {
                 let newFileName = returnNextNameRealmFile(for: oldFileName)
                 let newFilePath = oldFilePath.replacingOccurrences(of: oldFileName, with: newFileName)
                 let newFileURL = NSURL(fileURLWithPath: newFilePath)
                 do {
                     try Secrets.share.realmDB.writeCopy(toFile: newFileURL as URL, encryptionKey: encryptKey)
-                    print(Realm.Configuration.defaultConfiguration.fileURL?.pathComponents ?? "realm file path doesn't exist")
+                    //print(Realm.Configuration.defaultConfiguration.fileURL?.pathComponents ?? "realm file path doesn't exist")
+//                    let newConfiguration = Realm.Configuration(fileURL: newFileURL as URL, encryptionKey: encryptKey)
+                    //Secrets.share.realmDBConfiguration = newConfiguration
                 } catch {
-                    print("Can't change password!")
+                    return(false, "Can't change password!")
                 }
+                Secrets.share.dataAvailable = false
+                //remove old file DB and rename new file DB
+                //FileManager.default.urls(for: <#T##FileManager.SearchPathDirectory#>, in: <#T##FileManager.SearchPathDomainMask#>)
+                do {
+                    try FileManager.default.removeItem(at: Secrets.share.realmDBConfiguration!.fileURL!)
+                } catch {
+                    return(false, "Can't change password!")
+                }
+                do {
+                    try FileManager.default.moveItem(at: newFileURL as URL, to: Secrets.share.realmDBConfiguration!.fileURL!)
+                } catch {
+                    return(false, "Can't change password!")
+                }
+                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: newPasswordStr, suffixInMsg: "")
+                if !resultInitDB.0 {
+                    return (false, "Something wents wrong!")
+                }
+
             }
         } else {
             return (false, "Can't used input password!")

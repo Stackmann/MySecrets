@@ -692,7 +692,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e6A-u6-5Kj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <sections>
                             <tableViewSection headerTitle="General" id="gUO-WI-E7H" colorLabel="IBBuiltInLabel-Green">
                                 <cells>
@@ -743,10 +743,10 @@
         <scene sceneID="YGX-pw-i9S">
             <objects>
                 <tableViewController id="XJM-Ce-OJR" customClass="ChangePasswordTableViewController" customModule="MySecrets" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gjt-EK-fVl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gjt-EK-fVl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <sections>
                             <tableViewSection headerTitle="Old password" id="d6i-WN-Blf">
                                 <cells>
@@ -756,7 +756,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xeC-wo-3zj" id="szF-H4-0H5">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Jt-0A-cd4">
+                                                    <rect key="frame" x="10" y="7" width="394" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5Jt-0A-cd4" secondAttribute="trailing" constant="10" id="VYq-qf-2eL"/>
+                                                <constraint firstItem="5Jt-0A-cd4" firstAttribute="leading" secondItem="szF-H4-0H5" secondAttribute="leading" constant="10" id="zOB-Ci-sj0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="5Jt-0A-cd4" firstAttribute="centerY" secondItem="xeC-wo-3zj" secondAttribute="centerY" id="vTk-95-dE6"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -768,7 +784,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Oi-ku-FNI" id="Xzl-NH-sea">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1C-96-nYf">
+                                                    <rect key="frame" x="10" y="7" width="394" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="d1C-96-nYf" secondAttribute="trailing" constant="10" id="Wrz-ap-T4r"/>
+                                                <constraint firstItem="d1C-96-nYf" firstAttribute="leading" secondItem="Xzl-NH-sea" secondAttribute="leading" constant="10" id="rjl-N7-Sd4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="d1C-96-nYf" firstAttribute="centerY" secondItem="2Oi-ku-FNI" secondAttribute="centerY" id="IhI-Ql-A5j"/>
+                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="biS-mI-g3O">
                                         <rect key="frame" x="0.0" y="144" width="414" height="44"/>
@@ -776,7 +808,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="biS-mI-g3O" id="4Lz-zf-R3j">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1B-6y-gwz">
+                                                    <rect key="frame" x="10" y="7" width="394" height="30"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="r1B-6y-gwz" secondAttribute="trailing" constant="10" id="OPa-Td-N93"/>
+                                                <constraint firstItem="r1B-6y-gwz" firstAttribute="leading" secondItem="4Lz-zf-R3j" secondAttribute="leading" constant="10" id="x1k-4l-Htq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="r1B-6y-gwz" firstAttribute="centerY" secondItem="biS-mI-g3O" secondAttribute="centerY" id="Ydg-yS-IwO"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -793,9 +841,18 @@
                                 <action selector="cancelAction:" destination="XJM-Ce-OJR" id="bGm-Pm-5cT"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aaM-J5-rq3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aaM-J5-rq3">
+                            <connections>
+                                <action selector="doneAction:" destination="XJM-Ce-OJR" id="k76-h7-pKH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="newPasswordTextField1" destination="d1C-96-nYf" id="MoG-vx-lz0"/>
+                        <outlet property="newPasswordTextField2" destination="r1B-6y-gwz" id="PiY-iT-ofm"/>
+                        <outlet property="oldPasswordTextField" destination="5Jt-0A-cd4" id="yMd-tg-giz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkG-GN-bAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1999,6 +2056,6 @@
         <segue reference="fhQ-ps-prY"/>
         <segue reference="cg4-to-xW2"/>
         <segue reference="Le6-PD-QmH"/>
-        <segue reference="AJm-wg-bYF"/>
+        <segue reference="HT3-gT-1ya"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,9 +10,16 @@ import UIKit
 
 class ChangePasswordTableViewController: UITableViewController {
 
+    @IBOutlet weak var oldPasswordTextField: UITextField!
+    @IBOutlet weak var newPasswordTextField1: UITextField!
+    @IBOutlet weak var newPasswordTextField2: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        oldPasswordTextField.placeholder = NSLocalizedString("oldPasswordPlaceHolderText", comment: "Placeholder for old password textfield")
+        newPasswordTextField1.placeholder = NSLocalizedString("newPasswordPlaceHolderText1", comment: "Placeholder for new password textfield1")
+        newPasswordTextField2.placeholder = NSLocalizedString("newPasswordPlaceHolderText2", comment: "Placeholder for new password textfield2")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,19 +48,34 @@ class ChangePasswordTableViewController: UITableViewController {
             return 2
         }
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        if let newTextPassword = newPasswordTextField1.text, newTextPassword.isEmpty {
+            let alert = CommonFuncs.getAlert(title: "Error", message: "New password might be not empty")
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if let newTextPassword1 = newPasswordTextField1.text, let newTextPassword2 = newPasswordTextField2.text, let oldTextPassword = oldPasswordTextField.text {
+                if newTextPassword1 != newTextPassword2 {
+                    let alert = CommonFuncs.getAlert(title: "Error", message: "New passwords are not equal")
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }
+            let resultChange = CommonFuncs.changeKeyRealmDB(oldPasswordStr: oldTextPassword, newPasswordStr: newTextPassword1)
+            if resultChange.0 {
+                let alert = UIAlertController(title: "Information", message: "Success!", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: {action in self.navigationController?.popViewController(animated: true)})
+                alert.addAction(okAction)
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = CommonFuncs.getAlert(title: "Error", message: resultChange.1)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
 }

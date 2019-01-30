@@ -123,3 +123,13 @@
 
 /* Title button Apple */
 "ApplyButtonTitle" = "Готово";
+
+/* Placeholder for old password textfield */
+"oldPasswordPlaceHolderText" = "Проверка существующего пароля";
+
+/* Placeholder for new password textfield1 */
+"newPasswordPlaceHolderText1" = "Введите новый пароль";
+
+/* Placeholder for new password textfield2 */
+"newPasswordPlaceHolderText2" = "Повторите новый пароль";
+

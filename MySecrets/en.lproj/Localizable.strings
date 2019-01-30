@@ -123,3 +123,13 @@
 
 /* Title button Apple */
 "ApplyButtonTitle" = "Apply";
+
+/* Placeholder for old password textfield */
+"oldPasswordPlaceHolderText" = "Check for current password";
+
+/* Placeholder for new password textfield1 */
+"newPasswordPlaceHolderText1" = "Enter new password";
+
+/* Placeholder for new password textfield2 */
+"newPasswordPlaceHolderText2" = "Enter new password again";
+

@@ -25,6 +25,7 @@ class Secrets {
     }
     var dataFirstReading = true
     var realmDB: Realm!
+    var realmDBConfiguration: Realm.Configuration?
     
     func loadData() {
         list.removeAll() 
