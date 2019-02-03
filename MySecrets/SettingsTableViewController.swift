@@ -35,21 +35,18 @@ class SettingsTableViewController: UITableViewController {
 //        return 1
 //    }
 //
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if indexPath.section == 0 {
-//            var indexPath2 = indexPath
-//            for row in 0...1 {
-//                indexPath2.row = row
-//                if let cell = tableView.cellForRow(at: indexPath2) {
-//                    cell.accessoryType = .none
-//                }
-//            }
-//            if let cell = tableView.cellForRow(at: indexPath) {
-//                cell.accessoryType = .checkmark
-//                tableView.deselectRow(at: indexPath, animated: false)
-//            }
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0, indexPath.row == 0 {
+            let alert = UIAlertController(title: NSLocalizedString("ConfirmationAlertTitle", comment: "Title confirmation alert"), message: NSLocalizedString("ChangePwdConfirmation", comment: "Text confirmation about change password"), preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            alert.addAction(cancelAction)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] action in
+                self.performToEnterPasswd()
+            })
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
     
 //    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: "CellIdentifier", for: indexPath) as UITableViewCell
@@ -107,5 +104,8 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func cancelSetting(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
-    
+
+    func performToEnterPasswd() {
+        performSegue(withIdentifier: "changePwd", sender: nil)
+    }
 }

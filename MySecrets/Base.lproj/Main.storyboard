@@ -713,9 +713,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <segue destination="XJM-Ce-OJR" kind="show" id="ieX-8R-c9q"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -734,6 +731,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="XJM-Ce-OJR" kind="show" identifier="changePwd" id="t3W-Jt-pgy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tiF-zz-36a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -748,38 +748,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Old password" id="d6i-WN-Blf">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="xeC-wo-3zj">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xeC-wo-3zj" id="szF-H4-0H5">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Jt-0A-cd4">
-                                                    <rect key="frame" x="10" y="7" width="394" height="30"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="5Jt-0A-cd4" secondAttribute="trailing" constant="10" id="VYq-qf-2eL"/>
-                                                <constraint firstItem="5Jt-0A-cd4" firstAttribute="leading" secondItem="szF-H4-0H5" secondAttribute="leading" constant="10" id="zOB-Ci-sj0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="5Jt-0A-cd4" firstAttribute="centerY" secondItem="xeC-wo-3zj" secondAttribute="centerY" id="vTk-95-dE6"/>
-                                        </constraints>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="New password" id="MNz-tk-iOG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2Oi-ku-FNI">
-                                        <rect key="frame" x="0.0" y="100" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2Oi-ku-FNI" id="Xzl-NH-sea">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -803,7 +775,7 @@
                                         </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="biS-mI-g3O">
-                                        <rect key="frame" x="0.0" y="144" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="biS-mI-g3O" id="4Lz-zf-R3j">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
@@ -851,7 +823,7 @@
                     <connections>
                         <outlet property="newPasswordTextField1" destination="d1C-96-nYf" id="MoG-vx-lz0"/>
                         <outlet property="newPasswordTextField2" destination="r1B-6y-gwz" id="PiY-iT-ofm"/>
-                        <outlet property="oldPasswordTextField" destination="5Jt-0A-cd4" id="yMd-tg-giz"/>
+                        <segue destination="5Uf-56-o49" kind="presentation" identifier="enterPwd" id="XTx-Tl-OyW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OkG-GN-bAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2053,9 +2025,9 @@
         <image name="id-card-template" width="426" height="341"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fhQ-ps-prY"/>
+        <segue reference="K4l-G9-xFR"/>
         <segue reference="cg4-to-xW2"/>
-        <segue reference="Le6-PD-QmH"/>
-        <segue reference="HT3-gT-1ya"/>
+        <segue reference="jpP-zI-ed0"/>
+        <segue reference="XTx-Tl-OyW"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -133,3 +133,6 @@
 /* Placeholder for new password textfield2 */
 "newPasswordPlaceHolderText2" = "Enter new password again";
 
+/* Text confirmation about change password */
+"ChangePwdConfirmation" = "It's have to check your old password. Continue?";
+

@@ -25,7 +25,6 @@ class CommonFuncs {
             inputPasswordStr64 = "0" + inputPasswordStr64
         }
         if let encryptKey = inputPasswordStr64.data(using: .utf8) {
-//            print(Realm.Configuration.defaultConfiguration.fileURL?.lastPathComponent ?? "realm file path doesn't exist")
             let realmDefaultConfig = Realm.Configuration(encryptionKey: encryptKey)
             if Secrets.share.realmDBConfiguration == nil {
                Secrets.share.realmDBConfiguration = realmDefaultConfig
@@ -86,53 +85,33 @@ class CommonFuncs {
         return true
     }
 
-    static func changeKeyRealmDB(oldPasswordStr: String, newPasswordStr: String) -> (Bool, String) {
-        var newPasswordStr64 = newPasswordStr
-
-//        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: oldPasswordStr, suffixInMsg: "old")
-//        if !resultInitDB.0 {
-//            return resultInitDB
-//        }
-
-        while newPasswordStr64.count < 64 {
-            newPasswordStr64 = "0" + newPasswordStr64
-        }
-        if let encryptKey = newPasswordStr64.data(using: .utf8) {
-            //print(encryptKey.count)
-            if let oldFileName = Secrets.share.realmDBConfiguration?.fileURL?.lastPathComponent, let oldFilePath = Secrets.share.realmDBConfiguration?.fileURL?.path {
-                let newFileName = returnNextNameRealmFile(for: oldFileName)
-                let newFilePath = oldFilePath.replacingOccurrences(of: oldFileName, with: newFileName)
-                let newFileURL = NSURL(fileURLWithPath: newFilePath)
-                do {
-                    try Secrets.share.realmDB.writeCopy(toFile: newFileURL as URL, encryptionKey: encryptKey)
-                    //print(Realm.Configuration.defaultConfiguration.fileURL?.pathComponents ?? "realm file path doesn't exist")
-//                    let newConfiguration = Realm.Configuration(fileURL: newFileURL as URL, encryptionKey: encryptKey)
-                    //Secrets.share.realmDBConfiguration = newConfiguration
-                } catch {
-                    return(false, "Can't change password!")
-                }
-                Secrets.share.dataAvailable = false
-                //remove old file DB and rename new file DB
-                //FileManager.default.urls(for: <#T##FileManager.SearchPathDirectory#>, in: <#T##FileManager.SearchPathDomainMask#>)
-                do {
-                    try FileManager.default.removeItem(at: Secrets.share.realmDBConfiguration!.fileURL!)
-                } catch {
-                    return(false, "Can't change password!")
-                }
-                do {
-                    try FileManager.default.moveItem(at: newFileURL as URL, to: Secrets.share.realmDBConfiguration!.fileURL!)
-                } catch {
-                    return(false, "Can't change password!")
-                }
-                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: newPasswordStr, suffixInMsg: "")
-                if !resultInitDB.0 {
-                    return (false, "Something wents wrong!")
-                }
-
+    static func changeKeyRealmDB(newPasswordStr: String) -> (Bool, String) {
+        //remove old file DB
+        Secrets.share.dataAvailable = false
+        let realmURL = Secrets.share.realmDBConfiguration!.fileURL!
+        let realmURLs = [
+            realmURL,
+            realmURL.appendingPathExtension("lock"),
+            realmURL.appendingPathExtension("note"),
+            realmURL.appendingPathExtension("management")
+        ]
+        for URL in realmURLs {
+            do {
+                try FileManager.default.removeItem(at: URL)
+            } catch {
+                return(false, "Can't change password!")
             }
-        } else {
-            return (false, "Can't used input password!")
         }
+
+        //create new file DB with new encryptkey
+        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: newPasswordStr, suffixInMsg: "")
+        if !resultInitDB.0 {
+            return (false, "Something wents wrong!")
+        }
+        //save all secrets to DB
+        if !saveToRealmDB() { return (false, "Something wents wrong!") }
+        
+        Secrets.share.dataAvailable = true
         return (true, "")
     }
 
