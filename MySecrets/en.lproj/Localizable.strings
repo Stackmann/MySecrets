@@ -16,10 +16,10 @@
 "Bank" = "Bank";
 
 /* MFO Bank of bank account */
-"BankMFO" = "BankMFO";
+"BankMFO" = "BIC";
 
 /* BirthdayDate of id card */
-"BirthdayDate" = "BirthdayDate";
+"BirthdayDate" = "Date of birth";
 
 /* CVV code of credit card */
 "CVV" = "CVV";
@@ -28,7 +28,7 @@
 "Expired" = "Expired";
 
 /* FirstName of id card */
-"FirstName" = "FirstName";
+"FirstName" = "First name";
 
 /* Holder of credit card */
 "Holder" = "Holder";
@@ -37,7 +37,7 @@
 "IMAP" = "IMAP";
 
 /* LastName of id card */
-"LastName" = "LastName";
+"LastName" = "Last name";
 
 /* Login of account
  Login of email authorization
@@ -46,7 +46,7 @@
 "Login" = "Login";
 
 /* MiddleName of id card */
-"MiddleName" = "MiddleName";
+"MiddleName" = "Middle name";
 
 /* Notes about account
  Notes about bank account
@@ -63,7 +63,7 @@
 "Number" = "Number";
 
 /* Number of credit card */
-"NumberCard" = "NumberCard";
+"NumberCard" = "Number card";
 
 /* Key phrase of WiFi networks
  Password of account
@@ -80,7 +80,7 @@
 "POP3" = "POP3";
 
 /* ReceivedDate of id card */
-"ReceivedDate" = "ReceivedDate";
+"ReceivedDate" = "Received date";
 
 /* SMTP server of email */
 "SMTP" = "SMTP";
@@ -135,4 +135,52 @@
 
 /* Text confirmation about change password */
 "ChangePwdConfirmation" = "It's have to check your old password. Continue?";
+
+/* Header section tableview where input new password */
+"ChangePwdHeaderSection" = "New password";
+
+/* Title user's error alert */
+"UserErrorAlertTitle" = "Error!";
+
+/* Text user's error empty new password */
+"NewPwdIsEmptyErrorText" = "New password might be not empty!";
+
+/* Text user's error new passwords are not equal */
+"NewPwdIsEqualErrorText" = "New passwords are not equal!";
+
+/* Text user's error incorrect character */
+"PwdTextContainIncorrectCharacter" = "Incorrect character: ";
+
+/* Title user's information alert */
+"UserInformationAlertTitle" = "Information";
+
+/* Text user's successful result action */
+"UserActionSuccessText" = "Success!";
+
+/* Text user's OK feedback */
+"UserOKFeedbackText" = "OK";
+
+/* Error wrong password */
+"ErrorWrongPasswordText" = "Wrong password";
+
+/* Error open database */
+"ErrorOpenDatabaseText" = "Error open database!";
+
+/* Error use input password */
+"ErrorUsedInputPasswordText" = "Can't use input password!";
+
+/* Error change password */
+"ErrorChangePasswordText" = "Can't change password!";
+
+/* Error empty password */
+"ErrorEmptyPasswordText" = "Please enter the password!";
+
+/* Error incorrect character */
+"ErrorIncorrectCharacterInPasswordText" = "Incorrect character: ";
+
+/* Error reading from DB */
+"ErrorReadingDBText" = "Upps. Error reading from DB. Try to reinstall application!";
+
+/* Header for enter password label */
+"EnterPasswordLabelText" = "Enter password:";
 

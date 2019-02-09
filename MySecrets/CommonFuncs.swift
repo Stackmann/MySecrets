@@ -18,7 +18,7 @@ class CommonFuncs {
         return alert
     }
     
-    static func initRealmDB(inputPasswordStr: String, suffixInMsg: String) -> (Bool, String) {
+    static func initRealmDB(inputPasswordStr: String) -> (Bool, String) {
         var userErrorStr = ""
         var inputPasswordStr64 = inputPasswordStr
         while inputPasswordStr64.count < 64 {
@@ -36,15 +36,16 @@ class CommonFuncs {
                 Secrets.share.realmDB = try Realm(configuration: Secrets.share.realmDBConfiguration!)
             } catch {
                 if error.localizedDescription.contains("Realm file decryption failed") {
-                    userErrorStr = "Wrong " + suffixInMsg + " password!"
+                    userErrorStr = NSLocalizedString("ErrorWrongPasswordText", comment: "Error wrong password")
                 } else {
-                    userErrorStr = "Error open database!"
+                    userErrorStr = NSLocalizedString("ErrorOpenDatabaseText", comment: "Error open database")
                 }
                 print(error.localizedDescription)
                 return (false, userErrorStr)
             }
         } else {
-            return (false, "Can't used input password!")
+            userErrorStr = NSLocalizedString("ErrorUsedInputPasswordText", comment: "Error use input password")
+            return (false, userErrorStr)
         }
         return (true, "")
     }
@@ -99,14 +100,15 @@ class CommonFuncs {
             do {
                 try FileManager.default.removeItem(at: URL)
             } catch {
-                return(false, "Can't change password!")
+                let sysErrorStr = NSLocalizedString("ErrorChangePasswordText", comment: "Error change password")
+                return(false, sysErrorStr)
             }
         }
 
         //create new file DB with new encryptkey
-        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: newPasswordStr, suffixInMsg: "")
+        let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: newPasswordStr)
         if !resultInitDB.0 {
-            return (false, "Something wents wrong!")
+            return (false, resultInitDB.1)
         }
         //save all secrets to DB
         if !saveToRealmDB() { return (false, "Something wents wrong!") }

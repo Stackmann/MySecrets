@@ -136,3 +136,51 @@
 /* Text confirmation about change password */
 "ChangePwdConfirmation" = "Далее будет проверка вашего старого пароля. Продолжить?";
 
+/* Header section tableview where input new password */
+"ChangePwdHeaderSection" = "Новый пароль";
+
+/* Title user's error alert */
+"UserErrorAlertTitle" = "Ошибка!";
+
+/* Text user's error empty new password */
+"NewPwdIsEmptyErrorText" = "Новый пароль не должен быть пустым!";
+
+/* Text user's error new passwords not equal */
+"NewPwdIsEqualErrorText" = "Новые !";
+
+/* Text user's error incorrect character */
+"PwdTextContainIncorrectCharacter" = "Некорректный символ: ";
+
+/* Title user's information alert */
+"UserInformationAlertTitle" = "Информация";
+
+/* Text user's successful result action */
+"UserActionSuccessText" = "Успешно выполнено!";
+
+/* Text user's OK feedback */
+"UserOKFeedbackText" = "Принять";
+
+/* Error wrong password */
+"ErrorWrongPasswordText" = "Не верный пароль";
+
+/* Error open database */
+"ErrorOpenDatabaseText" = "Ошибка открытия базы данных!";
+
+/* Error use input password */
+"ErrorUsedInputPasswordText" = "Невозможно использовать введенный пароль!";
+
+/* Error change password */
+"ErrorChangePasswordText" = "Не получилось изменить пароль!";
+
+/* Error empty password */
+"ErrorEmptyPasswordText" = "Пожалуйста введите пароль!";
+
+/* Error incorrect character */
+"ErrorIncorrectCharacterInPasswordText" = "Не корректный символ: ";
+
+/* Error reading from DB */
+"ErrorReadingDBText" = "Упс. Ошибка чтения данных из хранилища. Попробуйте переустановить приложение!";
+
+/* Header for enter password label */
+"EnterPasswordLabelText" = "Введите пароль:";
+

@@ -21,12 +21,13 @@ class EnterPwdViewController: UIViewController {
             showHiddenPasswordLabel.addGestureRecognizer(tapGestureRecognizer)
         }
     }
+    @IBOutlet weak var enterPasswordLabel: UILabel!
     
     // MARK: - lifecycle viewController metods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        enterPasswordLabel.text = NSLocalizedString("EnterPasswordLabelText", comment: "Header for enter password label")
         inputPasswordField.isSecureTextEntry = isPasswordHidden
         warningPasswordLabel.text = NSLocalizedString("EnterPasswordWarning", comment: "Warning for using correct symbols in password")
         warningPasswordLabel.textColor = UIColor(red: 255.0/255.0, green: 145.0/255.0, blue: 158.0/255.0, alpha: 1)
@@ -42,29 +43,36 @@ class EnterPwdViewController: UIViewController {
         
         if let inputPasswordStr = inputPasswordField.text {
             if inputPasswordStr.isEmpty {
-                let alert = CommonFuncs.getAlert(title: "Error", message: "Please enter the password!")
+                let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                let messageAlert = NSLocalizedString("ErrorEmptyPasswordText", comment: "Error empty password")
+                let alert = CommonFuncs.getAlert(title: titleAlert, message: messageAlert)
                 self.present(alert, animated: true, completion: nil)
                 return
             }
             let isContainCorrectCharacters = inputPasswordStr.isContainCorrectCharactersForRealmPassword
             if !isContainCorrectCharacters.0 {
-                let alert = CommonFuncs.getAlert(title: "Error", message: "Incorrect \(isContainCorrectCharacters.1 + 1) character!")
+                let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                let messageAlert = NSLocalizedString("ErrorIncorrectCharacterInPasswordText", comment: "Error incorrect character")
+                let alert = CommonFuncs.getAlert(title: titleAlert, message: messageAlert + "\(isContainCorrectCharacters.1 + 1)")
                 self.present(alert, animated: true, completion: nil)
                 return
             }
             
 
             if !Secrets.share.dataAvailable {
-                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr, suffixInMsg: "")
+                let resultInitDB = CommonFuncs.initRealmDB(inputPasswordStr: inputPasswordStr)
                 if !resultInitDB.0 {
-                    let alert = CommonFuncs.getAlert(title: "Error", message: resultInitDB.1)
+                    let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                    let alert = CommonFuncs.getAlert(title: titleAlert, message: resultInitDB.1)
                     self.present(alert, animated: true, completion: nil)
                     return
                 }
                 //Secrets.share.loadData()
                 if Secrets.share.dataFirstReading {
                     if !CommonFuncs.readFromRealmDB() {
-                        let alert = CommonFuncs.getAlert(title: "Error", message: "Error reading from DB. Try to recreate DB!")
+                        let titleAlert = NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert")
+                        let messageAlert = NSLocalizedString("ErrorReadingDBText", comment: "Error reading from DB")
+                        let alert = CommonFuncs.getAlert(title: titleAlert, message: messageAlert)
                         self.present(alert, animated: true, completion: nil)
                         return
                     } else {
