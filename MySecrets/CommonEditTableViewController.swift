@@ -99,7 +99,11 @@ class CommonEditTableViewController: UITableViewController, AssetsAvatarSelected
                     if let valueStr = textFields[count]?.text {
                         if let valueInt = Int(valueStr) { decimalFields[field] = valueInt} else {
                             guard let localizedField = pattern.localizedFields[field] else { return }
-                            let alert = CommonFuncs.getAlert(title: "Wrong data!", message: "Invalid field " + localizedField + ". Please, use only digits.")
+                            let alertTitle = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                            let messageTitle1 = NSLocalizedString("WrongInputDataFieldMessage", comment: "Wrong input data field message")
+                            let messageTitle2 = NSLocalizedString("RecommendationUsingDigitsMessage", comment: "Recommendation message about using digits")
+
+                            let alert = CommonFuncs.getAlert(title: alertTitle, message: messageTitle1 + localizedField + messageTitle2)
                             present(alert, animated: true, completion: nil)
                             return
                         }

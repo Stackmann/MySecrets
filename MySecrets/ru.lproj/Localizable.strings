@@ -184,3 +184,25 @@
 /* Header for enter password label */
 "EnterPasswordLabelText" = "Введите пароль:";
 
+/* Title VC settings */
+"SettingsScreenTitle" = "Настройки";
+
+/* Header section tableview where general settings */
+"GeneralSettingsHeaderSection" = "Основные";
+
+/* Title of return button in settings */
+"SettingsReturnButtonTitle" = "<Назад";
+
+/* Title of change password menu item in settings */
+"SettingsChangePasswordMenuItemTitle" = "Сменить пароль";
+
+/* Wrong input data field message */
+"WrongInputDataFieldMessage" = "Неверное значение поля: ";
+
+/* Recommendation message about using digits */
+"RecommendationUsingDigitsMessage" = ". Пожалуйста, используйте только цифры.";
+
+/* Error saving to DB message */
+"ErrorWritingDBText" = "Ошибка записи в базу данных. Попробуйте выгрузить и запустить приложение заново!";
+
+

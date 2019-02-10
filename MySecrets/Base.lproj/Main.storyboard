@@ -733,6 +733,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="changePasswordMenuItemLabel" destination="ChE-0P-BF4" id="dcI-rw-PtJ"/>
+                        <outlet property="returnButton" destination="ayV-KS-Erf" id="Tj8-qh-GTv"/>
                         <segue destination="XJM-Ce-OJR" kind="show" identifier="changePwd" id="t3W-Jt-pgy"/>
                     </connections>
                 </tableViewController>

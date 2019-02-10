@@ -184,3 +184,23 @@
 /* Header for enter password label */
 "EnterPasswordLabelText" = "Enter password:";
 
+/* Title VC settings */
+"SettingsScreenTitle" = "Settings";
+
+/* Header section tableview where general settings */
+"GeneralSettingsHeaderSection" = "General";
+
+/* Title of return button in settings */
+"SettingsReturnButtonTitle" = "<Return";
+
+/* Title of change password menu item in settings */
+"SettingsChangePasswordMenuItemTitle" = "Change password";
+
+/* Wrong input data field message */
+"WrongInputDataFieldMessage" = "Invalid field ";
+
+/* Recommendation message about using digits */
+"RecommendationUsingDigitsMessage" = ". Please, use only digits.";
+
+/* Error saving to DB message */
+"ErrorWritingDBText" = "Error saving to DB. Try to reload application!";

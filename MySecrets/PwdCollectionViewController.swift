@@ -33,9 +33,6 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
         
         self.navigationItem.titleView = searchController.searchBar
         
-        // Register cell classes: not needed if cell present in storyboard with same identifier
-        //self.collectionView!.register(SecretCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(editUpdateCollectionIfNeed), name: NSNotification.Name(rawValue: "editCurrentRecordEvent"), object: nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(deleteUpdateCollectionIfNeed), name: NSNotification.Name(rawValue: "deleteCurrentRecordEvent"), object: nil)
@@ -188,7 +185,9 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
     
     @objc private func editUpdateCollectionIfNeed() {
         if !CommonFuncs.saveToRealmDB() {
-            let alert = CommonFuncs.getAlert(title: "Error", message: "Error saving to DB. Try to reinstall aplication!")
+            let alertTitle = NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert")
+            let alertMessage = NSLocalizedString("ErrorWritingDBText", comment: "Error saving to DB message")
+            let alert = CommonFuncs.getAlert(title: alertTitle, message: alertMessage)
             self.present(alert, animated: true, completion: nil)
         }
         if let lowerCasedQuery = searchController.searchBar.text?.lowercased(), lowerCasedQuery != "" {
@@ -202,7 +201,9 @@ class PwdCollectionViewController: UICollectionViewController, UISearchResultsUp
 
     @objc private func deleteUpdateCollectionIfNeed() {
         if !CommonFuncs.saveToRealmDB() {
-            let alert = CommonFuncs.getAlert(title: "Error", message: "Error saving to DB. Try to reinstall aplication!")
+            let alertTitle = NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert")
+            let alertMessage = NSLocalizedString("ErrorWritingDBText", comment: "Error saving to DB message")
+            let alert = CommonFuncs.getAlert(title: alertTitle, message: alertMessage)
             self.present(alert, animated: true, completion: nil)
         }
         if let lowerCasedQuery = searchController.searchBar.text?.lowercased(), lowerCasedQuery != "" {
