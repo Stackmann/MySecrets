@@ -146,7 +146,7 @@
 "NewPwdIsEmptyErrorText" = "Новый пароль не должен быть пустым!";
 
 /* Text user's error new passwords not equal */
-"NewPwdIsEqualErrorText" = "Новые !";
+"NewPwdIsEqualErrorText" = "Введенные пароли должны быть одинаковыми.";
 
 /* Text user's error incorrect character */
 "PwdTextContainIncorrectCharacter" = "Некорректный символ: ";
@@ -175,6 +175,9 @@
 /* Error empty password */
 "ErrorEmptyPasswordText" = "Пожалуйста введите пароль!";
 
+/* Error empty passwords */
+"ErrorEmptyPasswordsText" = "Пожалуйста введите пароль в оба поля!";
+
 /* Error incorrect character */
 "ErrorIncorrectCharacterInPasswordText" = "Не корректный символ: ";
 
@@ -183,6 +186,9 @@
 
 /* Header for enter password label */
 "EnterPasswordLabelText" = "Введите пароль:";
+
+/* Header for set password label */
+"SetPasswordLabelText" = "Задайте новый пароль:";
 
 /* Title VC settings */
 "SettingsScreenTitle" = "Настройки";

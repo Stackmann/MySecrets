@@ -119,8 +119,26 @@ class CreditCardEditTableViewController: UITableViewController, AssetsAvatarSele
         if let cardNumber = cardNumberField.text { stringFields["NumberCard"] = cardNumber }
         if let holder = holderField.text { stringFields["Holder"] = holder }
         if let notes = notesField.text { stringFields["Notes"] = notes }
-        if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt }
-        if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt }
+        if let cvv = cvvField.text, let cvvInt = Int(cvv) { decimalFields["CVV"] = cvvInt } else {
+            guard let localizedField = patternKind?.localizedFields["CVV"] else { return }
+            let alertTitle = NSLocalizedString("WrongDataAlertTitle", comment: "Title wrong data alert")
+            let alertMessage1 = NSLocalizedString("WrongInputDataFieldMessage", comment: "Wrong input data field message")
+            let alertMessage2 = NSLocalizedString("RecommendationUsingDigitsMessage", comment: "Recommendation message about using digits")
+            
+            let alert = CommonFuncs.getAlert(title: alertTitle, message: alertMessage1 + localizedField + alertMessage2)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        if let pin = pinField.text, let pinInt = Int(pin) { decimalFields["PIN"] = pinInt } else {
+            guard let localizedField = patternKind?.localizedFields["PIN"] else { return }
+            let alertTitle = NSLocalizedString("WrongDataAlertTitle", comment: "Title wrong data alert")
+            let alertMessage1 = NSLocalizedString("WrongInputDataFieldMessage", comment: "Wrong input data field message")
+            let alertMessage2 = NSLocalizedString("RecommendationUsingDigitsMessage", comment: "Recommendation message about using digits")
+            
+            let alert = CommonFuncs.getAlert(title: alertTitle, message: alertMessage1 + localizedField + alertMessage2)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         if let expiredData = chosenExpiredDate { dateFields["Expired"] = expiredData }
 
         let currentRecord = RecordPass(describe: describe, stringFields: stringFields, decimalFields: decimalFields, dateFields: dateFields, avatar: avatarData, idPattern: "creditcard", num: currentNum)

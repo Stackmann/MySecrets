@@ -128,10 +128,10 @@
 "oldPasswordPlaceHolderText" = "Check for current password";
 
 /* Placeholder for new password textfield1 */
-"newPasswordPlaceHolderText1" = "Enter new password";
+"newPasswordPlaceHolderText1" = "Type new password";
 
 /* Placeholder for new password textfield2 */
-"newPasswordPlaceHolderText2" = "Enter new password again";
+"newPasswordPlaceHolderText2" = "Type new password again";
 
 /* Text confirmation about change password */
 "ChangePwdConfirmation" = "It's have to check your old password. Continue?";
@@ -146,7 +146,7 @@
 "NewPwdIsEmptyErrorText" = "New password might be not empty!";
 
 /* Text user's error new passwords are not equal */
-"NewPwdIsEqualErrorText" = "New passwords are not equal!";
+"NewPwdIsEqualErrorText" = "Typed passwords are not equal.";
 
 /* Text user's error incorrect character */
 "PwdTextContainIncorrectCharacter" = "Incorrect character: ";
@@ -175,6 +175,9 @@
 /* Error empty password */
 "ErrorEmptyPasswordText" = "Please enter the password!";
 
+/* Error empty passwords */
+"ErrorEmptyPasswordsText" = "Please enter the password in both fields!";
+
 /* Error incorrect character */
 "ErrorIncorrectCharacterInPasswordText" = "Incorrect character: ";
 
@@ -183,6 +186,9 @@
 
 /* Header for enter password label */
 "EnterPasswordLabelText" = "Enter password:";
+
+/* Header for set password label */
+"SetPasswordLabelText" = "Set new password:";
 
 /* Title VC settings */
 "SettingsScreenTitle" = "Settings";

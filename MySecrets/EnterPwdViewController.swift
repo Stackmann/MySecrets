@@ -12,6 +12,7 @@ import RealmSwift
 class EnterPwdViewController: UIViewController {
     
     var isPasswordHidden = true
+    var isRealmDBMissing = true
     @IBOutlet weak var inputPasswordField: UITextField!
     @IBOutlet weak var warningPasswordLabel: UILabel!
     @IBOutlet weak var showHiddenPasswordLabel: UILabel!{
@@ -22,12 +23,22 @@ class EnterPwdViewController: UIViewController {
         }
     }
     @IBOutlet weak var enterPasswordLabel: UILabel!
+    @IBOutlet weak var inputFirstPasswordField: UITextField!
     
     // MARK: - lifecycle viewController metods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        enterPasswordLabel.text = NSLocalizedString("EnterPasswordLabelText", comment: "Header for enter password label")
+        isRealmDBMissing = !CommonFuncs.isRealmDBPresent()
+        if isRealmDBMissing {
+            enterPasswordLabel.text = NSLocalizedString("SetPasswordLabelText", comment: "Header for set password label")
+            inputFirstPasswordField.placeholder = NSLocalizedString("newPasswordPlaceHolderText1", comment: "Placeholder for new password textfield1")
+            inputPasswordField.placeholder = NSLocalizedString("newPasswordPlaceHolderText2", comment: "Placeholder for new password textfield2")
+            inputFirstPasswordField.isSecureTextEntry = isPasswordHidden
+        } else {
+            enterPasswordLabel.text = NSLocalizedString("EnterPasswordLabelText", comment: "Header for enter password label")
+            inputFirstPasswordField.isHidden = true
+        }
         inputPasswordField.isSecureTextEntry = isPasswordHidden
         warningPasswordLabel.text = NSLocalizedString("EnterPasswordWarning", comment: "Warning for using correct symbols in password")
         warningPasswordLabel.textColor = UIColor(red: 255.0/255.0, green: 145.0/255.0, blue: 158.0/255.0, alpha: 1)
@@ -35,6 +46,7 @@ class EnterPwdViewController: UIViewController {
 
         showHiddenPasswordLabel.text = NSLocalizedString("EnterPasswordShowPasswordSymbols", comment: "Message that can switch visibility input symbols")
         showHiddenPasswordLabel.textColor = UIColor(red: 29.0/255.0, green: 193.0/255.0, blue: 38.0/255.0, alpha: 1)
+        
     }
 
     // MARK: - actions
@@ -44,10 +56,24 @@ class EnterPwdViewController: UIViewController {
         if let inputPasswordStr = inputPasswordField.text {
             if inputPasswordStr.isEmpty {
                 let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
-                let messageAlert = NSLocalizedString("ErrorEmptyPasswordText", comment: "Error empty password")
+                let messageAlert = NSLocalizedString(isRealmDBMissing ? "ErrorEmptyPasswordsText" : "ErrorEmptyPasswordText", comment: "Error empty password")
                 let alert = CommonFuncs.getAlert(title: titleAlert, message: messageAlert)
                 self.present(alert, animated: true, completion: nil)
                 return
+            } else if isRealmDBMissing, let inputFirstPasswordStr = inputFirstPasswordField.text, inputFirstPasswordStr.isEmpty {
+                    let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                    let messageAlert = NSLocalizedString("ErrorEmptyPasswordsText", comment: "Error empty password")
+                    let alert = CommonFuncs.getAlert(title: titleAlert, message: messageAlert)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+            }
+            if isRealmDBMissing, let inputFirstPasswordStr = inputFirstPasswordField.text, inputPasswordStr != inputFirstPasswordStr {
+                let titleAlert = NSLocalizedString("UserErrorAlertTitle", comment: "Title user's error alert")
+                let textAlert = NSLocalizedString("NewPwdIsEqualErrorText", comment: "Text user's error new passwords are not equal")
+                let alert = CommonFuncs.getAlert(title: titleAlert, message: textAlert)
+                self.present(alert, animated: true, completion: nil)
+                return
+
             }
             let isContainCorrectCharacters = inputPasswordStr.isContainCorrectCharactersForRealmPassword
             if !isContainCorrectCharacters.0 {

@@ -117,6 +117,17 @@ class CommonFuncs {
         return (true, "")
     }
 
+    static func isRealmDBPresent() -> Bool {
+        if let _ = Secrets.share.realmDBConfiguration {
+            return true
+        } else if let defaultCfgURL = Realm.Configuration().fileURL,
+            FileManager.default.fileExists(atPath: defaultCfgURL.path) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     static func encodeMainList() -> Data {
         let encoder = JSONEncoder()
         

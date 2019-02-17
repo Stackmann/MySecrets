@@ -109,7 +109,16 @@ class IdCardEditTableViewController: UITableViewController, UITextFieldDelegate,
         if let lastName = lastNameTextField.text { stringFields["LastName"] = lastName }
         if let middleName = middleNameTextField.text { stringFields["MiddleName"] = middleName }
         if let sn = snTextField.text { stringFields["SN"] = sn }
-        if let number = numberTextField.text, let numberInt = Int(number) { decimalFields["Number"] = numberInt }
+        if let number = numberTextField.text, let numberInt = Int(number) { decimalFields["Number"] = numberInt } else {
+            guard let localizedField = patternKind?.localizedFields["Number"] else { return }
+            let alertTitle = NSLocalizedString("WrongDataAlertTitle", comment: "Title wrong data alert")
+            let alertMessage1 = NSLocalizedString("WrongInputDataFieldMessage", comment: "Wrong input data field message")
+            let alertMessage2 = NSLocalizedString("RecommendationUsingDigitsMessage", comment: "Recommendation message about using digits")
+            
+            let alert = CommonFuncs.getAlert(title: alertTitle, message: alertMessage1 + localizedField + alertMessage2)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         if let birthday = chosenBirthday { dateFields["BirthdayDate"] = birthday }
         if let receivedDate = chosenReceivedDate { dateFields["ReceivedDate"] = receivedDate }
 
