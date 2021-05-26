@@ -210,3 +210,6 @@
 
 /* Error saving to DB message */
 "ErrorWritingDBText" = "Error saving to DB. Try to reload application!";
+
+/* Error when try to create URL from text */
+"ErrorCreateURLFromText" = "Cannot create URL. Maybe reason is that MySecrets+ not installed any more!";

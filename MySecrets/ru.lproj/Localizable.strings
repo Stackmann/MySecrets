@@ -211,4 +211,6 @@
 /* Error saving to DB message */
 "ErrorWritingDBText" = "Ошибка записи в базу данных. Попробуйте выгрузить и запустить приложение заново!";
 
+/* Error when try to create URL from text */
+"ErrorCreateURLFromText" = "Не получается получить URL-линк. Может причина в том что MySecrets+ более не доступен на устройстве!";
 

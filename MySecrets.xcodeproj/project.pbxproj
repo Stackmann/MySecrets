@@ -30,7 +30,6 @@
 		07F7B692201E39BC000FA2F3 /* CommonFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F7B691201E39BC000FA2F3 /* CommonFuncs.swift */; };
 		07F9F4EC1FD0A66B004B9A25 /* PwdCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */; };
 		07F9F4EE1FD0AA9D004B9A25 /* SecretCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */; };
-		4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */; };
 		CE060B9721ED1B2D00012118 /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE060B9621ED1B2D00012118 /* ChangePasswordTableViewController.swift */; };
 		CEF9404D2117566B00E1A264 /* CommonEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */; };
 		CEF940502137004500E1A264 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CEF940522137004500E1A264 /* Localizable.strings */; };
@@ -40,6 +39,7 @@
 		CEF9405B216A900000E1A264 /* AvatarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF94059216A900000E1A264 /* AvatarCollectionViewCell.xib */; };
 		CEFD1F6F210348EE004C8678 /* DayMonthYearPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F6E210348EE004C8678 /* DayMonthYearPickerView.swift */; };
 		CEFD1F712111F1F6004C8678 /* CommonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFD1F702111F1F6004C8678 /* CommonViewController.swift */; };
+		CF7C4F0EA666380D5AD65615 /* libPods-MySecrets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC0D25B9E2D486854EE43C3 /* libPods-MySecrets.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,10 +68,11 @@
 		07F7B691201E39BC000FA2F3 /* CommonFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFuncs.swift; sourceTree = "<group>"; };
 		07F9F4EB1FD0A66B004B9A25 /* PwdCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwdCollectionViewController.swift; sourceTree = "<group>"; };
 		07F9F4ED1FD0AA9D004B9A25 /* SecretCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretCell.swift; sourceTree = "<group>"; };
-		15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySecrets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E049058BDA40146DD601FF /* Pods-MySecrets.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.debug.xcconfig"; sourceTree = "<group>"; };
+		8DC0D25B9E2D486854EE43C3 /* libPods-MySecrets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySecrets.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1D7CAA033FA9E123B8C24E7 /* Pods-MySecrets.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySecrets.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySecrets/Pods-MySecrets.release.xcconfig"; sourceTree = "<group>"; };
 		CE060B9621ED1B2D00012118 /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
+		CE967D1D24CAF4B000F5DF04 /* MySecrets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySecrets.entitlements; sourceTree = "<group>"; };
 		CEF9404C2117566B00E1A264 /* CommonEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditTableViewController.swift; sourceTree = "<group>"; };
 		CEF940512137004500E1A264 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CEF940532137010F00E1A264 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -88,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA42329D42FA7EABD13E320 /* Pods_MySecrets.framework in Frameworks */,
+				CF7C4F0EA666380D5AD65615 /* libPods-MySecrets.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +125,7 @@
 		071E1D291FBF7D6F00310F44 /* MySecrets */ = {
 			isa = PBXGroup;
 			children = (
+				CE967D1D24CAF4B000F5DF04 /* MySecrets.entitlements */,
 				071CE19B1FF4B1FA004BA08D /* Resources */,
 				071E1D2A1FBF7D6F00310F44 /* AppDelegate.swift */,
 				0777FDEA1FCED68200C7EFD9 /* Secrets.swift */,
@@ -173,7 +175,7 @@
 		BCB51CD511BB4E00D3EAB1E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				15EE40A765EC75D73D8999BB /* Pods_MySecrets.framework */,
+				8DC0D25B9E2D486854EE43C3 /* libPods-MySecrets.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -189,7 +191,6 @@
 				071E1D231FBF7D6F00310F44 /* Sources */,
 				071E1D241FBF7D6F00310F44 /* Frameworks */,
 				071E1D251FBF7D6F00310F44 /* Resources */,
-				4AF858F0EA83508205269D57 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +214,11 @@
 					071E1D261FBF7D6F00310F44 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -253,26 +259,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4AF858F0EA83508205269D57 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MySecrets/Pods-MySecrets-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MySecrets/Pods-MySecrets-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		92601A448E743B6422D2D85D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -471,12 +457,15 @@
 			baseConfigurationReference = 59E049058BDA40146DD601FF /* Pods-MySecrets.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MySecrets/MySecrets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HHTN433Z68;
 				INFOPLIST_FILE = MySecrets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EricsApp.MySecrets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -487,12 +476,15 @@
 			baseConfigurationReference = A1D7CAA033FA9E123B8C24E7 /* Pods-MySecrets.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MySecrets/MySecrets.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HHTN433Z68;
 				INFOPLIST_FILE = MySecrets/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = EricsApp.MySecrets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -11,6 +11,10 @@ import UIKit
 import RealmSwift
 
 class CommonFuncs {
+    static let transitionGroupId = "group.EricsApp.MySecrets.Transition"
+    //static let transitionImportFolderId = "import"
+    static let transitionFileName = "content.db"
+    
     static func getAlert(title: String, message: String) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -175,6 +179,33 @@ class CommonFuncs {
             }
         }
         return nextName
+    }
+
+    static func isAppMySecretsPlusPresent() -> Bool {
+        guard let appURL = URL(string: "mysecrets://import-db") else { return false }
+        return UIApplication.shared.canOpenURL(appURL)
+    }
+    
+    static private func transitionContainerURL() -> URL? {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: transitionGroupId)
+    }
+
+    static private func importFileURL() -> URL? {
+        //return importURL()?.appendingPathComponent(transitionFileName)
+        return transitionContainerURL()?.appendingPathComponent(transitionFileName)
+    }
+
+    static func CopyDBToTransitionFolder() -> Bool {
+        let sourceURL = (Secrets.share.realmDBConfiguration?.fileURL)!
+        let destURL = importFileURL()!
+        if !FileManager.default.fileExists(atPath: destURL.path) {
+            do {
+                try FileManager.default.copyItem(at: sourceURL, to: destURL)
+                return true
+            } catch {
+                return false
+            }
+        } else {return true}
     }
 }
 

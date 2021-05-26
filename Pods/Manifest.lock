@@ -1,12 +1,4 @@
 PODS:
-  - AppCenter (1.11.0):
-    - AppCenter/Analytics (= 1.11.0)
-    - AppCenter/Crashes (= 1.11.0)
-  - AppCenter/Analytics (1.11.0):
-    - AppCenter/Core
-  - AppCenter/Core (1.11.0)
-  - AppCenter/Crashes (1.11.0):
-    - AppCenter/Core
   - Realm (3.0.2):
     - Realm/Headers (= 3.0.2)
   - Realm/Headers (3.0.2)
@@ -14,20 +6,17 @@ PODS:
     - Realm (= 3.0.2)
 
 DEPENDENCIES:
-  - AppCenter
   - RealmSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - AppCenter
     - Realm
     - RealmSwift
 
 SPEC CHECKSUMS:
-  AppCenter: 3bccf8d733e337d0db574dd4cb0e33ab9637b7f2
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
 
-PODFILE CHECKSUM: c44052855d6bf882294e30e9c86c71d81b6bd17c
+PODFILE CHECKSUM: af26f6fc92b85a79ba03ad90aa4f80f0fa4cb536
 
 COCOAPODS: 1.6.0.beta.2

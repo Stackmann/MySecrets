@@ -12,10 +12,12 @@ class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var returnButton: UIBarButtonItem!
     @IBOutlet weak var changePasswordMenuItemLabel: UILabel!
+    @IBOutlet weak var exportToMySecretsPlusCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        exportToMySecretsPlusCell.isHidden = !CommonFuncs.isAppMySecretsPlusPresent()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +42,32 @@ class SettingsTableViewController: UITableViewController {
             })
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
+        } else if indexPath.section == 0, indexPath.row == 1 {
+            let titleAlert = NSLocalizedString("SystemErrorAlertTitle", comment: "Title system error alert")
+            let textAlert = NSLocalizedString("ErrorCreateURLFromText", comment: "Error when try to create URL from text")
+            
+           guard let appURL = URL(string: "mysecrets://import-db") else {
+                let alert = CommonFuncs.getAlert(title: titleAlert, message: textAlert)
+                present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            // something is wrong with "can open URL", but you'll check something else
+                    if UIApplication.shared.canOpenURL(appURL) {
+                        if CommonFuncs.CopyDBToTransitionFolder() {
+                            UIApplication.shared.open(appURL)
+                        }
+                    } else {
+                        let alert = CommonFuncs.getAlert(title: titleAlert, message: textAlert)
+                        present(alert, animated: true, completion: nil)
+                        return
+                    }
+            
+            //UIApplication.shared.open(appURL)
+
         }
     }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return NSLocalizedString("GeneralSettingsHeaderSection", comment: "Header section tableview where general settings")
